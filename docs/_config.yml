@@ -1,0 +1,8 @@
+title: Owl book code
+description: Code repository for Owl Springer book 
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-cayman
+
+gems:
+  - jekyll-mentions
