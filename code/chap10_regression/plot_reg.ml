@@ -1,3 +1,6 @@
+open Owl
+open Owl_plplot
+
 let data = Owl_io.read_csv ~sep:',' "data_reg.csv"
 let data = Array.map (fun x -> Array.map float_of_string x) data |> Mat.of_arrays
 

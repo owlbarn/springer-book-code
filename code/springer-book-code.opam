@@ -1,0 +1,14 @@
+opam-version: "2.0"
+name: "springer-book-example"
+version: "dev"
+maintainer: "Liang Wang <ryanrhymes@gmail.com>"
+homepage: "https://github.com/owlbarn/springer-book-code"
+bug-reports: "https://github.com/owlbarn/springer-book-code"
+synopsis: "Owl Springer Book code examples"
+depends: [
+  "ocaml" {>= "4.10.0"}
+  "dune" {>= "2.9.0"}
+]
+build: ["dune" "build"]
+depexts: []
+dev-repo: "git+https://github.com/owlbarn/springer-book-code.git"

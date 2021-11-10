@@ -1,3 +1,5 @@
+open Owl
+open Owl_plplot
 
 let gaussian sigma mux muy x y =
   let p = Maths.(pow (x -. mux) 2. +. pow (y -. muy) 2.) in

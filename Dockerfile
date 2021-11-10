@@ -72,8 +72,13 @@ RUN echo "#require \"owl-top\";; open Owl;;" >> /home/opam/.ocamlinit \
     && opam config env >> /home/opam/.bashrc \
     && bash -c "source /home/opam/.bashrc" 
 
-ENV CODEPATH /home/opam/code/
 
+ENV CODEPATH /home/opam/book-code/
 ADD . $CODEPATH
 WORKDIR $CODEPATH
+
+RUN sudo chown -R opam:opam $CODEPATH 
+RUN sudo apt-get install -y vim 
+RUN dune build
+
 ENTRYPOINT /bin/bash

@@ -1,3 +1,5 @@
+open Owl
+open Owl_plplot
 
 let plot_cost () = 
   let f0 x = Maths.(-1. *. log (1. /. (1. +. exp (-1. *. x) ))) in 

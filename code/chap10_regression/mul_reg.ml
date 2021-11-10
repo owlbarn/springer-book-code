@@ -1,3 +1,5 @@
+open Owl
+
 (* [related dataset](https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings/data) *)
 
 let data = Owl_io.read_csv ~sep:',' "data_mul.csv"

@@ -1,0 +1,8 @@
+(executables
+  (names   plot_reg
+           gaussian_kernel
+           mul_reg
+           poly_reg
+           svm)
+  (flags   :standard -w -33)
+  (libraries owl owl-plplot))

@@ -23,6 +23,9 @@
  MEDV     Median value of owner-occupied homes in $1000's
   *)
 
+open Owl
+open Owl_plplot
+
 let data = Owl_io.read_csv ~sep:' ' "boston.csv"
 let data = Array.map (fun x -> Array.map float_of_string x) data |> Mat.of_arrays
 
@@ -46,7 +49,7 @@ let poly () =
   fun x -> a0 +. a1 *. x +. a2 *. x *. x 
 
 
-let poly4 lstat medv = 
+let poly4 () = 
   let a = Regression.D.poly lstat medv 4 in 
   let a0 = Mat.get a 0 0 in 
   let a1 = Mat.get a 1 0 in 
@@ -57,7 +60,7 @@ let poly4 lstat medv =
     +. a3 *. x *. x *. x +. a4 *. x *. x *. x *. x 
 
 
-let poly6 lstat medv = 
+let poly6 () = 
   let a = Regression.D.poly lstat medv 6 in 
   let a0 = Mat.get a 0 0 in 
   let a1 = Mat.get a 1 0 in 
@@ -124,7 +127,6 @@ let plot_poly6s () =
   Plot.output h
 
 
-
 open Optimise.D
 open Optimise.D.Algodiff
 
@@ -166,12 +168,12 @@ let plot_poly4s_reg () =
 
 let plot_exp ()  =
   let a, b, e = Regression.D.exponential lstat medv in 
-  let f1 x = a *. Maths.exp ((-1.) *. b *. x) +. e in  
-  let f2 x = a *. Maths.exp ((-1.) *. e *. x) +. b in  
-  let f3 x = b *. Maths.exp ((-1.) *. a *. x) +. e in  
-  let f4 x = b *. Maths.exp ((-1.) *. e *. x) +. a in  
-  let f5 x = e *. Maths.exp ((-1.) *. a *. x) +. b in  
-  let f6 x = e *. Maths.exp ((-1.) *. b *. x) +. a in  
+  let f1 x = a *. Owl_maths.exp ((-1.) *. b *. x) +. e in  
+  let f2 x = a *. Owl_maths.exp ((-1.) *. e *. x) +. b in  
+  let f3 x = b *. Owl_maths.exp ((-1.) *. a *. x) +. e in  
+  let f4 x = b *. Owl_maths.exp ((-1.) *. e *. x) +. a in  
+  let f5 x = e *. Owl_maths.exp ((-1.) *. a *. x) +. b in  
+  let f6 x = e *. Owl_maths.exp ((-1.) *. b *. x) +. a in  
   let h = Plot.create "fit_exp.png" in
   Plot.scatter ~h lstat medv;
   Plot.plot_fun ~h f1 2. 36.;
