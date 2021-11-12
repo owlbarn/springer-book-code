@@ -1,3 +1,6 @@
+open Owl 
+open Owl_plplot
+
 let plot_sine_1 () =
   let f1 x = Maths.sin (50. *. 2. *. Owl_const.pi *. x) in 
   let f2 x = 0.5 *. (Maths.sin (80. *. 2. *. Owl_const.pi *. x)) in 

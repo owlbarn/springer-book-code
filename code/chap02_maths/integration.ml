@@ -1,3 +1,6 @@
+open Owl
+open Owl_plplot
+
 let plot_01 () =
   let h = Plot.create ~m:1 ~n:2 "example_integrals.png" in
   Plot.subplot h 0 0;

@@ -1,0 +1,6 @@
+(executables
+  (names  imageUtils
+          svd
+          )
+  (flags   :standard -w -33)
+  (libraries owl owl-plplot))

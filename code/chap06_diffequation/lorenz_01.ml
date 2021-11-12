@@ -1,3 +1,7 @@
+open Owl 
+open Owl_ode
+open Owl_plplot
+
 let sigma = 10.
 let beta = 8. /. 3.
 let rho = 28.
@@ -9,6 +13,12 @@ let f y _t =
   let y2' = y.(0) *. y.(1) -. beta *. y.(2) in
   [| [|y0'; y1'; y2'|] |] |> Mat.of_arrays
 
+let y0 = Mat.of_array [|-1.; 0.; 0.5; 0.5|] 1 4
+let tspec = Owl_ode.Types.(T1 {
+  t0 = 0.;
+  duration = 20.;
+  dt=1E-2})
+let custom_solver = Native.D.rk45 ~tol:1E-9 ~dtmax:10.0
 
 let _ =
   let ts, ys = Ode.odeint custom_solver f y0 tspec () in

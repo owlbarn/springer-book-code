@@ -1,5 +1,7 @@
+open Owl
+open Owl_plplot
 
-let plot_histogram () = 
+let plot_histogram x y = 
   (* convert arrays to matrices *)
 
   let x' = Mat.of_array x 1 999 in
@@ -31,7 +33,7 @@ let plot_cdf () =
   Plot.output h
 
 
-let plot_scatter () = 
+let plot_scatter x y z = 
   let x' = Mat.of_array x 1 50 in
   let y' = Mat.of_array y 1 50 in
   let z' = Mat.of_array z 1 50 in

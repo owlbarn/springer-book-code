@@ -1,0 +1,8 @@
+(executables
+  (names  gamma_func
+          integration
+          interpolation
+          special_func
+          )
+  (flags   :standard -w -33)
+  (libraries owl owl-plplot))

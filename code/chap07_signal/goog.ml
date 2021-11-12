@@ -1,3 +1,6 @@
+open Owl 
+open Owl_plplot 
+
 let plot_goog data y y' =
   let n = (Arr.shape data).(0) in
   let x = Mat.sequential n 1 in

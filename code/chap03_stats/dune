@@ -1,0 +1,6 @@
+(executables
+  (names  gamma_pdf
+          plots
+          )
+  (flags   :standard -w -33)
+  (libraries owl owl-plplot))

@@ -13,6 +13,7 @@ RUN sudo apt-get -y update
 RUN sudo apt-get -y install m4 wget unzip aspcud libshp-dev libplplot-dev gfortran
 RUN sudo apt-get -y install pkg-config git camlp4-extra
 
+# Dune: ver 2.9.1
 RUN opam install -y dune 
 RUN opam install -y ctypes 
 RUN opam install -y stdio sexplib configurator 
@@ -73,12 +74,20 @@ RUN echo "#require \"owl-top\";; open Owl;;" >> /home/opam/.ocamlinit \
     && bash -c "source /home/opam/.bashrc" 
 
 
+# Install Owl-ode
+RUN sudo apt install -y libsundials-dev
+RUN opam install odepack.0.7.1 sundialsml.3.1.1p1
+RUN cd /home/opam && wget https://github.com/owlbarn/owl_ode/archive/refs/tags/v0.4.0.tar.gz \
+    && tar xvf v0.4.0.tar.gz && mv owl_ode-0.4.0 owl_ode \
+    && cd owl_ode && make && make install
+
 ENV CODEPATH /home/opam/book-code/
 ADD . $CODEPATH
 WORKDIR $CODEPATH
 
 RUN sudo chown -R opam:opam $CODEPATH 
 RUN sudo apt-get install -y vim 
-RUN dune build
 
+# Test by building
+RUN dune build
 ENTRYPOINT /bin/bash

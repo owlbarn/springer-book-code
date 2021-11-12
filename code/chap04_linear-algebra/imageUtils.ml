@@ -1,4 +1,4 @@
-#!/usr/bin/env owl
+(* #!/usr/bin/env owl *)
 
 open Owl
 
@@ -154,7 +154,7 @@ let _read_ppm fname =
   imf_o, w, h, num_col
  
 let load_ppm fname = 
-  let img, w, h, num_col = _read_ppm fname in 
+  let img, w, h, _num_col = _read_ppm fname in 
   let m = Dense.Matrix.S.of_arrays img in
   let m = Dense.Matrix.S.rotate m 270 in
   (* r,g, b: Mat of size h * w *)

@@ -1,3 +1,8 @@
+open Owl 
+open Owl_plplot 
+
+let fs = 8192.
+
 let plot_tone data filename =
   let x = Mat.div_scalar (Mat.sequential 1 (Arr.shape data).(1)) fs in
   let h = Plot.create filename in

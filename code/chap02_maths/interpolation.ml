@@ -1,3 +1,4 @@
+open Owl 
 open Owl_plplot
 
 let a = -5. 

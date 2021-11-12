@@ -1,0 +1,10 @@
+(executables
+  (names  dialtone
+          goog
+          imageUtils
+          ;; moonlanding
+          sine
+          sunspot
+          )
+  (flags   :standard -w -33)
+  (libraries owl owl-plplot))

@@ -1,3 +1,7 @@
+open Owl 
+open Owl_plplot
+open Algodiff.D
+
 let f0 x = Maths.(tanh x);;
 let f1 = diff f0;;
 let f2 = diff f1;;
@@ -14,10 +18,11 @@ let y2 = map f2 x;;
 let y3 = map f3 x;;
 let y4 = map f4 x;;
 
-let h = Plot.create "plot_00.png" in
-Plot.plot ~h x y0;
-Plot.plot ~h x y1;
-Plot.plot ~h x y2;
-Plot.plot ~h x y3;
-Plot.plot ~h x y4;
-Plot.output h;;
+let plot () = 
+  let h = Plot.create "plot_00.png" in
+  Plot.plot ~h x y0;
+  Plot.plot ~h x y1;
+  Plot.plot ~h x y2;
+  Plot.plot ~h x y3;
+  Plot.plot ~h x y4;
+  Plot.output h

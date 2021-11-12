@@ -1,3 +1,6 @@
+open Owl
+open Owl_plplot
+
 let f x y = 2. *. x *. y +. x
 let f' x = 0.5 *. (Maths.exp (x *. x) -. 1.)
 

@@ -1,4 +1,6 @@
-#use "imageUtils.ml"
+open Owl
+open ImageUtils
+(* #use "imageUtils.ml" *)
 
 module N = Dense.Ndarray.S 
 module M = Dense.Matrix.S

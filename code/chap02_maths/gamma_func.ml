@@ -1,3 +1,6 @@
+open Owl
+open Owl_plplot
+
 let x = [|2; 3; 4; 5; 6|]
 let y = Array.map (fun x -> Maths.fact (x - 1)) x
 let x = Array.map float_of_int x

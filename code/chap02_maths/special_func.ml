@@ -1,3 +1,5 @@
+open Owl 
+open Owl_plplot
 
 let plot_airy () =
   let x = Mat.linspace (-15.) 5. 200 in 

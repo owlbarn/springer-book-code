@@ -1,4 +1,6 @@
-#use "imageUtils.ml"
+open Owl
+open Owl_plplot
+open ImageUtils
 
 module N = Dense.Ndarray.S 
 module C = Dense.Ndarray.C

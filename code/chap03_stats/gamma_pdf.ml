@@ -1,3 +1,6 @@
+open Owl
+open Owl_plplot
+
 module N = Dense.Ndarray.D
 
 let _ =

@@ -1,0 +1,7 @@
+(executables
+  (names  lorenz_01
+          lorenz_02
+          midpoints
+          )
+  (flags   :standard -w -33)
+  (libraries owl owl-plplot owl-ode))
