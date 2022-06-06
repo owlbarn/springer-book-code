@@ -1,15 +1,9 @@
 # Owl Book Code Repository
 
-## Installation
-
-You can use the [editor on GitHub](https://github.com/owlbarn/springer-book-code/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/owlbarn/springer-book-code/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
 ## Running Code 
 
-## Book Erreta 
+We have provided code snippets in this repository. To save you from the effort of installing all the required components to run the code, we have provided a [Dockerfile](https://github.com/owlbarn/springer-book-code/blob/main/Dockerfile) for you to get start with.
+All you need to do is to build a docker image, run it, and all the code snippets are already included in the directory `/home/opam/book-code/`.
+You can then fire up the `utop` REPL to play with these code in whatever way you want. 
+
+## Book Errata 
