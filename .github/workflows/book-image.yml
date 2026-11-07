@@ -1,0 +1,91 @@
+name: Book pilot image
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+    secrets:
+      DOCKERHUB_TOKEN:
+        required: false
+  repository_dispatch:
+    types: [owl-updated]
+
+permissions:
+  contents: read
+
+# Serialize all publications; PR checks use a separate group and cannot publish.
+concurrency:
+  group: book-pilot-${{ github.event_name == 'pull_request' && github.event.pull_request.number || 'publish' }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Test build and promotion rules
+        run: python3 -m unittest discover -s tests -v
+
+      - uses: docker/setup-buildx-action@v4
+
+      - name: Resolve exact compiler, source commits and Ubuntu base
+        id: resolve
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 docker/build.py --resolve-only --output "${RUNNER_TEMP}/book-build.json" --github-output
+
+      - name: Build and load the tested image
+        id: image
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          load: true
+          push: false
+          provenance: false
+          tags: matrixanger/springer-book-code:ci
+          build-args: ${{ steps.resolve.outputs.build_args }}
+          cache-from: type=gha,scope=book-pilot
+          cache-to: type=gha,scope=book-pilot,mode=max
+
+      - name: Validate the exact built image
+        env:
+          IMAGE_ID: ${{ steps.image.outputs.imageid }}
+        run: python3 docker/validate.py --image "$IMAGE_ID" --resolved "${RUNNER_TEMP}/book-build.json" --output "${RUNNER_TEMP}/book-validation.json"
+
+      - name: Check publishing credentials
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          HUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import os
+          if not os.environ.get('HUB_TOKEN'):
+              raise SystemExit('Add the repository Actions secret DOCKERHUB_TOKEN (Read & Write for matrixanger). Build validation has passed; publication is not configured.')
+          PY
+
+      - name: Log in to Docker Hub
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: docker/login-action@v4
+        with:
+          username: matrixanger
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push unique image, verify registry pull, promote pilot
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          IMAGE_ID: ${{ steps.image.outputs.imageid }}
+        run: python3 docker/publish.py --image "$IMAGE_ID" --resolved "${RUNNER_TEMP}/book-build.json" --output "${RUNNER_TEMP}/book-published.json" --run-id "${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+
+      - name: Save version and validation records
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: book-pilot-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/book-*.json
+          if-no-files-found: ignore
+          retention-days: 10

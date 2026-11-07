@@ -33,3 +33,6 @@ _opam/
 
 # Generated execution logs and figures
 results/
+
+# Python tool caches
+__pycache__/

@@ -1,35 +1,80 @@
 #!/usr/bin/env python3
-"""Resolve stable OCaml and main-branch commits, then build the book image."""
+"""Resolve release/compiler sources once; build locally or supply CI build args."""
 import argparse
 import json
+import os
 import re
 import subprocess
 import urllib.request
 from pathlib import Path
 
-parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--tag', default='matrixanger/springer-book-code:pilot')
-args = parser.parse_args()
-root = Path(__file__).resolve().parents[1]
-request = urllib.request.Request('https://api.github.com/repos/ocaml/ocaml/releases/latest',
-                                 headers={'User-Agent': 'springer-book-code'})
-with urllib.request.urlopen(request, timeout=60) as response:
-    release = json.load(response)
-version = release['tag_name']
-if release['prerelease'] or release['draft'] or not re.fullmatch(r'\d+\.\d+\.\d+', version):
-    raise SystemExit(f'Not a stable OCaml release: {version}')
-refs = {}
-for name in ('owl', 'owl-plplot'):
-    refs[name] = subprocess.check_output(
-        ['git', 'ls-remote', f'https://github.com/owlbarn/{name}.git', 'refs/heads/main'],
-        text=True).split()[0]
-series = '.'.join(version.split('.')[:2])
-resolved = {'ocaml': version, **refs, 'tag': args.tag}
-print(json.dumps(resolved, indent=2), flush=True)
-subprocess.run(['docker', 'build', '--pull', '--tag', args.tag,
-                '--build-arg', f'BASE_IMAGE=ocaml/opam:ubuntu-24.04-ocaml-{series}',
-                '--build-arg', f'OCAML_VERSION={version}',
-                '--build-arg', 'BOOK_CODE_REV=' + subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip(),
-                '--build-arg', 'BOOK_CODE_DIRTY=' + str(bool(subprocess.check_output(['git', '-C', str(root), 'status', '--porcelain'], text=True))).lower(),
-                '--build-arg', f'OWL_REF={refs["owl"]}',
-                '--build-arg', f'OWL_PLPLOT_REF={refs["owl-plplot"]}', str(root)], check=True)
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def run(*cmd):
+    return subprocess.check_output(cmd, text=True).strip()
+
+
+def stable_version(release):
+    version = release['tag_name']
+    if release['prerelease'] or release['draft'] or not re.fullmatch(r'\d+\.\d+\.\d+', version):
+        raise ValueError(f'Not a stable OCaml release: {version}')
+    return version
+
+
+def resolve():
+    request = urllib.request.Request('https://api.github.com/repos/ocaml/ocaml/releases/latest',
+                                     headers={'User-Agent': 'springer-book-code'})
+    token = os.environ.get('GH_TOKEN')
+    if token:
+        request.add_header('Authorization', 'Bearer '+token)
+    with urllib.request.urlopen(request, timeout=60) as response:
+        version = stable_version(json.load(response))
+    refs = {}
+    for name in ('owl', 'owl-plplot'):
+        sha = run('git', 'ls-remote', f'https://github.com/owlbarn/{name}.git', 'refs/heads/main').split()[0]
+        if not re.fullmatch(r'[0-9a-f]{40}', sha):
+            raise ValueError(f'Invalid {name} commit')
+        refs[name] = sha
+    series = '.'.join(version.split('.')[:2])
+    base_tag = f'ocaml/opam:ubuntu-24.04-ocaml-{series}'
+    digest = run('docker', 'buildx', 'imagetools', 'inspect', base_tag, '--format', '{{.Manifest.Digest}}')
+    if not re.fullmatch(r'sha256:[0-9a-f]{64}', digest):
+        raise ValueError('Could not resolve base-image digest')
+    return {'ocaml': version, **refs, 'base_image': base_tag+'@'+digest,
+            'code_revision': run('git', '-C', str(ROOT), 'rev-parse', 'HEAD'),
+            'code_dirty': bool(run('git', '-C', str(ROOT), 'status', '--porcelain'))}
+
+
+def build_args(resolved):
+    return {'BASE_IMAGE': resolved['base_image'], 'OCAML_VERSION': resolved['ocaml'],
+            'BOOK_CODE_REV': resolved['code_revision'], 'BOOK_CODE_DIRTY': str(resolved['code_dirty']).lower(),
+            'OWL_REF': resolved['owl'], 'OWL_PLPLOT_REF': resolved['owl-plplot']}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--tag', default='matrixanger/springer-book-code:pilot')
+    parser.add_argument('--resolve-only', action='store_true')
+    parser.add_argument('--resolved', type=Path, help='Reuse an already resolved build specification')
+    parser.add_argument('--output', type=Path)
+    parser.add_argument('--github-output', action='store_true')
+    args = parser.parse_args()
+    resolved = json.loads(args.resolved.read_text()) if args.resolved else resolve()
+    print(json.dumps(resolved, indent=2), flush=True)
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(resolved, indent=2)+'\n')
+    if args.github_output:
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as stream:
+            stream.write('build_args<<BOOK_BUILD_ARGS\n')
+            stream.write('\n'.join(k+'='+v for k,v in build_args(resolved).items())+'\nBOOK_BUILD_ARGS\n')
+    if not args.resolve_only:
+        cmd = ['docker', 'build', '--platform', 'linux/amd64', '--pull', '--tag', args.tag]
+        for k,v in build_args(resolved).items():
+            cmd.extend(['--build-arg', k+'='+v])
+        subprocess.run(cmd+[str(ROOT)], check=True)
+
+
+if __name__ == '__main__':
+    main()

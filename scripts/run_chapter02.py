@@ -36,6 +36,7 @@ for name in expected:
     (output/name).unlink(missing_ok=True)
 for name in ['test_algorithms', 'examples', 'gamma_func', 'integration', 'interpolation', 'special_func']:
     run([str(binary/(name+'.exe'))], output)
+run(['python3', str(root/'scripts/check_chapter02_sessions.py')], output)
 
 files = []
 for name in expected:
@@ -48,7 +49,7 @@ for name in expected:
 record = {'scope': 'Chapter 2 pilot only; file checks are not visual review.',
           'ocaml': subprocess.check_output(['ocamlc', '-version'], text=True).strip(),
           'sources': {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
-                      for p in sorted((root/'code/chap02_maths').glob('*.ml'))},
+                      for p in sorted((root/'code/chap02_maths').rglob('*.ml'))},
           'files': files}
 environment = root/'environment.json'
 if environment.exists():

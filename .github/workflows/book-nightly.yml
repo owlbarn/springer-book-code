@@ -1,0 +1,14 @@
+name: Check book environment updates
+
+on:
+  schedule:
+    - cron: '23 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: ./.github/workflows/book-image.yml
+    secrets: inherit
