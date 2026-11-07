@@ -1,8 +1,16 @@
+(library
+ (name book_maths)
+ (wrapped false)
+ (modules book_algorithms book_gaussian)
+ (libraries owl))
+
 (executables
-  (names  gamma_func
-          integration
-          interpolation
-          special_func
-          )
-  (flags   :standard -w -33)
-  (libraries owl owl-plplot))
+ (names gamma_func integration interpolation special_func examples)
+ (modules gamma_func integration interpolation special_func examples)
+ (flags (:standard -w -33))
+ (libraries book_maths owl owl-plplot))
+
+(test
+ (name test_algorithms)
+ (modules test_algorithms)
+ (libraries book_maths))

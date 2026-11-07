@@ -30,3 +30,6 @@ _opam/
 .DS_Store
 
 .vscode
+
+# Generated execution logs and figures
+results/

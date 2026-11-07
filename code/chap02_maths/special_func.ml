@@ -65,3 +65,9 @@ let plot_integrals () =
   Plot.(legend_on h ~position:SouthEast [|"S(x)"; "C(x)"|]);
   Plot.set_ylabel h "fresnel(x)";
   Plot.output h
+
+let () = plot_airy ();
+  plot_bessel ();
+  plot_gamma ();
+  plot_struve ();
+  plot_erf ()

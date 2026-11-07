@@ -11,18 +11,20 @@ let f1 x =
     let y, _err = Owl_maths_interpolate.polint (Mat.to_array xs1) (Mat.to_array ys1) x in
     y
 
-let xs2 = Mat.linspace 1. 10. 11
+(* book: chebyshev begin *)
+let xs2 = Mat.linspace 1. 11. 11
 let xs2 = Mat.scalar_add
     ((a +. b) /. 2.)
     (Mat.scalar_mul
       ((b -. a) /. 2.)
-      (Mat.cos (Mat.scalar_mul (Owl_const.pi /. 10.) (Mat.sub_scalar xs2 0.5)))) |> Mat.reverse
+      (Mat.cos (Mat.scalar_mul (Owl_const.pi /. 11.) (Mat.sub_scalar xs2 0.5)))) |> Mat.reverse
 let ys2 = Mat.map g xs2
 
 let f2 x = 
     let y, _err = Owl_maths_interpolate.polint (Mat.to_array xs2) (Mat.to_array ys2) x in
     y
 
+(* book: chebyshev end *)
 
 let plot1 () = 
     let h = Plot.create ~m:1 ~n:2 "fig_inter_poly.pdf" in 
@@ -43,6 +45,7 @@ let plot1 () =
     Plot.set_xlabel h "";
     Plot.set_ylabel h "";
     Plot.output h
+
 
 (** Test the impl. of ratint *)
 
@@ -72,3 +75,12 @@ let plot2 () =
     Plot.set_xlabel h "";
     Plot.set_ylabel h "";
     Plot.output h
+
+let () =
+  for i = 0 to 10 do
+    let node = Mat.get xs2 0 i in
+    let scaled = (2. *. node -. a -. b) /. (b -. a) in
+    if abs_float (cos (11. *. acos scaled)) > 1e-12 then
+      failwith "not an eleven-point Chebyshev root"
+  done;
+  plot1 ()

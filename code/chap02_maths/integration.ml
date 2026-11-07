@@ -12,3 +12,5 @@ let plot_01 () =
   Plot.(legend_on h ~position:SouthEast [|"S(x)"; "C(x)"|]);
   Plot.set_ylabel h "fresnel(x)";
   Plot.output h
+
+let () = plot_01 ()
