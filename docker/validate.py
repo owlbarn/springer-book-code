@@ -4,6 +4,7 @@ import argparse
 import json
 import subprocess
 from pathlib import Path
+from check_repl import check_repl
 
 
 def validate(image, resolved, execute=True):
@@ -26,6 +27,7 @@ def validate(image, resolved, execute=True):
     if len(record['verification']['files']) != 8 or record['verification']['ocaml'] != resolved['ocaml']:
         raise ValueError('Missing or inconsistent baked Chapter 2 verification')
     if execute:
+        record['interactive_check'] = check_repl(image)
         subprocess.run(['docker','run','--rm','--network','none',image,'python3',
                         'scripts/run_chapter02.py','--output','/tmp/chapter02-validation'],check=True)
     record['image'] = image

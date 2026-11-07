@@ -46,6 +46,12 @@ class PipelineTests(unittest.TestCase):
             with self.assertRaises(ValueError):validate('image',self.resolved)
             run.assert_not_called()
 
+    def test_failed_interactive_startup_cannot_pass_validation(self):
+        with patch('validate.subprocess.check_output',return_value=json.dumps(self.record)),patch('validate.check_repl',side_effect=ValueError('startup failed')),patch('validate.subprocess.run') as run:
+            with self.assertRaisesRegex(ValueError,'startup failed'):
+                validate('image',self.resolved)
+            run.assert_not_called()
+
     def test_push_without_registry_digest_is_not_success(self):
         with self.assertRaises(ValueError):publish.pushed_digest('upload started')
         self.assertEqual(publish.pushed_digest('digest: sha256:'+'e'*64),'sha256:'+'e'*64)

@@ -22,9 +22,10 @@ not required for local builds. The Dockerfile records the actual compiler,
 packages, source commits and chapter-source hashes in `/opt/book/environment.json`.
 The final build step runs the chapter's numeric and plot checks.
 
-Enter the environment:
+Pull the published pilot and enter the environment:
 
 ```sh
+docker pull matrixanger/springer-book-code:pilot
 docker run --rm -it matrixanger/springer-book-code:pilot utop
 ```
 
@@ -70,7 +71,11 @@ permission. The username is fixed to `matrixanger`; no username secret is needed
 Tokens are passed only to the login action, not Docker build arguments.
 
 The pipeline first loads the image into Docker, validates the exact image ID and
-executes the reader's command, including canonical REPL inputs. It pushes a unique
+executes the reader's command, including canonical REPL inputs. It also starts
+`utop` through a real terminal and checks the default Owl/plot imports and matrix
+arithmetic. Keep `-it` for interactive use: utop's nonterminal fallback follows a
+different initialization path and is not used to validate the interactive entry.
+The canonical automated sessions use `ocaml -noinit` with explicit imports. It pushes a unique
 `pilot-<code revision>-<run ID>` tag, pulls that registry digest and validates it.
 Only then does it tag and push the same image as `:pilot`. Publication jobs are
 serialised in this repository. Failed builds/checks preserve the last passing
@@ -91,8 +96,9 @@ python3 docker/publish.py --image matrixanger/springer-book-code:candidate \
 
 ## Immediate Owl notifications
 
-Owl's `.github/workflows/notify-book.yml` sends a notification to this repository
-on main-branch pushes. It needs `BOOK_BUILD_DISPATCH_TOKEN` configured **in the Owl
+Immediate notifications are deferred; the daily workflow is the active update
+mechanism. A draft `.github/workflows/notify-book.yml` in the local Owl checkout
+can send a notification to this repository on main-branch pushes once enabled. It needs `BOOK_BUILD_DISPATCH_TOKEN` configured **in the Owl
 repository**: a fine-grained GitHub token for resource owner `owlbarn`, limited to
 `springer-book-code`, with Contents read/write (required by repository_dispatch).
 No Docker credentials belong in the notification. Without that secret, the hook
