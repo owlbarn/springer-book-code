@@ -7,8 +7,24 @@ from pathlib import Path
 from check_repl import check_repl
 
 
+def verify_examples(record):
+    expected = record['environment'].get('example_inputs')
+    if expected is None:  # Historical images predate automatic example discovery.
+        return
+    actual = record.get('examples')
+    if not isinstance(actual, dict) or set(actual) != set(expected):
+        raise ValueError('Baked new-example coverage differs from image inputs')
+    for identity, inputs in expected.items():
+        result = actual[identity]
+        if (result.get('id') != identity or result.get('status') != 'passed' or
+            result.get('sources') != inputs or
+            result.get('ocaml') != record['environment']['ocaml'] or
+            not result.get('execution_sha256') or not result.get('artifacts')):
+            raise ValueError('Missing or stale new-example execution: '+identity)
+
+
 def validate(image, resolved, execute=True):
-    reader = "import json\nfrom pathlib import Path\nroot=Path('/opt/book')\nchapters=json.loads((root/'docker/chapters.json').read_text())\nprint(json.dumps({'environment':json.loads((root/'environment.json').read_text()),\n                  'chapters':chapters,\n                  'verification':{number:json.loads((root/'verification'/spec['output']/'results.json').read_text()) for number,spec in chapters.items()}}))\n"
+    reader = "import json\nfrom pathlib import Path\nroot=Path('/opt/book')\nchapters=json.loads((root/'docker/chapters.json').read_text())\nprint(json.dumps({'environment':json.loads((root/'environment.json').read_text()),\n                  'chapters':chapters,\n                  'examples':json.loads((root/'verification/examples/results.json').read_text()) if (root/'verification/examples/results.json').is_file() else None,\n                  'verification':{number:json.loads((root/'verification'/spec['output']/'results.json').read_text()) for number,spec in chapters.items()}}))\n"
     raw = subprocess.check_output(['docker','run','--rm','--network','none',image,'python3','-c',reader],text=True)
     record = json.loads(raw)
     env = record['environment']
@@ -50,6 +66,7 @@ def validate(image, resolved, execute=True):
                 raise ValueError(f'Chapter {number} dataset evidence differs from image inputs: {dataset}')
         if not verification['sources'] or any(env['source_hashes'].get(name) != sha for name,sha in verification['sources'].items()):
             raise ValueError(f'Baked Chapter {number} results do not match image sources')
+    verify_examples(record)
     if execute:
         record['interactive_check'] = check_repl(image)
         network = [] if any(spec.get('external_network') for spec in record['chapters'].values()) else ['--network','none']

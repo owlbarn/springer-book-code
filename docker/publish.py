@@ -28,7 +28,7 @@ def validate_before_publish(image_id,resolved,previous=None):
     if (prior.get('runtime_check')!='passed' or
         prior.get('interactive_check',{}).get('status')!='passed' or
         prior.get('interactive_check',{}).get('terminal')!='pty' or
-        any(prior.get(key)!=current[key] for key in ('image','environment','chapters','verification'))):
+        any(prior.get(key)!=current.get(key) for key in ('image','environment','chapters','verification','examples'))):
         raise ValueError('Previous validation is incomplete or belongs to a different image/evidence')
     return prior
 

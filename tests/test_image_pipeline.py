@@ -94,7 +94,7 @@ class PipelineTests(unittest.TestCase):
 
     def test_reused_validation_rejects_stale_image_evidence_and_incomplete_runs(self):
         current=dict(self.record,image='sha256:exact',runtime_check='not-run')
-        for key in ('image','environment','chapters','verification','runtime_check','interactive_check'):
+        for key in ('image','environment','chapters','verification','examples','runtime_check','interactive_check'):
             with self.subTest(key=key),tempfile.TemporaryDirectory() as temporary:
                 prior=dict(current,runtime_check='passed',interactive_check={'status':'passed','terminal':'pty'})
                 prior[key]='different' if key!='interactive_check' else {'status':'failed','terminal':'pty'}

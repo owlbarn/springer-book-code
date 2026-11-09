@@ -3,6 +3,16 @@ The code included in the Springer Owl book.
 
 ## Second edition environment
 
+New self-contained examples go in `code/chapXX_*/examples/name.ml`. They are
+compiled and run automatically by `scripts/book_examples.py`, both during the
+image build and during reader validation. No edit to historical listing or plot
+manifests is needed. The manuscript repository provides `make example-new`,
+`make example` and `make examples` for creation and publication export; see its
+[contributor guide](https://github.com/owlbarn/springer/blob/main/README.md).
+Optional sibling `name.json` selects installed findlib packages/runtime limits;
+`name.data/` supplies local inputs exposed as `data/` during execution.
+
+
 - [Build, run and validate the Ubuntu book container](docker/README.md)
 - All 398 original display blocks now have source mappings across Chapters
   [1](code/chap01_introduction/README.md), [2](code/chap02_maths/README.md),

@@ -81,4 +81,11 @@ if '15' in chapters:
     sys.path.insert(0,'/opt/book/scripts')
     from prepare_style import check,DEFAULT_DIRECTORY
     data.setdefault('datasets',{})['style']=check(DEFAULT_DIRECTORY)
+import sys
+sys.path.insert(0, '/opt/book/scripts')
+from book_examples import discover, source_inputs
+root=Path('/opt/book')
+data['example_inputs']={identity:source_inputs(root,source) for identity,source in discover(root).items()}
+for inputs in data['example_inputs'].values():
+    data['source_hashes'].update(inputs)
 Path('/opt/book/environment.json').write_text(json.dumps(data, indent=2) + '\n')
