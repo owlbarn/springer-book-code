@@ -159,31 +159,50 @@ class PipelineTests(unittest.TestCase):
         with self.assertRaises(ValueError):publish.pushed_digest('upload started')
         self.assertEqual(publish.pushed_digest('digest: sha256:'+'e'*64),'sha256:'+'e'*64)
 
-    def exercise_publication(self,remote_error=False):
+    def exercise_publication(self,remote_error=False,remote_image=None,wrong_digest_tag=None):
         image='sha256:'+'f'*64
         with tempfile.TemporaryDirectory() as tmp:
             spec=Path(tmp)/'resolved.json';spec.write_text(json.dumps(self.resolved))
             report=Path(tmp)/'published.json'
             def command(cmd,**kwargs):
-                return subprocess.CompletedProcess(cmd,0,stdout='digest: sha256:'+'e'*64+'\n')
-            with patch.object(sys,'argv',['publish.py','--image',image,'--resolved',str(spec),'--output',str(report),'--run-id','42-1']),patch('publish.validate',side_effect=[{},ValueError('registry check failed')] if remote_error else [{},{}]),patch('publish.subprocess.check_output',return_value=image+'\n'),patch('publish.subprocess.run',side_effect=command) as run,contextlib.redirect_stdout(io.StringIO()):
-                if remote_error:
+                digest=('0' if cmd==['docker','push',wrong_digest_tag] else 'e')*64
+                return subprocess.CompletedProcess(cmd,0,stdout='digest: sha256:'+digest+'\n')
+            with patch.object(sys,'argv',['publish.py','--image',image,'--resolved',str(spec),'--output',str(report),'--run-id','42-1']),patch('publish.validate',side_effect=[{},ValueError('registry check failed')] if remote_error else [{},{}]),patch('publish.subprocess.check_output',side_effect=[image+'\n',(remote_image or image)+'\n']),patch('publish.subprocess.run',side_effect=command) as run,contextlib.redirect_stdout(io.StringIO()):
+                if remote_error or remote_image or wrong_digest_tag:
                     with self.assertRaises(ValueError):publish.main()
                 else:
-                    publish.main();self.assertEqual(json.loads(report.read_text())['registry_pull_validation'],'passed')
+                    publish.main()
+                    result=json.loads(report.read_text())
+                    self.assertEqual(result['registry_pull_validation'],'passed')
+                    self.assertEqual(result['main_tag'],publish.REPOSITORY+':main')
+                    self.assertEqual(result['registry_digest'],'sha256:'+'e'*64)
                 return [call.args[0] for call in run.call_args_list]
 
-    def test_failed_pulled_image_cannot_replace_pilot(self):
+    def test_failed_pulled_image_cannot_replace_reader_tags(self):
         commands=self.exercise_publication(remote_error=True)
-        self.assertFalse(any(publish.REPOSITORY+':pilot' in cmd for cmd in commands))
+        for tag in ('pilot','main'):
+            self.assertFalse(any(publish.REPOSITORY+':'+tag in cmd for cmd in commands))
 
     def test_promotion_reuses_the_tested_image_and_never_updates_latest(self):
         commands=self.exercise_publication()
         tags=[cmd for cmd in commands if cmd[:2]==['docker','tag']]
-        self.assertEqual(len(tags),2)
-        self.assertEqual(tags[0][2],tags[1][2])
-        self.assertEqual(tags[1][-1],publish.REPOSITORY+':pilot')
+        self.assertEqual(len(tags),3)
+        self.assertTrue(all(cmd[2]==tags[0][2] for cmd in tags))
+        self.assertEqual([cmd[-1] for cmd in tags[1:]],
+                         [publish.REPOSITORY+':pilot',publish.REPOSITORY+':main'])
+        self.assertEqual(commands[-1],['docker','push',publish.REPOSITORY+':main'])
         self.assertFalse(any(':latest' in arg for cmd in commands for arg in cmd))
+
+    def test_registry_identity_mismatch_cannot_replace_reader_tags(self):
+        commands=self.exercise_publication(remote_image='sha256:'+'0'*64)
+        self.assertEqual(len([cmd for cmd in commands if cmd[:2]==['docker','tag']]),1)
+
+    def test_pilot_digest_mismatch_prevents_main_promotion(self):
+        commands=self.exercise_publication(wrong_digest_tag=publish.REPOSITORY+':pilot')
+        self.assertFalse(any(publish.REPOSITORY+':main' in cmd for cmd in commands))
+
+    def test_main_digest_mismatch_cannot_report_success(self):
+        self.exercise_publication(wrong_digest_tag=publish.REPOSITORY+':main')
 
 
 if __name__=='__main__':unittest.main()

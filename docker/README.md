@@ -1,4 +1,4 @@
-# Book pilot container
+# Book container
 
 The Dockerfile and scripts live in the companion code repository. The validation
 manifest covers Chapters 1–16 and Appendices A/B. Source mappings cover all 398
@@ -36,11 +36,12 @@ its `chapterNN`, `chapterA` and `chapterB` subdirectories. Per-chapter runners a
 Declared blocked regions are shown separately from successful execution; an
 unexpected skipped region fails validation.
 
-Pull the published **Chapter 2 pilot** and enter its environment:
+After the first successful publication of this workflow, pull the continuously
+updated book image and enter its environment:
 
 ```sh
-docker pull matrixanger/springer-book-code:pilot
-docker run --rm -it matrixanger/springer-book-code:pilot utop
+docker pull matrixanger/springer-book-code:main
+docker run --rm -it matrixanger/springer-book-code:main utop
 ```
 
 To inspect the results generated during the build, copy them from a stopped
@@ -48,12 +49,12 @@ container (no Docker Hub upload is needed):
 
 ```sh
 mkdir -p results/chapter02
-docker create --name springer-book-results matrixanger/springer-book-code:pilot true
+docker create --name springer-book-results matrixanger/springer-book-code:main true
 docker cp springer-book-results:/opt/book/verification/. results/chapter02/
 docker rm springer-book-results
 ```
 
-To run the complete declared checks again in your local candidate (the public pilot has only its published subset):
+To run the complete declared checks again in your local candidate:
 
 ```sh
 docker run --rm "$BOOK_IMAGE" \
@@ -92,11 +93,14 @@ arithmetic. Keep `-it` for interactive use: utop's nonterminal fallback follows 
 different initialization path and is not used to validate the interactive entry.
 The canonical automated sessions use `ocaml -noinit` with explicit imports. It pushes a unique
 `pilot-<code revision>-<run ID>` tag, pulls that registry digest and validates it.
-Only then does it tag and push the same image as `:pilot`. Publication jobs are
-serialised in this repository. Failed builds/checks preserve the last passing
-pilot. This workflow never publishes `latest`, which remains reserved for full
-book coverage. Downloaded-image identity and registry digest are recorded as CI
-artifacts; no rebuild occurs between testing and pushing.
+Only then does it tag and push the same image as `:pilot` (for compatibility)
+and finally `:main`, checking each registry digest. `:main` is the reader-facing
+rolling tag; main-branch pushes and the daily 04:23 UTC workflow keep it current
+when validation succeeds. Publication jobs are serialised in this repository.
+Failed builds or reader/registry checks leave the previous `:main` in place.
+This workflow does not publish `latest`. Downloaded-image identity, both aliases
+and the registry digest are recorded as CI artifacts; no rebuild occurs between
+testing and pushing. Pin an edition to its digest rather than a rolling tag.
 
 Local equivalents (after `docker login --username matrixanger`):
 

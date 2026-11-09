@@ -34,7 +34,8 @@ All 18 publication snapshots, both code styles and the independent publisher
 package pass. Consult the manuscript repository's `STATUS.md` for the immutable
 image, exact source evidence and next review steps.
 
-CI publishes verified `matrixanger/springer-book-code:pilot` tags after the
-author commits and pushes. This local revision is not yet committed or published;
-no `:latest` promotion was performed. Reproduce an edition using its recorded digest.
+CI updates `matrixanger/springer-book-code:main` after main-branch pushes and
+daily builds pass the full book and registry-pull checks. `:pilot` is retained as
+a compatibility alias. Failed checks preserve the previous reader image.
+Reproduce an edition using its recorded digest.
 Local candidate tags are not Docker Hub release tags.
