@@ -33,25 +33,8 @@ let x = Dense.Matrix.Z.eye 5 in
 Dense.Matrix.Generic.sum x;;
 (* book: generic-sum end *)
 
-(* book: ext-interoperation begin *)
-open Owl.Ext;;
-
-let x = Dense.Matrix.S.uniform 5 5;;
-let y = Dense.Matrix.C.uniform 5 5;;
-let z = Dense.Matrix.D.uniform 5 5;;
-
-x + F 5.;;
-x * C Complex.({re = 2.; im = 3.});;
-x - y;;
-x / y;;
-x *@ y;;
-
-x > z;;
-x >. z;;
-(x >. z) * x;;
-(x >. F 0.5) * x;;
-(F 10. * x) + y *@ z;;
-
-round (F 10. * (x *@ z));;
-sin (F 5.) * cos (x + z);;
-(* book: ext-interoperation end *)
+(* book: explicit-cast begin *)
+let x32 = Dense.Matrix.S.eye 3;;
+let x64 = Dense.Matrix.Generic.cast_s2d x32;;
+let z = Mat.(x64 + ones 3 3);;
+(* book: explicit-cast end *)

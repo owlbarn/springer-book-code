@@ -2,13 +2,14 @@
 
 The Dockerfile and scripts live in the companion code repository. The validation
 manifest covers Chapters 1–16 and Appendices A/B. Source mappings cover all 398
-original blocks; execution still explicitly excludes three SUNDIALS regions,
-fourteen missing-original-CSV regions and the removed historical Owl.Ext example.
-Illustrative protocol/shape/quotation/weight-exchange blocks are labelled separately.
-The local whole-book candidate passes declared-scope build and fresh reader/PTY
-validation. All book snapshots, both layouts and the independent publisher package
-pass. The 18 gaps remain: do not describe the book as fully executed or promote
-`latest`. The last public pilot still contains Chapter 2 only.
+original blocks, with author-approved replacements for the former 18 blocked
+regions: native RK45 in Chapter 6, reproducible synthetic CSVs in Chapter 7 and
+explicit conversion in Appendix A. No execution skip remains in the chapter map;
+illustrative protocol/shape/quotation/weight-exchange blocks remain labelled.
+The updated local candidate passes the complete build, independent reader/PTY,
+all 18 publication snapshots, both book layouts and the independent publisher
+package. Prior results remain historical evidence for their earlier scope.
+Publication still requires checks of the exact image built from the final commit.
 
 Build and validate a local candidate from the repository root:
 
@@ -85,7 +86,7 @@ Tokens are passed only to the login action, not Docker build arguments.
 
 The pipeline first loads the image into Docker, validates the exact image ID and
 executes the reader's command, including canonical REPL inputs for all restored chapters and the declared
-partial Chapter 6/7 and Appendix A scope. It also starts
+current replacement examples in Chapters 6/7 and Appendix A. It also starts
 `utop` through a real terminal and checks the default Owl/plot imports and matrix
 arithmetic. Keep `-it` for interactive use: utop's nonterminal fallback follows a
 different initialization path and is not used to validate the interactive entry.
@@ -129,8 +130,9 @@ The image tracks an exact `owlbarn/owl_ode` master commit alongside Owl and
 owl-plplot. Ubuntu gfortran supports ODEPACK. The SUNDIALS binding is deliberately
 not installed: sundialsml 6.1.1p1 declares a base-domains conflict, and upstream
 master NEWS records OCaml 5 examples segfaulting. No compiler downgrade or removal
-of that protection is used. The native/ODEPACK runners explicitly report the
-three blocked regions; they do not claim full Chapter 6 validation.
+of that protection is used. The three formerly blocked regions now use native
+RK45, including a new Van der Pol figure checked against an independent RK4
+reference. The stiff Van der Pol example continues to use ODEPACK LSODA.
 
 `docker/patches/owl-ode-rk45-step.patch` corrects a reproduced RK45 step-size error:
 the current state/time must advance with the size used for the stages, keeping
@@ -166,8 +168,9 @@ never used in the build. The compact verification receipt records the input hash
 Other chapters continue to work from the installed data; image inspection and PTY
 startup checks are offline. Allow roughly 2 GB temporary disk and eleven minutes
 per Chapter 12 execution; CI permits 180 minutes for build and registry revalidation.
-All later chapters are included in the declared scope; complete execution still
-awaits the 18 explicitly reported Chapter 6/7 and Appendix A gaps.
+All chapters are included in the current scope. The original 18 gaps have
+author-approved replacements; Chapter 7 synthetic inputs are checked in with
+their generator and need no network access.
 
 
 Chapter 13 includes a pinned portable Inception cache. A separate `legacy-reader`
@@ -208,8 +211,8 @@ SHA; publication rejects missing or changed accuracy corrections. Inception and
 Mask R-CNN are checked again under the corrected environment.
 
 Appendix B requires `owl-plplot` and invokes/decodes all 22 original plots in native
-and interpreter runs. Appendix A deliberately does not reinstall the removed
-`Owl.Ext` API. Chapter 16 verifies the original OCaml projection/tree code, not the
+and interpreter runs. Appendix A uses current explicit precision conversion
+in place of the removed `Owl.Ext` API. Chapter 16 verifies the original OCaml projection/tree code, not the
 historical external Spark/Chrome service or published corpus-scale benchmarks.
 
 CI allows 180 minutes for the expanded workload. After an exact immutable image

@@ -24,5 +24,13 @@ let () =
   check "generic complex64 sum" (Dense.Matrix.Generic.sum (Dense.Matrix.Z.eye 5) |> Dense.Ndarray.Z.to_array = [|Complex.{re=5.;im=0.}|]);
   check "16 dimensions accepted" (Arr.num_dims (Arr.ones (Array.make 16 1))=16);
   check "17 dimensions rejected by current Bigarray" (try ignore(Arr.ones (Array.make 17 1));false with Invalid_argument _->true);
-  Owl_io.write_file "native-metrics.json" (Printf.sprintf "{\"checks\":%d,\"sum\":351,\"bigarray_maximum_dimensions\":16,\"historical_Ext\":\"not executed: removed upstream\"}\n" !checks);
+  let x32=Dense.Matrix.S.eye 3 in
+  let x64=Dense.Matrix.Generic.cast_s2d x32 in
+  check "explicit conversion preserves shape" (Mat.shape x64=(3,3));
+  check "explicit conversion preserves values" (Mat.to_array x64=Mat.to_array (Mat.eye 3));
+  let z=Mat.(x64 + ones 3 3) in
+  check "same-precision addition after cast" (Mat.get z 0 0=2. && Mat.get z 0 1=1.);
+  Mat.set x64 0 0 7.;
+  check "cast storage does not alias original" (Dense.Matrix.S.get x32 0 0=1.);
+  Owl_io.write_file "native-metrics.json" (Printf.sprintf "{\"checks\":%d,\"sum\":351,\"bigarray_maximum_dimensions\":16,\"explicit_conversion\":\"passed\"}\n" !checks);
   Printf.printf "PASS: %d mutation, broadcasting, reduction, precision and Bigarray checks\n%!" !checks

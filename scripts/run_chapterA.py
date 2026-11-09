@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate original sparse/dense projection and random partition tree examples."""
+"""Validate current precision, mutation and ndarray conventions."""
 import argparse
 import hashlib
 import json
@@ -33,4 +33,4 @@ record={'scope':mapping['scope'],'blocked_regions':mapping['blocked_regions'],
         'ocaml':subprocess.check_output(['ocamlc','-version'],text=True).strip(),
         'sources':{str(path.relative_to(root)):hashlib.sha256(path.read_bytes()).hexdigest() for path in paths},'metrics':metrics,'files':[]}
 (output/'results.json').write_text(json.dumps(record,indent=2)+'\n')
-print('PASS: Appendix A current conventions checked; historical Ext explicitly not executed')
+print('PASS: Appendix A all five current conventions examples including explicit type conversion')

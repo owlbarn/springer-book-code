@@ -14,7 +14,7 @@ root = Path(__file__).resolve().parents[1]
 output = args.output.resolve()
 output.mkdir(parents=True, exist_ok=True)
 (output/'results.json').unlink(missing_ok=True)
-files = ['plot_rk01.png','plot_circle.png','two_body.png','lorenz_01.png','lorenz_02.png','damped.png','vdp_odepack_stiff.png']
+files = ['plot_rk01.png','plot_circle.png','two_body.png','lorenz_01.png','lorenz_02.png','damped.png','vdp_odepack_stiff.png','vdp_rk45_nonstiff.png']
 for name in files:
     (output/name).unlink(missing_ok=True)
 commands = []
@@ -38,9 +38,9 @@ for name in files:
     if len(data)<100 or not data.startswith(magic):
         raise ValueError(f'Invalid plot: {name}')
     artifacts.append({'name':name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
-record = {'scope':'Chapter 6 native and ODEPACK inputs, numeric properties and seven book plots; SUNDIALS regions are explicitly unexecuted.',
+record = {'scope':'Chapter 6 all 26 displays with native and ODEPACK solvers, numeric properties and eight book plots.',
           'ocaml':subprocess.check_output(['ocamlc','-version'],text=True).strip(),
           'sources':{str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((root/'code/chap06_diffequation').rglob('*')) if p.is_file()},
           'files':artifacts,'blocked_regions':mapping['blocked_regions']}
 (output/'results.json').write_text(json.dumps(record,indent=2)+'\n')
-print('PASS: Chapter 6 native/ODEPACK checks; SUNDIALS explicitly unexecuted')
+print('PASS: Chapter 6 all 26 current native/ODEPACK examples')

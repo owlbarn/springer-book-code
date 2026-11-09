@@ -91,13 +91,11 @@ let _ =
   Plot.output h;;
 (* book: oscillator end *)
 
-(* book: cvode begin *)
-#require "owl-ode-sundials";;
-let custom_cvode =
-  Owl_ode_sundials.cvode ~stiff:false
-  ~relative_tol:1E-7 ~abs_tol:1E-4;;
-let ts, xs = Owl_ode.Ode.odeint custom_cvode f x0 tspec ();;
-(* book: cvode end *)
+(* book: custom-rk45 begin *)
+let custom_rk45 = Owl_ode.Native.D.rk45
+  ~tol:1E-7 ~dtmax:0.1;;
+let ts, xs = Owl_ode.Ode.odeint custom_rk45 f x0 tspec ();;
+(* book: custom-rk45 end *)
 
 (* book: adaptive-solver begin *)
 let f y t = Mat.((2. $* y *$ t) +$ t);;
@@ -273,18 +271,17 @@ let van_der_pol mu =
     [|[|a; b|]|] |> Mat.of_arrays;;
 (* book: van-der-pol end *)
 
-(* book: vdp-cvode begin *)
-#require "owl-ode-sundials";;
+(* book: vdp-rk45 begin *)
 let f_non_stiff = van_der_pol 1.;;
 let y0 = Mat.of_array [| 0.02; 0.03 |] 1 2;;
 let tspec = T1 { t0 = 0.0; dt = 0.01; duration = 30.0 };;
-let ts, ys = Ode.odeint (module Owl_ode_sundials.Owl_Cvode)
+let ts, ys = Ode.odeint (Native.D.rk45 ~tol:1E-8 ~dtmax:0.05)
   f_non_stiff y0 tspec ();;
-(* book: vdp-cvode end *)
+(* book: vdp-rk45 end *)
 
-(* book: vdp-cvode-plot begin *)
+(* book: vdp-rk45-plot begin *)
 let () =
-  let fname = "vdp_sundials_nonstiff.png" in
+  let fname = "vdp_rk45_nonstiff.png" in
   let h = Plot.create ~n:2 ~m:1 fname in
   let open Plot in
   subplot h 0 0;
@@ -293,7 +290,7 @@ let () =
   plot ~h ~spec:[ LineStyle 1 ] ts Mat.(col ys 1);
   plot ~h ~spec:[ LineStyle 3 ] ts Mat.(col ys 0);
   output h;;
-(* book: vdp-cvode-plot end *)
+(* book: vdp-rk45-plot end *)
 
 (* book: vdp-lsoda begin *)
 let f_stiff = van_der_pol 1000.;;

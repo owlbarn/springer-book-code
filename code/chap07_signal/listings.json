@@ -1,5 +1,5 @@
 {
-  "scope": "31 original Chapter 7 blocks restored; missing historical CSV cases are explicitly unexecuted.",
+  "scope": "All 31 original Chapter 7 displays, using author-approved reproducible synthetic CSV inputs.",
   "seed": 77,
   "matrix_printer": true,
   "interactive_directory": "code/chap07_signal",
@@ -7,22 +7,7 @@
   "interactive_opens": [
     "Owl_plplot"
   ],
-  "blocked_regions": {
-    "sunspot-input": "Original sunspot_full.csv absent; current official SILSO data carries CC BY-NC terms, needs publication/distribution review.",
-    "sunspot-plot": "Depends on the original sunspot input and its distribution review.",
-    "tone-input": "Original touchtone.csv absent; referenced MathWorks toolbox download/license does not establish redistribution rights.",
-    "tone-times": "Depends on the missing original touchtone.csv.",
-    "tone-spectrum": "Depends on the missing original touchtone.csv.",
-    "first-tone": "Depends on the missing original touchtone.csv.",
-    "stock-input": "Original 2019-04-09 to 2020-04-09 goog.csv absent; current Yahoo query gives 254 observations, not the printed 251, and is not the original snapshot.",
-    "stock-close": "Depends on the original goog.csv.",
-    "moving-average": "Depends on the original goog.csv.",
-    "stock-transform": "Depends on the original goog.csv.",
-    "stock-spectrum": "Historical output only; original goog.csv missing.",
-    "stock-mask": "Depends on the original goog.csv.",
-    "stock-inverse": "Depends on the original goog.csv.",
-    "convolution": "Depends on the original goog.csv."
-  },
+  "blocked_regions": {},
   "listings": [
     {
       "listing": "signal:001",
@@ -132,9 +117,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "sunspot-input",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/sunspot-input.ml",
-      "execution_status": "blocked",
-      "reason": "Original sunspot_full.csv absent; current official SILSO data carries CC BY-NC terms, needs publication/distribution review."
+      "book_snapshot": "book/generated/chapter07/sunspot-input.ml"
     },
     {
       "listing": "signal:011",
@@ -161,8 +144,6 @@
       "region": "sunspot-plot",
       "mapping": "manually-reviewed",
       "book_snapshot": "book/generated/chapter07/sunspot-plot.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the original sunspot input and its distribution review.",
       "display_source": {
         "path": "code/chap07_signal/book_signal.ml",
         "region": "sunspot-plot"
@@ -177,9 +158,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "tone-input",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/tone-input.ml",
-      "execution_status": "blocked",
-      "reason": "Original touchtone.csv absent; referenced MathWorks toolbox download/license does not establish redistribution rights."
+      "book_snapshot": "book/generated/chapter07/tone-input.ml"
     },
     {
       "listing": "signal:014",
@@ -190,9 +169,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "tone-times",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/tone-times.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the missing original touchtone.csv."
+      "book_snapshot": "book/generated/chapter07/tone-times.ml"
     },
     {
       "listing": "signal:015",
@@ -203,9 +180,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "tone-spectrum",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/tone-spectrum.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the missing original touchtone.csv."
+      "book_snapshot": "book/generated/chapter07/tone-spectrum.ml"
     },
     {
       "listing": "signal:016",
@@ -216,9 +191,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "first-tone",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/first-tone.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the missing original touchtone.csv."
+      "book_snapshot": "book/generated/chapter07/first-tone.ml"
     },
     {
       "listing": "signal:017",
@@ -284,9 +257,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "stock-input",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/stock-input.ml",
-      "execution_status": "blocked",
-      "reason": "Original 2019-04-09 to 2020-04-09 goog.csv absent; current Yahoo query gives 254 observations, not the printed 251, and is not the original snapshot."
+      "book_snapshot": "book/generated/chapter07/stock-input.ml"
     },
     {
       "listing": "signal:023",
@@ -297,9 +268,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "stock-close",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/stock-close.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the original goog.csv."
+      "book_snapshot": "book/generated/chapter07/stock-close.ml"
     },
     {
       "listing": "signal:024",
@@ -321,9 +290,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "moving-average",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/moving-average.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the original goog.csv."
+      "book_snapshot": "book/generated/chapter07/moving-average.ml"
     },
     {
       "listing": "signal:026",
@@ -349,9 +316,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "stock-transform",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/stock-transform.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the original goog.csv."
+      "book_snapshot": "book/generated/chapter07/stock-transform.ml"
     },
     {
       "listing": "signal:028",
@@ -363,8 +328,6 @@
       "region": "stock-spectrum",
       "mapping": "manually-reviewed",
       "book_snapshot": "book/generated/chapter07/stock-spectrum.txt",
-      "execution_status": "blocked",
-      "reason": "Historical output only; original goog.csv missing.",
       "historical_output": "                        C0\n  R0          (312445, 0i)\n  R1  (-2664.07, 17064.3i)\n  R2  (-5272.52, 3899.16i)\n                       ...\nR125   (153.294, 68.7544i)\n"
     },
     {
@@ -376,9 +339,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "stock-mask",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/stock-mask.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the original goog.csv."
+      "book_snapshot": "book/generated/chapter07/stock-mask.ml"
     },
     {
       "listing": "signal:030",
@@ -389,9 +350,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "stock-inverse",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/stock-inverse.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the original goog.csv."
+      "book_snapshot": "book/generated/chapter07/stock-inverse.ml"
     },
     {
       "listing": "signal:031",
@@ -402,9 +361,7 @@
       "source": "code/chap07_signal/sessions/chapter07.ml",
       "region": "convolution",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter07/convolution.ml",
-      "execution_status": "blocked",
-      "reason": "Depends on the original goog.csv."
+      "book_snapshot": "book/generated/chapter07/convolution.ml"
     }
   ],
   "support_scripts": [

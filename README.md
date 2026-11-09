@@ -21,19 +21,20 @@ Chapter 15 performs 250 NST and ten 100-update reconstruction runs, and verifies
 all six FST models. Some printed shapes, quotations, protocol and incomplete
 weight-exchange fragments are explicitly illustrative rather than executable.
 
-There are **18 explicitly unexecuted regions**: three Chapter 6 SUNDIALS examples
-incompatible with the current compiler, fourteen Chapter 7 regions depending on
-missing original CSV files, and Appendix A's removed historical Owl.Ext API.
-`scripts/run_book.py` and image validation report these gaps. Complete source
-mapping and a passing declared scope do not mean complete book execution.
+The author approved second-edition replacements for the former 18 blocked regions:
+Chapter 6 uses native RK45 and ODEPACK; Chapter 7 ships clearly labelled synthetic
+CSV inputs with a fixed generator; Appendix A uses explicit precision conversion
+in place of Owl.Ext. All 398 original IDs remain traceable (389 code/interface
+blocks and 9 illustrative blocks); no blocked region remains in the current map.
+The updated local image passes complete build-time and independent reader/PTY
+validation. Illustrations are not counted as executed programs.
 The exact latest-compiler/Owl environment includes recorded RK45 and blocked
 convolution accuracy corrections plus CamlImages build compatibility changes.
-The local whole-book candidate passes build-time and fresh reader/PTY checks for
-its declared executable scope. All 398 blocks are exported; both code styles and
-the independent publisher source package compile. Consult the manuscript
-repository's `STATUS.md` for the immutable image and remaining author-input boundary.
+All 18 publication snapshots, both code styles and the independent publisher
+package pass. Consult the manuscript repository's `STATUS.md` for the immutable
+image, exact source evidence and next review steps.
 
-The last published `matrixanger/springer-book-code:pilot` contains Chapter 2 only.
-The newer local work is uncommitted and unpublished. `:latest` remains reserved
-for complete book checks; reproduce an edition using its recorded image digest.
+CI publishes verified `matrixanger/springer-book-code:pilot` tags after the
+author commits and pushes. This local revision is not yet committed or published;
+no `:latest` promotion was performed. Reproduce an edition using its recorded digest.
 Local candidate tags are not Docker Hub release tags.

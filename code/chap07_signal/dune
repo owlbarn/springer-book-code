@@ -5,8 +5,8 @@
  (libraries owl owl-plplot))
 
 (executables
- (names dialtone goog moonlanding sine sunspot)
- (modules dialtone goog moonlanding sine sunspot)
+ (names moonlanding sine sunspot)
+ (modules moonlanding sine sunspot)
  (flags (:standard -w -33))
  (libraries book_signal owl owl-plplot))
 
@@ -15,3 +15,8 @@
  (modes exe)
  (modules test_signal)
  (libraries book_signal owl))
+
+(executable
+ (name csv_examples)
+ (modules csv_examples goog dialtone)
+ (libraries book_signal owl owl-plplot))

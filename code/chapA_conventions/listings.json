@@ -1,5 +1,5 @@
 {
-  "scope": "Four current original examples: actual type, ndarray/scalar reduction and generic precision. Historical Owl.Ext example explicitly blocked because upstream removed that module.",
+  "scope": "Five current examples including explicit precision conversion in place of the removed Owl.Ext API.",
   "seed": 103,
   "interactive_packages": [
     "owl"
@@ -7,9 +7,7 @@
   "interactive_opens": [
     "Owl"
   ],
-  "blocked_regions": {
-    "ext-interoperation": "Owl.Ext was removed by upstream commit f882ec0f137be3c0f4910427551c75881efbeccd (2023-01-29); current Owl main exposes no Ext module. Historical example is preserved and explicitly not executed; no compiler downgrade or silent compatibility layer."
-  },
+  "blocked_regions": {},
   "listings": [
     {
       "listing": "conventions:001",
@@ -62,11 +60,10 @@
       "original_sha256": "f6e477460d209d4e23ff9894a6aebab1ce88dda79f06ffee1826fce06f4b7a92",
       "kind": "source",
       "source": "code/chapA_conventions/sessions/chapterA.ml",
-      "region": "ext-interoperation",
+      "region": "explicit-cast",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapterA/ext-interoperation.ml",
-      "execution_status": "blocked",
-      "reason": "Owl.Ext was removed by upstream commit f882ec0f137be3c0f4910427551c75881efbeccd (2023-01-29); current Owl main exposes no Ext module. Historical example is preserved and explicitly not executed; no compiler downgrade or silent compatibility layer."
+      "book_snapshot": "book/generated/chapterA/explicit-cast.ml",
+      "revision_note": "Author-approved second-edition replacement; original block ID and first-edition hash retained."
     }
   ]
 }

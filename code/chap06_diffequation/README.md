@@ -1,33 +1,26 @@
-# Chapter 6: ODEs (partial coverage on OCaml 5)
+# Chapter 6: ODEs with native solvers and ODEPACK
 
-`listings.json` maps all 26 original book blocks. The full sequential inputs are
-in `sessions/chapter06.ml`. `book_ode.ml` contains the corrected Euler/midpoint
-teaching functions, with final-step clamping and true midpoint updates. The
-compiled midpoint/Lorenz programs are also executed. Lorenz's state has three
-components; the perturbation comparison uses a common fixed RK4 time grid rather
-than comparing unrelated adaptive sample indices.
+`listings.json` retains all 26 original block IDs and their first-edition hashes.
+The second edition replaces the former custom-CVODE example with configured
+native RK45 (`tol=1e-7`, `dtmax=0.1`), and the non-stiff Van der Pol solve/plot
+with native RK45 (`tol=1e-8`, `dtmax=0.05`). Equations, initial conditions and the
+30-unit non-stiff interval are preserved. The stiff case remains ODEPACK LSODA
+with mu=1000 and duration 3000. SUNDIALS is background, not a book dependency.
 
-Run `python3 scripts/run_chapter06.py` in the book container. Nineteen independent
-analytic/property checks cover Euler/midpoint convergence, non-integral endpoints,
-RK4 linear systems and oscillators, adaptive RK45 accuracy, damping, and LSODA
-against exponential decay. Seven book plots are generated. SUNDIALS blocks cvode,
-vdp-cvode and vdp-cvode-plot are restored as source but explicitly NOT RUN.
-Their original manuscript figure remains historical and unverified.
+Run `python3 scripts/run_chapter06.py`. All 26 canonical regions execute and eight
+book plots are generated. Thirty native checks cover convergence, endpoints,
+analytic linear/oscillator solutions, configured RK45, damping and LSODA decay.
+The new Van der Pol trajectory is compared with an independent scalar RK4 loop
+at step 0.001, including both final state components, dimensions and finiteness.
 
-The current official sundialsml package conflicts with base-domains. Upstream
-master 27ae63cf9e6e45e4b820232d99366751e30a6b9f also records OCaml 5 example
-segfaults in NEWS.md. This environment does not remove that protection or downgrade
-OCaml. This chapter must not be represented as fully validated.
+`book_ode.ml` contains the corrected Euler/midpoint teaching functions.
+Lorenz perturbations use a common fixed RK4 time grid. The environment records
+OwlDE's upstream commit plus `docker/patches/owl-ode-rk45-step.patch`; path pins
+ensure the actual patched working tree is installed. The patch separates the
+current step size from the proposed next step and remains guarded by analytic
+accuracy checks. RK45's `tol` is not presented as CVODE's separate relative and
+absolute tolerances.
 
-The environment uses pinned OwlDE master plus the explicitly recorded patch
-`docker/patches/owl-ode-rk45-step.patch`. Upstream RK45 overwrote the current step
-size before advancing the state/time; keep the proposed next step separate.
-The original y'=2*t*y+t example returned 0.859078699 at t=1, versus analytic
-0.859140914, even with tol=1e-9. The corrected solver passes the analytic check.
-The Dockerfile uses path pins so opam installs the patched working tree rather
-than its unmodified Git commit. Both upstream SHA and patch/diff hashes are
-recorded; this is not described as an unmodified upstream installation.
-
-ODEPACK 0.7.1 is compiled with Ubuntu gfortran; no SUNDIALS/MPI/PETSc development
-stack is included in the reference image. Test executables use Dune's native
-executable mode, avoiding an unused custom bytecode runtime link target.
+ODEPACK 0.7.1 is compiled with Ubuntu gfortran. The unsupported SUNDIALS OCaml
+binding is not installed, its safety constraints are preserved, and OCaml is not
+downgraded. No historical CVODE results are used as second-edition output.

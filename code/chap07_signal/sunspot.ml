@@ -12,8 +12,8 @@ let plot_sunspot x y =
   let h = Plot.create "plot_sunspot.png" in
   Plot.set_font_size h 8.;
   Plot.set_pen_size h 3.;
-  Plot.set_xlabel h "Date";
-  Plot.set_ylabel h "Sunspot number";
+  Plot.set_xlabel h "year";
+  Plot.set_ylabel h "synthetic count";
   Plot.plot ~h ~spec:[ RGB (255,0,0); LineStyle 1] x y;
   Plot.output h
 

@@ -1,12 +1,8 @@
 {
-  "scope": "26 original Chapter 6 displays; three SUNDIALS-dependent source blocks restored but explicitly unexecuted on OCaml 5.",
+  "scope": "All 26 original Chapter 6 displays updated to native RK45 and ODEPACK; no SUNDIALS dependency.",
   "seed": 76,
   "matrix_printer": true,
-  "blocked_regions": {
-    "cvode": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2.",
-    "vdp-cvode": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2.",
-    "vdp-cvode-plot": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2."
-  },
+  "blocked_regions": {},
   "listings": [
     {
       "listing": "diffequation:001",
@@ -118,11 +114,10 @@
       "original_sha256": "16835cf3577d3192d4811dc90e8aaf9db5d7c54132d6173b27c93879dfff4c42",
       "kind": "source",
       "source": "code/chap06_diffequation/sessions/chapter06.ml",
-      "region": "cvode",
+      "region": "custom-rk45",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter06/cvode.ml",
-      "execution_status": "blocked",
-      "reason": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2."
+      "book_snapshot": "book/generated/chapter06/custom-rk45.ml",
+      "revision_note": "Author-approved second-edition replacement; original block ID and first-edition hash retained."
     },
     {
       "listing": "diffequation:011",
@@ -274,11 +269,10 @@
       "original_sha256": "c2c1486a1d91c438d7b9ed18493a40f9c50240a4494edaa384efd17332a05065",
       "kind": "source",
       "source": "code/chap06_diffequation/sessions/chapter06.ml",
-      "region": "vdp-cvode",
+      "region": "vdp-rk45",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter06/vdp-cvode.ml",
-      "execution_status": "blocked",
-      "reason": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2."
+      "book_snapshot": "book/generated/chapter06/vdp-rk45.ml",
+      "revision_note": "Author-approved second-edition replacement; original block ID and first-edition hash retained."
     },
     {
       "listing": "diffequation:025",
@@ -287,11 +281,10 @@
       "original_sha256": "b92de85bf751088d6bb01dbd3e1c635ad332d05300edb08d7bb56861933ce6b0",
       "kind": "source",
       "source": "code/chap06_diffequation/sessions/chapter06.ml",
-      "region": "vdp-cvode-plot",
+      "region": "vdp-rk45-plot",
       "mapping": "manually-reviewed",
-      "book_snapshot": "book/generated/chapter06/vdp-cvode-plot.ml",
-      "execution_status": "blocked",
-      "reason": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2."
+      "book_snapshot": "book/generated/chapter06/vdp-rk45-plot.ml",
+      "revision_note": "Author-approved second-edition replacement; original block ID and first-edition hash retained."
     },
     {
       "listing": "diffequation:026",
