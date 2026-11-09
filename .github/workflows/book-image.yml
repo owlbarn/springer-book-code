@@ -3,9 +3,21 @@ name: Book image
 on:
   push:
     branches: [main]
+    paths: ['**', '!**/*.md', '!docs/**', '!LICENSE', '!.gitignore', 'code/**/examples/**']
   pull_request:
+    paths: ['**', '!**/*.md', '!docs/**', '!LICENSE', '!.gitignore', 'code/**/examples/**']
   workflow_dispatch:
+    inputs:
+      validation:
+        description: 'auto: reuse matching full results; full: rerun everything; quick: no publication'
+        type: choice
+        options: [auto, full, quick]
+        default: auto
   workflow_call:
+    inputs:
+      validation:
+        type: string
+        default: auto
     secrets:
       DOCKERHUB_TOKEN:
         required: false
@@ -16,6 +28,8 @@ permissions:
   contents: read
 
 # Serialize all publications; PR checks use a separate group and cannot publish.
+# Keep the existing group/cache IDs during migration to share the lock and warm
+# dependency cache with older runs. These internal IDs do not create image tags.
 concurrency:
   group: book-pilot-${{ github.event_name == 'pull_request' && github.event.pull_request.number || 'publish' }}
   cancel-in-progress: false
@@ -24,6 +38,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 180
+    env:
+      BOOK_VALIDATION_MODE: ${{ github.event_name == 'pull_request' && 'quick' || inputs.validation || 'auto' }}
     steps:
       - uses: actions/checkout@v7
 
@@ -38,7 +54,16 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python3 docker/build.py --resolve-only --output "${RUNNER_TEMP}/book-build.json" --github-output
 
+      - name: Compare with the last published environment and full results
+        id: plan
+        run: python3 docker/ci_plan.py --resolved "${RUNNER_TEMP}/book-build.json" --mode "$BOOK_VALIDATION_MODE" --output "${RUNNER_TEMP}/book-plan.json"
+
+      - name: Release the pulled baseline after extracting its evidence
+        if: steps.plan.outputs.build == 'true'
+        run: docker image rm matrixanger/springer-book-code:main || true
+
       - name: Build and load the tested image
+        if: steps.plan.outputs.build == 'true'
         id: image
         uses: docker/build-push-action@v7
         with:
@@ -48,17 +73,25 @@ jobs:
           push: false
           provenance: false
           tags: matrixanger/springer-book-code:ci
-          build-args: ${{ steps.resolve.outputs.build_args }}
+          build-contexts: verification_cache=./.book-cache
+          build-args: |
+            ${{ steps.resolve.outputs.build_args }}
+            BOOK_VALIDATION_MODE=${{ env.BOOK_VALIDATION_MODE }}
+            BOOK_VERIFY_NONCE=${{ env.BOOK_VALIDATION_MODE == 'full' && format('{0}-{1}', github.run_id, github.run_attempt) || '' }}
           cache-from: type=gha,scope=book-pilot
           cache-to: type=gha,scope=book-pilot,mode=max
 
       - name: Validate the exact built image
+        if: steps.plan.outputs.build == 'true'
         env:
           IMAGE_ID: ${{ steps.image.outputs.imageid }}
-        run: python3 docker/validate.py --image "$IMAGE_ID" --resolved "${RUNNER_TEMP}/book-build.json" --output "${RUNNER_TEMP}/book-validation.json"
+        run: |
+          extra=()
+          if [ "$BOOK_VALIDATION_MODE" = quick ]; then extra+=(--allow-quick); fi
+          python3 docker/validate.py --image "$IMAGE_ID" --resolved "${RUNNER_TEMP}/book-build.json" --output "${RUNNER_TEMP}/book-validation.json" "${extra[@]}"
 
       - name: Check publishing credentials
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: steps.plan.outputs.build == 'true' && env.BOOK_VALIDATION_MODE != 'quick' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         env:
           HUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
@@ -69,14 +102,14 @@ jobs:
           PY
 
       - name: Log in to Docker Hub
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        if: steps.plan.outputs.build == 'true' && env.BOOK_VALIDATION_MODE != 'quick' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: docker/login-action@v4
         with:
           username: matrixanger
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Push unique image, verify registry pull, promote pilot and main
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+      - name: Push unique image, verify registry pull, promote main
+        if: steps.plan.outputs.build == 'true' && env.BOOK_VALIDATION_MODE != 'quick' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         env:
           IMAGE_ID: ${{ steps.image.outputs.imageid }}
         run: python3 docker/publish.py --image "$IMAGE_ID" --resolved "${RUNNER_TEMP}/book-build.json" --validation "${RUNNER_TEMP}/book-validation.json" --output "${RUNNER_TEMP}/book-published.json" --run-id "${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
@@ -85,7 +118,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: book-pilot-${{ github.run_id }}-${{ github.run_attempt }}
+          name: book-image-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/book-*.json
           if-no-files-found: ignore
           retention-days: 10

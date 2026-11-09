@@ -30,7 +30,8 @@ Ubuntu base tag to exist; failure is reported, never silently downgraded.
 The default local tag is `matrixanger/springer-book-code:candidate`. Docker Hub is
 not required for local builds. The Dockerfile records the actual compiler,
 packages, source commits and chapter-source hashes in `/opt/book/environment.json`.
-The final build step runs every restored chapter in `docker/chapters.json`.
+The final build step covers every restored chapter in `docker/chapters.json`,
+running or reusing its verified full result according to the policy below.
 Chapter 2 results remain in `/opt/book/verification`; subsequent chapters use
 its `chapterNN`, `chapterA` and `chapterB` subdirectories. Per-chapter runners are also available.
 Declared blocked regions are shown separately from successful execution; an
@@ -85,20 +86,22 @@ PRs build/test only. Publications from main require the repository Actions secre
 permission. The username is fixed to `matrixanger`; no username secret is needed.
 Tokens are passed only to the login action, not Docker build arguments.
 
-The pipeline first loads the image into Docker, validates the exact image ID and
-executes the reader's command, including canonical REPL inputs for all restored chapters and the declared
-current replacement examples in Chapters 6/7 and Appendix A. It also starts
+The pipeline first loads the image into Docker, validates the exact image ID,
+checks complete baked execution evidence for every chapter/example, and runs
+short reader checks (Chapters 1/2/8 plus quick 12/15). Full training is not
+repeated during this reader check. It also starts
 `utop` through a real terminal and checks the default Owl/plot imports and matrix
 arithmetic. Keep `-it` for interactive use: utop's nonterminal fallback follows a
 different initialization path and is not used to validate the interactive entry.
 The canonical automated sessions use `ocaml -noinit` with explicit imports. It pushes a unique
-`pilot-<code revision>-<run ID>` tag, pulls that registry digest and validates it.
-Only then does it tag and push the same image as `:pilot` (for compatibility)
-and finally `:main`, checking each registry digest. `:main` is the reader-facing
+`build-<code revision>-<run ID>` tag, pulls that registry digest, checks image
+identity and all baked evidence, then repeats PTY and Chapter 2 checks.
+Only then does it tag and push the same image as `:main`, checking its registry
+digest. The former `:pilot` alias is no longer published. `:main` is the reader-facing
 rolling tag; main-branch pushes and the daily 04:23 UTC workflow keep it current
 when validation succeeds. Publication jobs are serialised in this repository.
 Failed builds or reader/registry checks leave the previous `:main` in place.
-This workflow does not publish `latest`. Downloaded-image identity, both aliases
+This workflow does not publish `latest`. Downloaded-image identity, the unique tag, main
 and the registry digest are recorded as CI artifacts; no rebuild occurs between
 testing and pushing. Pin an edition to its digest rather than a rolling tag.
 
@@ -226,3 +229,68 @@ and scope evidence all match. Incomplete runs and stale/mutable identities are
 rejected. Standalone publication without that argument performs its own full check;
 registry-pulled content always receives another actual reader/PTY execution before
 promotion. This avoids a duplicate pre-push long training run, not the registry check.
+
+## Verification policy
+
+| Event/change | Work | Publication |
+| --- | --- | --- |
+| Manuscript only | Manuscript checks and PDF, in the book repo | No image build |
+| Companion documentation only | No image workflow (example input files are excluded from this shortcut) | None |
+| PR | Reuse matching full results; run changed chapters/examples, with quick Chapter 12/15 checks | Never |
+| Main push, `auto` | Reuse matching full results; run affected/missing chapters/examples fully | Promote `main` only after complete evidence and reader checks |
+| Daily check, unchanged inputs | Resolve upstream versions and compare with published `main`; skip build | None |
+| Compiler/Owl/base/shared dependency change | Invalidated chapters run fully in `auto` | Only after passing |
+| Manual `full` | Force every chapter/example to run, bypassing the final verification layer cache | Only on main |
+| Manual `quick` | Same reduced training checks as a PR | Never |
+
+The first build under this policy needs a complete baseline. Subsequent builds
+reuse results only from the last published `matrixanger/springer-book-code:main`,
+resolved to its immutable registry digest; arbitrary PR caches are not baselines.
+CI removes the pulled baseline image after extracting its small evidence directory,
+so an environment upgrade does not need to retain two complete reader images.
+A missing baseline falls back to actual execution. A missing, altered or stale
+chapter receipt forces that chapter to run again. A missing registry is not
+interpreted as “nothing changed”.
+
+`/opt/book/verification/policy.json` distinguishes `full`, `reused-full` and
+`quick`; reused entries record the immediate baseline digest. Fingerprints cover
+chapter sources, runners, validation logic, dataset/model receipts, actual
+compiler/packages/system packages, upstream commits, patches, compiler flags,
+shared build inputs and the base digest. Adding an independent `examples/` file
+does not invalidate unrelated historical training. Changes to shared verification
+or preparation logic conservatively invalidate more chapters.
+
+Chapter 12 quick checks use 120 deterministic documents, TF-IDF and three real
+LDA updates, asserting finite counts and token conservation. Chapter 15 quick
+checks use the original model weights with small images, real VGG optimisation,
+analytic convolution/gradient checks, Adam resume and all six FST models. They
+do not generate publication figures or prove convergence of the full training.
+A quick-only result cannot satisfy the publication gate. Full-mode algorithms,
+1000 LDA iterations and 1250 style/reconstruction updates remain unchanged.
+
+Use Actions → **Book image** → **Run workflow** → `validation: full` for a release
+or deliberate complete rerun. `BOOK_VERIFY_NONCE` prevents a manual full run from
+silently reusing the final Docker verification layer. Dependency layers can still
+be cached. `book-plan.json`, `book-validation.json` and `book-published.json`
+explain the decision and evidence in the workflow artifacts; no-change runs only
+produce the plan/build specification.
+
+Local equivalents:
+
+```sh
+# Default run_book remains a complete rerun.
+docker run --rm matrixanger/springer-book-code:main python3 scripts/run_book.py --mode quick
+# Prepare an incremental baseline from the published image, then build.
+python3 docker/build.py --resolve-only --output /tmp/book-build.json
+python3 docker/ci_plan.py --resolved /tmp/book-build.json --output /tmp/book-plan.json
+python3 docker/build.py --resolved /tmp/book-build.json --mode auto
+# Or force complete verification (no baseline required).
+python3 docker/build.py --mode full
+```
+
+`docker/build.py` supplies the named BuildKit context `verification_cache` from
+ignored `.book-cache/`. Direct Docker invocations must supply the same context
+(an empty directory is valid); it is mounted only during verification and is not
+copied into the image. Local `auto` without a prepared baseline runs everything.
+The build helper always builds when invoked; CI uses `ci_plan.py` to skip an
+unnecessary build. Do not commit `.book-cache/` or execution logs.

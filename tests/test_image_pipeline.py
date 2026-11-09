@@ -94,7 +94,7 @@ class PipelineTests(unittest.TestCase):
 
     def test_reused_validation_rejects_stale_image_evidence_and_incomplete_runs(self):
         current=dict(self.record,image='sha256:exact',runtime_check='not-run')
-        for key in ('image','environment','chapters','verification','examples','runtime_check','interactive_check'):
+        for key in ('image','environment','chapters','verification','examples','policy','runtime_check','interactive_check'):
             with self.subTest(key=key),tempfile.TemporaryDirectory() as temporary:
                 prior=dict(current,runtime_check='passed',interactive_check={'status':'passed','terminal':'pty'})
                 prior[key]='different' if key!='interactive_check' else {'status':'failed','terminal':'pty'}
@@ -155,11 +155,31 @@ class PipelineTests(unittest.TestCase):
                 command=run.call_args.args[0]
                 self.assertEqual('--network' not in command,external)
 
+    def test_new_image_reader_and_registry_checks_use_short_profiles(self):
+        self.record['environment']['verification_schema']=1
+        for profile in ['smoke','registry']:
+            with patch('validate.subprocess.check_output',return_value=json.dumps(self.record)),patch('validate.check_repl'),patch('validate.subprocess.run') as run:
+                record=validate('image',self.resolved,profile=profile)
+            self.assertEqual(run.call_args.args[0][-2:],['--mode',profile])
+            self.assertEqual(record['runtime_profile'],profile)
+
+    def test_manual_full_build_bypasses_only_final_verification_cache(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);spec=root/'resolved.json';spec.write_text(json.dumps(self.resolved))
+            commands=[]
+            for stamp in [1,2]:
+                with patch.object(build,'ROOT',root),patch.object(sys,'argv',['build.py','--resolved',str(spec),'--mode','full']),patch('build.time.time_ns',return_value=stamp),patch('build.subprocess.run') as run,contextlib.redirect_stdout(io.StringIO()):
+                    build.main()
+                commands.append(run.call_args.args[0])
+            self.assertIn('BOOK_VERIFY_NONCE=1',commands[0])
+            self.assertIn('BOOK_VERIFY_NONCE=2',commands[1])
+            self.assertNotIn('--no-cache',commands[0])
+
     def test_push_without_registry_digest_is_not_success(self):
         with self.assertRaises(ValueError):publish.pushed_digest('upload started')
         self.assertEqual(publish.pushed_digest('digest: sha256:'+'e'*64),'sha256:'+'e'*64)
 
-    def exercise_publication(self,remote_error=False,remote_image=None,wrong_digest_tag=None):
+    def exercise_publication(self,remote_error=False,remote_image=None,wrong_digest_tag=None,initial_error=False):
         image='sha256:'+'f'*64
         with tempfile.TemporaryDirectory() as tmp:
             spec=Path(tmp)/'resolved.json';spec.write_text(json.dumps(self.resolved))
@@ -167,14 +187,16 @@ class PipelineTests(unittest.TestCase):
             def command(cmd,**kwargs):
                 digest=('0' if cmd==['docker','push',wrong_digest_tag] else 'e')*64
                 return subprocess.CompletedProcess(cmd,0,stdout='digest: sha256:'+digest+'\n')
-            with patch.object(sys,'argv',['publish.py','--image',image,'--resolved',str(spec),'--output',str(report),'--run-id','42-1']),patch('publish.validate',side_effect=[{},ValueError('registry check failed')] if remote_error else [{},{}]),patch('publish.subprocess.check_output',side_effect=[image+'\n',(remote_image or image)+'\n']),patch('publish.subprocess.run',side_effect=command) as run,contextlib.redirect_stdout(io.StringIO()):
-                if remote_error or remote_image or wrong_digest_tag:
+            with patch.object(sys,'argv',['publish.py','--image',image,'--resolved',str(spec),'--output',str(report),'--run-id','42-1']),patch('publish.validate',side_effect=[ValueError('initial validation failed')] if initial_error else ([{},ValueError('registry check failed')] if remote_error else [{},{}])),patch('publish.subprocess.check_output',side_effect=[image+'\n',(remote_image or image)+'\n']),patch('publish.subprocess.run',side_effect=command) as run,contextlib.redirect_stdout(io.StringIO()):
+                if remote_error or remote_image or wrong_digest_tag or initial_error:
                     with self.assertRaises(ValueError):publish.main()
                 else:
                     publish.main()
                     result=json.loads(report.read_text())
                     self.assertEqual(result['registry_pull_validation'],'passed')
                     self.assertEqual(result['main_tag'],publish.REPOSITORY+':main')
+                    self.assertNotIn('pilot_tag',result)
+                    self.assertEqual(result['unique_tag'],publish.REPOSITORY+':build-'+self.resolved['code_revision'][:12]+'-42-1')
                     self.assertEqual(result['registry_digest'],'sha256:'+'e'*64)
                 return [call.args[0] for call in run.call_args_list]
 
@@ -183,23 +205,22 @@ class PipelineTests(unittest.TestCase):
         for tag in ('pilot','main'):
             self.assertFalse(any(publish.REPOSITORY+':'+tag in cmd for cmd in commands))
 
-    def test_promotion_reuses_the_tested_image_and_never_updates_latest(self):
+    def test_promotion_reuses_the_tested_image_and_never_updates_pilot_or_latest(self):
         commands=self.exercise_publication()
         tags=[cmd for cmd in commands if cmd[:2]==['docker','tag']]
-        self.assertEqual(len(tags),3)
+        self.assertEqual(len(tags),2)
         self.assertTrue(all(cmd[2]==tags[0][2] for cmd in tags))
         self.assertEqual([cmd[-1] for cmd in tags[1:]],
-                         [publish.REPOSITORY+':pilot',publish.REPOSITORY+':main'])
+                         [publish.REPOSITORY+':main'])
         self.assertEqual(commands[-1],['docker','push',publish.REPOSITORY+':main'])
-        self.assertFalse(any(':latest' in arg for cmd in commands for arg in cmd))
+        self.assertFalse(any(':latest' in arg or ':pilot' in arg for cmd in commands for arg in cmd))
 
     def test_registry_identity_mismatch_cannot_replace_reader_tags(self):
         commands=self.exercise_publication(remote_image='sha256:'+'0'*64)
         self.assertEqual(len([cmd for cmd in commands if cmd[:2]==['docker','tag']]),1)
 
-    def test_pilot_digest_mismatch_prevents_main_promotion(self):
-        commands=self.exercise_publication(wrong_digest_tag=publish.REPOSITORY+':pilot')
-        self.assertFalse(any(publish.REPOSITORY+':main' in cmd for cmd in commands))
+    def test_failed_initial_validation_never_pushes_any_tag(self):
+        self.assertEqual(self.exercise_publication(initial_error=True),[])
 
     def test_main_digest_mismatch_cannot_report_success(self):
         self.exercise_publication(wrong_digest_tag=publish.REPOSITORY+':main')

@@ -13,6 +13,7 @@ from run_sessions import execute
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--output',type=Path,default=Path('/tmp/chapter12-results'))
 p.add_argument('--news',type=Path,help='Reuse a local input only after pinned hash verification')
+p.add_argument('--quick',action='store_true',help='Small corpus and three real LDA updates; not publication evidence')
 p.add_argument('--keep-work',action='store_true',help='Keep corpus in output/work for interactive reader sessions')
 a=p.parse_args()
 root=Path(__file__).resolve().parents[1];chapter=root/'code/chap12_nlp'
@@ -26,6 +27,18 @@ def run(command,cwd,timeout):
     if result.returncode:raise ValueError(result.stdout+result.stderr)
     if 'PASS:' in result.stdout:print(result.stdout[result.stdout.rfind('PASS:'):].strip(),flush=True)
 run(['dune','build','--profile','release','@chap12_nlp/all'],root/'code',180)
+if a.quick:
+    with tempfile.TemporaryDirectory(prefix='quick-nlp-') as temporary:
+        work=Path(temporary)
+        words='owl book science matrix vector tensor gradient algorithm model learning probability data topic document query corpus sparse dense numerical function'.split()
+        (work/'quick-news.txt').write_text('\n'.join(' '.join(words[(i+j*j)%len(words)] for j in range(40)) for i in range(120))+'\n')
+        run([str(root/'code/_build/default/chap12_nlp/quick_nlp.exe')],work,180)
+        if len(re.findall(r'iter#\d+',commands[-1]['stdout']))!=3:
+            raise ValueError('Quick LDA did not execute all three updates')
+    (output/'results.json').write_text(json.dumps({'validation_level':'quick','scope':'small deterministic corpus; 3 real LDA updates and TFIDF',
+        'ocaml':subprocess.check_output(['ocamlc','-version'],text=True).strip(),'files':[]})+'\n')
+    print('PASS: QUICK Chapter 12; full corpus/training not run',flush=True)
+    raise SystemExit(0)
 # Work products contain the original text or reversible tokens; cleanup precedes image layer commit.
 with tempfile.TemporaryDirectory(prefix='chapter12-') as temporary:
     work=output/'work' if a.keep_work else Path(temporary)

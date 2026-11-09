@@ -12,6 +12,7 @@ from prepare_style import check,DEFAULT_DIRECTORY
 from run_sessions import execute
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--output',type=Path,default=Path('/tmp/chapter15-results'))
+p.add_argument('--quick',action='store_true',help='Real small-image gradients/updates/inference; not publication figures')
 a=p.parse_args();root=Path(__file__).resolve().parents[1];chapter=root/'code/chap15_case-nst'
 output=a.output.resolve();output.mkdir(parents=True,exist_ok=True);(output/'results.json').unlink(missing_ok=True)
 evidence=check(DEFAULT_DIRECTORY)
@@ -46,6 +47,13 @@ with tempfile.TemporaryDirectory(prefix='chapter15-') as temporary:
                'excerpts':excerpts,'combined_sha256':hashlib.sha256(printed.encode()).hexdigest(),
                'prefix_sha256':hashlib.sha256(prefix.encode()).hexdigest(),'returncode':0}
     (work/'excerpt-typecheck.json').write_text(json.dumps(typecheck,indent=2)+'\n')
+    if a.quick:
+        for executable in ['conv_regression','chapter15_native','fst_native']:
+            run([str(build/(executable+'.exe')),str(DEFAULT_DIRECTORY),str(chapter/'data'),'--quick'],work,300)
+        (output/'results.json').write_text(json.dumps({'validation_level':'quick','scope':'analytic gradients, Adam resume, real 32px VGG updates and six FST models',
+            'ocaml':subprocess.check_output(['ocamlc','-version'],text=True).strip(),'excerpt_typecheck':typecheck,'files':[]})+'\n')
+        print('PASS: QUICK Chapter 15; full training and publication figures not run',flush=True)
+        raise SystemExit(0)
     for executable in ['conv_regression','chapter15_native','reconstruct_native','fst_native']:
         run([str(build/(executable+'.exe')),str(DEFAULT_DIRECTORY),str(chapter/'data')],work,3600)
     metrics=json.loads((work/'native-metrics.json').read_text())

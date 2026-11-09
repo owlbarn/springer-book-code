@@ -42,6 +42,20 @@ let () =
   check "actual checkpoint file after one update" (Sys.file_exists "test output_0001.png");
   let pixels = N.of_array (Array.init 18 (fun i -> float_of_int i *. 15.)) [|1;2;3;3|] in
   check "RGB preprocessing inverse" (Array.for_all2 close (N.to_array pixels) (N.to_array (ImageUtils.(preprocess pixels |> postprocess))));
+  if Array.length Sys.argv > 3 && Sys.argv.(3) = "--quick" then (
+    let content = Style_io.load ~size:(32,32) (Filename.concat inputs "hojo.png") |> ImageUtils.preprocess in
+    let style = Style_io.load ~size:(32,32) (Filename.concat inputs "hokusai.png") |> ImageUtils.preprocess in
+    let nn = Neural_transfer.load_network ~weights:(Filename.concat weights "vgg19") 32 32 in
+    let objective = Neural_transfer.objective nn content style in
+    let initial = A.unpack_flt (objective (A.Arr content)) in
+    let state, result = Neural_transfer.optimise ~ckpt:50 3. objective content in
+    let final = A.unpack_flt (objective (A.Arr result)) in
+    check "three actual updates" (state.current_batch=4);
+    check "quick real loss improves" (Float.is_finite final && final < initial);
+    check "quick finite pixels" (Array.for_all Float.is_finite (N.to_array result));
+    Printf.printf "PASS: QUICK NST: %d analytic/resume/wrapper checks and 3 real VGG updates, loss %.9g -> %.9g\n%!" !checks initial final;
+    exit 0
+  );
   let content = Style_io.load ~size:(224,224) (Filename.concat inputs "hojo.png") |> ImageUtils.preprocess in
   let style = Style_io.load ~size:(224,224) (Filename.concat inputs "hokusai.png") |> ImageUtils.preprocess in
   let nn = Neural_transfer.load_network ~weights:(Filename.concat weights "vgg19") 224 224 in

@@ -93,6 +93,8 @@ ENV QT_QPA_PLATFORM=offscreen
 ENV OPENBLAS_NUM_THREADS=1
 FROM book-tools AS book
 ARG BASE_IMAGE
+ARG BOOK_VALIDATION_MODE=auto
+ARG BOOK_VERIFY_NONCE=
 ARG BOOK_CODE_REV=unknown
 ARG BOOK_CODE_DIRTY=unknown
 ENV BOOK_CODE_REV=${BOOK_CODE_REV}
@@ -100,8 +102,9 @@ ENV BOOK_CODE_DIRTY=${BOOK_CODE_DIRTY}
 ENV BOOK_BASE_IMAGE=${BASE_IMAGE}
 WORKDIR /opt/book
 COPY --chown=opam:opam . /opt/book
-RUN opam exec --switch=book -- python3 docker/record_environment.py \
-    && opam exec --switch=book -- python3 scripts/run_book.py --output /opt/book/verification \
+RUN --mount=type=bind,from=verification_cache,target=/verified-cache \
+    opam exec --switch=book -- python3 docker/record_environment.py \
+    && opam exec --switch=book -- python3 scripts/run_book.py --output /opt/book/verification --mode "$BOOK_VALIDATION_MODE" --cache /verified-cache \
     && rm -rf /opt/book/code/_build
 ENTRYPOINT ["opam", "exec", "--switch=book", "--"]
 CMD ["bash"]

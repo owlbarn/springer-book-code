@@ -8,3 +8,6 @@
 results
 **/__pycache__
 **/*.pyc
+
+# Last published verification baseline, managed by docker/ci_plan.py.
+.book-cache/

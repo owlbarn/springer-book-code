@@ -11,3 +11,7 @@
  (name dirichlet)
  (modules dirichlet)
  (libraries owl owl-plplot))
+(executable
+ (name quick_nlp)
+ (modules quick_nlp)
+ (libraries book_nlp owl str unix))

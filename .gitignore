@@ -36,3 +36,6 @@ results/
 
 # Python tool caches
 __pycache__/
+
+# Last published verification baseline, managed by docker/ci_plan.py.
+.book-cache/

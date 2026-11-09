@@ -88,4 +88,8 @@ root=Path('/opt/book')
 data['example_inputs']={identity:source_inputs(root,source) for identity,source in discover(root).items()}
 for inputs in data['example_inputs'].values():
     data['source_hashes'].update(inputs)
+from verification import pipeline_inputs
+data['pipeline_inputs']=pipeline_inputs(root)
+data['verification_schema']=1
+data['system_packages']=run('dpkg-query','-W','-f=${Package}=${Version}\n')
 Path('/opt/book/environment.json').write_text(json.dumps(data, indent=2) + '\n')

@@ -23,8 +23,22 @@ def verify_examples(record):
             raise ValueError('Missing or stale new-example execution: '+identity)
 
 
-def validate(image, resolved, execute=True):
-    reader = "import json\nfrom pathlib import Path\nroot=Path('/opt/book')\nchapters=json.loads((root/'docker/chapters.json').read_text())\nprint(json.dumps({'environment':json.loads((root/'environment.json').read_text()),\n                  'chapters':chapters,\n                  'examples':json.loads((root/'verification/examples/results.json').read_text()) if (root/'verification/examples/results.json').is_file() else None,\n                  'verification':{number:json.loads((root/'verification'/spec['output']/'results.json').read_text()) for number,spec in chapters.items()}}))\n"
+def validate(image, resolved, execute=True, profile="smoke", allow_quick=False):
+    reader = """import json,sys
+from pathlib import Path
+root=Path('/opt/book')
+sys.path.insert(0,str(root/'scripts'))
+chapters=json.loads((root/'docker/chapters.json').read_text())
+env=json.loads((root/'environment.json').read_text())
+policy=None
+if env.get('verification_schema'):
+    from verification import validate_policy
+    policy=validate_policy(root,root/'verification',env,chapters,env.get('example_inputs',{}),require_complete=REQUIRE_COMPLETE)
+print(json.dumps({'environment':env,'chapters':chapters,'policy':policy,
+ 'examples':json.loads((root/'verification/examples/results.json').read_text()) if (root/'verification/examples/results.json').is_file() else None,
+ 'verification':{number:json.loads((root/'verification'/spec['output']/'results.json').read_text()) for number,spec in chapters.items()}}))
+""".replace('REQUIRE_COMPLETE',repr(not allow_quick))
+
     raw = subprocess.check_output(['docker','run','--rm','--network','none',image,'python3','-c',reader],text=True)
     record = json.loads(raw)
     env = record['environment']
@@ -54,6 +68,10 @@ def validate(image, resolved, execute=True):
         raise ValueError('Image is not compiled for the generic x86-64 target')
     for number,spec in record['chapters'].items():
         verification = record['verification'][number]
+        if (record.get('policy') or {}).get('chapters',{}).get(number,{}).get('action')=='quick':
+            if not allow_quick or verification.get('validation_level')!='quick':
+                raise ValueError('Quick verification cannot satisfy full publication scope')
+            continue
         if {item['name'] for item in verification['files']} != set(spec['plots']) or verification['ocaml'] != resolved['ocaml']:
             raise ValueError(f'Missing or inconsistent baked Chapter {number} verification')
         if verification.get('blocked_regions',{}) != spec.get('blocked_regions',{}):
@@ -64,16 +82,17 @@ def validate(image, resolved, execute=True):
             evidence=verification.get('datasets',{}).get(dataset)
             if not evidence or evidence != env.get('datasets',{}).get(dataset):
                 raise ValueError(f'Chapter {number} dataset evidence differs from image inputs: {dataset}')
-        if not verification['sources'] or any(env['source_hashes'].get(name) != sha for name,sha in verification['sources'].items()):
+        if not verification['sources'] or any(env['source_hashes'].get(name) != sha for name,sha in verification['sources'].items() if not name.endswith('.md') and '/examples/' not in name):
             raise ValueError(f'Baked Chapter {number} results do not match image sources')
     verify_examples(record)
     if execute:
         record['interactive_check'] = check_repl(image)
         network = [] if any(spec.get('external_network') for spec in record['chapters'].values()) else ['--network','none']
         subprocess.run(['docker','run','--rm',*network,image,'python3',
-                        'scripts/run_book.py','--output','/tmp/book-validation'],check=True)
+                        'scripts/run_book.py','--output','/tmp/book-validation']+(['--mode',profile] if env.get('verification_schema') else []),check=True)
     record['image'] = image
     record['runtime_check'] = 'passed' if execute else 'not-run'
+    record['runtime_profile'] = profile if execute and env.get('verification_schema') else ('full' if execute else 'not-run')
     return record
 
 
@@ -82,8 +101,9 @@ def main():
     p.add_argument('--image',required=True)
     p.add_argument('--resolved',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--allow-quick',action='store_true',help='PR verification only; cannot be published')
     a=p.parse_args()
-    record=validate(a.image,json.loads(a.resolved.read_text()))
+    record=validate(a.image,json.loads(a.resolved.read_text()),allow_quick=a.allow_quick)
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(record,indent=2)+'\n')
     print('PASS: exact compiler, source commits, base image and reader execution')

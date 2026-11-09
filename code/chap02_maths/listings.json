@@ -237,5 +237,8 @@
       "book_snapshot": "book/generated/chapter02/ellipse-example.txt",
       "session_source": "code/chap02_maths/sessions/chapter02.ml"
     }
+  ],
+  "support_scripts": [
+    "scripts/check_chapter02_sessions.py"
   ]
 }

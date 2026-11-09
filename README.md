@@ -3,9 +3,17 @@ The code included in the Springer Owl book.
 
 ## Second edition environment
 
+CI uses incremental verification: documentation changes do not build images;
+ordinary changes run the affected examples, reusing matching full results for
+unchanged chapters. Pull requests use short real checks for LDA/style training.
+Environment changes invalidate the old full results. Manual Actions runs offer
+`auto`, `quick` (never publishes) and `full` (reruns everything).
+Daily checks skip the build when upstream versions and runtime inputs match
+`:main`. See [the verification policy](docker/README.md#verification-policy).
+
 New self-contained examples go in `code/chapXX_*/examples/name.ml`. They are
-compiled and run automatically by `scripts/book_examples.py`, both during the
-image build and during reader validation. No edit to historical listing or plot
+compiled and run automatically by `scripts/book_examples.py` when new or changed.
+Image validation checks their complete execution evidence. No edit to historical listing or plot
 manifests is needed. The manuscript repository provides `make example-new`,
 `make example` and `make examples` for creation and publication export; see its
 [contributor guide](https://github.com/owlbarn/springer/blob/main/README.md).
@@ -45,7 +53,8 @@ package pass. Consult the manuscript repository's `STATUS.md` for the immutable
 image, exact source evidence and next review steps.
 
 CI updates `matrixanger/springer-book-code:main` after main-branch pushes and
-daily builds pass the full book and registry-pull checks. `:pilot` is retained as
-a compatibility alias. Failed checks preserve the previous reader image.
+daily builds pass the full book and registry-pull checks. Each publication also
+retains a unique `build-<code revision>-<run ID>` tag and digest. Failed checks
+preserve the previous reader image. The former `:pilot` alias is retired.
 Reproduce an edition using its recorded digest.
 Local candidate tags are not Docker Hub release tags.

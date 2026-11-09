@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Resolve release/compiler sources once; build locally or supply CI build args."""
 import argparse
+import time
 import hashlib
 import json
 import os
@@ -59,6 +60,7 @@ def build_args(resolved):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--mode',choices=['auto','full','quick'],default='auto')
     parser.add_argument('--tag', default='matrixanger/springer-book-code:candidate')
     parser.add_argument('--resolve-only', action='store_true')
     parser.add_argument('--resolved', type=Path, help='Reuse an already resolved build specification')
@@ -75,7 +77,11 @@ def main():
             stream.write('build_args<<BOOK_BUILD_ARGS\n')
             stream.write('\n'.join(k+'='+v for k,v in build_args(resolved).items())+'\nBOOK_BUILD_ARGS\n')
     if not args.resolve_only:
-        cmd = ['docker', 'build', '--platform', 'linux/amd64', '--pull', '--tag', args.tag]
+        cache=ROOT/'.book-cache';cache.mkdir(exist_ok=True)
+        cmd = ['docker', 'build', '--platform', 'linux/amd64', '--pull', '--tag', args.tag,
+               '--build-context','verification_cache='+str(cache),'--build-arg','BOOK_VALIDATION_MODE='+args.mode]
+        if args.mode=='full':
+            cmd += ['--build-arg','BOOK_VERIFY_NONCE='+str(time.time_ns())]
         for k,v in build_args(resolved).items():
             cmd.extend(['--build-arg', k+'='+v])
         subprocess.run(cmd+[str(ROOT)], check=True)
