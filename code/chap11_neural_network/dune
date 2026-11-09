@@ -1,0 +1,8 @@
+(rule
+ (target chapter11_compiled.ml)
+ (deps sessions/chapter11.ml extract_compiled.py)
+ (action (with-stdout-to %{target} (run python3 %{dep:extract_compiled.py} %{dep:sessions/chapter11.ml}))))
+(executable
+ (name chapter11_compiled)
+ (modules chapter11_compiled)
+ (libraries owl owl-plplot))

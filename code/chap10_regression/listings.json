@@ -1,0 +1,295 @@
+{
+  "scope": "24 original Chapter 10 listings and actual supplied datasets.",
+  "seed": 80,
+  "matrix_printer": true,
+  "interactive_opens": [
+    "Owl_plplot"
+  ],
+  "interactive_directory": "code/chap10_regression",
+  "interactive_module_source": "book_regression.ml",
+  "random_seed": 80,
+  "listings": [
+    {
+      "listing": "regression:001",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 51,
+      "original_sha256": "038de89f8b7acd04f2db68163d8567eea78d2788701bc6a32188bb29ffb123c7",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "extract-data",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/extract-data.ml"
+    },
+    {
+      "listing": "regression:002",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 122,
+      "original_sha256": "e07089acb53bbc2f5a8c2f5cf8a0c868862db3b3290511f3cdc57e6dfcbc6fb9",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "linear-cost",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/linear-cost.ml"
+    },
+    {
+      "listing": "regression:003",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 132,
+      "original_sha256": "06a913dbdd7d6963028de7d5f7fc61999a4b6c5a6f9e6fb6e0c45ecfacdf574c",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "cost-surface",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/cost-surface.ml"
+    },
+    {
+      "listing": "regression:004",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 176,
+      "original_sha256": "41f639913b0b645726aa5129caeb0a61b57d7616cf9ec213483ef96f6c1cebca",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "gradient-descent",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/gradient-descent.ml",
+      "display_source": {
+        "path": "code/chap10_regression/book_regression.ml",
+        "region": "gradient-descent"
+      }
+    },
+    {
+      "listing": "regression:005",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 202,
+      "original_sha256": "8e856f1e35f56dd7d5b5b412497f74d114e88c325240183065f0ca9b3769f4a8",
+      "kind": "interface",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "ols-interface",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/ols-interface.txt"
+    },
+    {
+      "listing": "regression:006",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 208,
+      "original_sha256": "d6d7f4c0f4a5c9fbc697d70283fe269e89584c1b81ac6801880ed39fb85a2b30",
+      "kind": "transcript",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "ols-example",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/ols-example.txt"
+    },
+    {
+      "listing": "regression:007",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 304,
+      "original_sha256": "c6ed617bc9f48431b9686b96cf477579d59e73576906f4fbbecdf6d1ff455f74",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "multiple-regression",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/multiple-regression.ml"
+    },
+    {
+      "listing": "regression:008",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 331,
+      "original_sha256": "89842bef7d781d00ac2ddb95f18ace7aca75e4fc4aa88028540911280eb41bc5",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "normalise",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/normalise.ml"
+    },
+    {
+      "listing": "regression:009",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 346,
+      "original_sha256": "ecf77c58c87294d9b22f8ee73182435abd95d8568812bf42effdfe9995f28991",
+      "kind": "interface",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "normalised-data",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/normalised-data.txt"
+    },
+    {
+      "listing": "regression:010",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 384,
+      "original_sha256": "c66be0ac033e6f00d94513175e057c948ad6b1ee33891650d212a161d3f04ef1",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "normal-equations",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/normal-equations.ml"
+    },
+    {
+      "listing": "regression:011",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 394,
+      "original_sha256": "c05477f3e9fc9aa634499c394aae4710985816978004128a3f931d7c73b82b7e",
+      "kind": "interface",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "normal-solution",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/normal-solution.txt"
+    },
+    {
+      "listing": "regression:012",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 411,
+      "original_sha256": "17b1ee09112ff664eeb40fe7506857155d63b94b820b410519d4b2fee9f3a9a6",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "boston-data",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/boston-data.ml"
+    },
+    {
+      "listing": "regression:013",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 439,
+      "original_sha256": "8dd06d47265495d42d319f39acd9d2e5e3aa14560f07e549c9a1d797f3bbaeac",
+      "kind": "interface",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "poly-interface",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/poly-interface.txt"
+    },
+    {
+      "listing": "regression:014",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 444,
+      "original_sha256": "7926194aad2405d086704e68b53b298eadad12d34e9a3e0eba29ab86bfb2b7ca",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "quadratic-poly",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/quadratic-poly.ml"
+    },
+    {
+      "listing": "regression:015",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 454,
+      "original_sha256": "91b7a317e6b2369b685d2fb44e4f3cec838c54fb7373c14f6de1d7591b8de2f2",
+      "kind": "interface",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "poly-coefficients",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/poly-coefficients.txt"
+    },
+    {
+      "listing": "regression:016",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 503,
+      "original_sha256": "2f718dfa477e6cd9d09ed0f326bd45c2bab7ac198c32b28938f82db08d8ccc84",
+      "kind": "transcript",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "subset",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/subset.txt",
+      "output_bindings": [
+        "subset_coefficients"
+      ]
+    },
+    {
+      "listing": "regression:017",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 538,
+      "original_sha256": "ce5d2f2b149a0cb681d6b1a9e9e4a95535db07dff2c75d9598acd981683f3a89",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "polynomial-ridge",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/polynomial-ridge.ml",
+      "display_source": {
+        "path": "code/chap10_regression/book_regression.ml",
+        "region": "polynomial-ridge"
+      }
+    },
+    {
+      "listing": "regression:018",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 580,
+      "original_sha256": "a855ca291df00170a50ab67835ff22078c4a7c49c76502a95e50f07272909bbe",
+      "kind": "interface",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "regularised-interfaces",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/regularised-interfaces.txt"
+    },
+    {
+      "listing": "regression:019",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 672,
+      "original_sha256": "774982f9eb8c8b38b7aeba4be3f7633d026e41f7f0bef542d0d963cdf304846b",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "classification-data",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/classification-data.ml"
+    },
+    {
+      "listing": "regression:020",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 703,
+      "original_sha256": "e736b3ab44fa03631945fff8c9db6e7943163f57aebd9f5a5cfc4536f01bbcb2",
+      "kind": "transcript",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "logistic-fit",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/logistic-fit.txt",
+      "display_source": {
+        "path": "code/chap10_regression/book_regression.ml",
+        "region": "binary-logistic"
+      }
+    },
+    {
+      "listing": "regression:021",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 722,
+      "original_sha256": "b59cd66b37b756e286cbabdac4cad9279045de8a83235ff49794fe673d4ad97c",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "logistic-accuracy-function",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/logistic-accuracy-function.ml"
+    },
+    {
+      "listing": "regression:022",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 733,
+      "original_sha256": "48eafbec70d6fb647356334eef249545aa76bfbbefb7b343cbdff9e7b2845114",
+      "kind": "transcript",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "logistic-accuracy",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/logistic-accuracy.txt"
+    },
+    {
+      "listing": "regression:023",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 742,
+      "original_sha256": "92b8748ee69b3029c3cc11f1195dce2ae6c78bc313536e60e039188763950491",
+      "kind": "source",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "logistic-plot",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/logistic-plot.ml"
+    },
+    {
+      "listing": "regression:024",
+      "manuscript": "book/chapters/regression.tex",
+      "line": 875,
+      "original_sha256": "32d728517a4c3202c0e20f8492ece6417d1cfca8e5178bdafcd61a64f8efa9ed",
+      "kind": "transcript",
+      "source": "code/chap10_regression/sessions/chapter10.ml",
+      "region": "svm-fit",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter10/svm-fit.txt",
+      "output_bindings": [
+        "theta"
+      ]
+    }
+  ]
+}

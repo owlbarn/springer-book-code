@@ -34,26 +34,27 @@ let plot_02 () =
   Plot.plot_fun ~h ~spec:[ RGB (0,0,255) ] (fun a -> a *. (0.5) +. 10.) 0. 20.;
   Plot.set_xlabel h "population";
   Plot.set_ylabel h "profit";
-  Plot.output h 
+  Plot.output h
 
 
 
 let plot_03 () =
+  let a,b=Book_regression.gradient_desc x y in
   let h = Plot.create "reg_gd.pdf" in
   Plot.scatter ~h ~spec:[ MarkerSize 6.] x y;
   Plot.set_xlabel h "population";
   Plot.set_ylabel h "profit";
   Plot.set_font_size h 8.;
   Plot.set_pen_size h 2.;
-  Plot.plot_fun ~h ~spec:[ RGB (0,0,255); LineWidth 2. ] (fun a -> a *. 0.57 +. 5.01) 0. 22.;
-  Plot.output h 
+  Plot.plot_fun ~h ~spec:[ RGB (0,0,255); LineWidth 2. ] (fun x -> x *. !b +. !a) 0. 22.;
+  Plot.output h
 
-let j theta0 theta1 = 
+let j theta0 theta1 =
   let f x = x *. theta1 +. theta0 in
   Mat.(pow_scalar (map f x - y) 2. |> mean') *. 0.5
 
 
-let plot_04 () = 
+let plot_04 () =
   let x, y = Mat.meshgrid (-20.) 10. (-20.) 10. 100 100 in
   let z = Mat.(map2 j x y) in
   let h = Plot.create ~m:1 ~n:2 "reg_cost_1.pdf" in
@@ -73,11 +74,11 @@ let cost x_data y_data theta0 theta1 =
     Mat.(pow_scalar (map f x_data - y_data) 2. |> mean') *. 0.5
 
 let plot_surface x_data y_data =
-    let x, y = Mat.meshgrid (-20.) 15. (-20.) 15. 50 50 in 
+    let x, y = Mat.meshgrid (-20.) 15. (-20.) 15. 50 50 in
     let z = Mat.(map2 (cost x_data y_data) x y) in
-    let h = Plot.create ~m:1 ~n:2 "reg_cost.pdf" in 
+    let h = Plot.create ~m:1 ~n:2 "reg_cost.pdf" in
     Plot.subplot h 0 0;
-    Plot.(mesh ~h ~spec:[ NoMagColor ] x y z); 
+    Plot.(mesh ~h ~spec:[ NoMagColor ] x y z);
     Plot.set_zlabel h "cost";
     Plot.subplot h 0 1;
     Plot.contour ~h x y z;
@@ -96,5 +97,7 @@ let plot_rand () =
   Plot.set_font_size h 8.;
   Plot.set_pen_size h 2.;
   Plot.scatter ~h x y;
-  Plot.plot ~h ~spec:[ RGB (0,255,0); LineWidth 2. ] x y'; 
+  Plot.plot ~h ~spec:[ RGB (0,255,0); LineWidth 2. ] x y';
   Plot.output h
+
+let () = plot_01 (); plot_02 (); plot_03 (); plot_surface x y

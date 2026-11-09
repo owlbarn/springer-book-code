@@ -1,0 +1,8 @@
+(library
+ (name book_recommender)
+ (modules projection_depth sparse_projection dense_projection rp_tree)
+ (libraries owl))
+(executable
+ (name chapter16_native)
+ (modules chapter16_native)
+ (libraries book_recommender owl unix))

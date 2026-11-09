@@ -1,5 +1,8 @@
-(executables
-  (names  high_order
-          )
-  (flags   :standard -w -33)
-  (libraries owl owl-plplot))
+(executable
+ (name high_order)
+ (modules high_order)
+ (libraries owl owl-plplot))
+(test
+ (name test_algodiff)
+ (modules test_algodiff)
+ (libraries owl))

@@ -1,0 +1,199 @@
+{
+  "scope": "All eleven original OCaml projection/tree excerpts, real sparse TFIDF and dense parity, tree and boundary properties. REST response is an explicitly schematic protocol example; historical Sofia service, Spark/Chrome deployment, corpus-scale benchmarks and explanatory figures are not executed.",
+  "seed": 96,
+  "interactive_packages": [
+    "owl"
+  ],
+  "interactive_opens": [
+    "Owl"
+  ],
+  "interactive_bindings": [
+    "#directory \"/opt/book/code/_build/default/chap16_case-recommender/.book_recommender.objs/byte\";;",
+    "#directory \"/opt/book/code/_build/default/chap16_case-recommender\";;",
+    "#load \"book_recommender.cma\";;",
+    "open Book_recommender;;"
+  ],
+  "illustrations": [
+    "rest-protocol"
+  ],
+  "listings": [
+    {
+      "listing": "case-recommender:001",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 42,
+      "original_sha256": "a73ee533a9182178c60c6422afce20b1be3b65635b02ab27caf6205a9955c015",
+      "mapping": "manually-reviewed",
+      "kind": "illustration",
+      "region": "rest-protocol",
+      "text": "POST https://api.Sofia/query?type=0&info=url\n\n{\"results\": [\n  {\"title\": \"document title\",\n   \"similarity\": 0.9,\n   \"page_url\": \"https://example.org/document\",\n   \"timestamp\": \"document creation date\"}\n]}\n",
+      "book_snapshot": "book/generated/chapter16/rest-protocol.txt",
+      "execution_status": "illustrative",
+      "reason": "Protocol schematic; no live backend endpoint, credentials or deployment provided in book."
+    },
+    {
+      "listing": "case-recommender:002",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 235,
+      "original_sha256": "24459db8d2f376016c58010c1405de7751e4b61181fcb4f05d4b2f62c8cec9db",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "sparse-matrices",
+      "source": "code/chap16_case-recommender/sparse_projection.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/sparse_projection.ml",
+        "region": "sparse-matrices"
+      },
+      "book_snapshot": "book/generated/chapter16/sparse-matrices.ml"
+    },
+    {
+      "listing": "case-recommender:003",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 245,
+      "original_sha256": "030109dbcd3275f290950883b1bbe83a63896b64f5634068a9658dd65a0aa8ba",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "project",
+      "source": "code/chap16_case-recommender/sparse_projection.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/sparse_projection.ml",
+        "region": "project"
+      },
+      "book_snapshot": "book/generated/chapter16/project.ml"
+    },
+    {
+      "listing": "case-recommender:004",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 256,
+      "original_sha256": "c322c87eb3051b1d789b20e223ddf3a9becb1de3ede9a1bad632d03c77d97b25",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "sparse-random",
+      "source": "code/chap16_case-recommender/sparse_projection.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/sparse_projection.ml",
+        "region": "sparse-random"
+      },
+      "book_snapshot": "book/generated/chapter16/sparse-random.ml"
+    },
+    {
+      "listing": "case-recommender:005",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 280,
+      "original_sha256": "8a529547405abd07bac4e93a6497b76c86ba98569a5ece6f47f5b6820569ed9e",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "dense-random",
+      "source": "code/chap16_case-recommender/dense_projection.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/dense_projection.ml",
+        "region": "dense-random"
+      },
+      "book_snapshot": "book/generated/chapter16/dense-random.ml"
+    },
+    {
+      "listing": "case-recommender:006",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 299,
+      "original_sha256": "6e99845f2d23fa77965eb17e13890838438ee3444be075020c6f55e43491accd",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "tree-type",
+      "source": "code/chap16_case-recommender/rp_tree.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/rp_tree.ml",
+        "region": "tree-type"
+      },
+      "book_snapshot": "book/generated/chapter16/tree-type.ml"
+    },
+    {
+      "listing": "case-recommender:007",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 306,
+      "original_sha256": "03f133dc682010c967bf47b0494f6effc424210b15e66a12b24b2feeff982941",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "median",
+      "source": "code/chap16_case-recommender/rp_tree.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/rp_tree.ml",
+        "region": "median"
+      },
+      "book_snapshot": "book/generated/chapter16/median.ml"
+    },
+    {
+      "listing": "case-recommender:008",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 326,
+      "original_sha256": "57c405adcd75c46e38e5ba6941b878abf309ff6117ecbf33c4a482bd9b8d53aa",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "filter",
+      "source": "code/chap16_case-recommender/rp_tree.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/rp_tree.ml",
+        "region": "filter"
+      },
+      "book_snapshot": "book/generated/chapter16/filter.ml"
+    },
+    {
+      "listing": "case-recommender:009",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 335,
+      "original_sha256": "a0d6f33a4323fd5f88f3387cff9824a35a9ce2a87acc6fb5c2c0973fc73edfb0",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "subtree",
+      "source": "code/chap16_case-recommender/rp_tree.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/rp_tree.ml",
+        "region": "subtree"
+      },
+      "book_snapshot": "book/generated/chapter16/subtree.ml"
+    },
+    {
+      "listing": "case-recommender:010",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 365,
+      "original_sha256": "68191e1e0c119dc1f4ee1b558da92c04b6861f2ca8facf0233bcf00523d940f3",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "grow",
+      "source": "code/chap16_case-recommender/rp_tree.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/rp_tree.ml",
+        "region": "grow"
+      },
+      "book_snapshot": "book/generated/chapter16/grow.ml"
+    },
+    {
+      "listing": "case-recommender:011",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 374,
+      "original_sha256": "8fbdba580bfd4aedf469025e4c991cb870bc3838e9badfcf0126fe27c27c1ca5",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "traverse",
+      "source": "code/chap16_case-recommender/rp_tree.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/rp_tree.ml",
+        "region": "traverse"
+      },
+      "book_snapshot": "book/generated/chapter16/traverse.ml"
+    },
+    {
+      "listing": "case-recommender:012",
+      "manuscript": "book/chapters/case-recommender.tex",
+      "line": 387,
+      "original_sha256": "29c2b7589031709c4ba50e060655ca8a6615381d79bd9492f00a8fde2ebf1dbc",
+      "mapping": "manually-reviewed",
+      "kind": "native-excerpt",
+      "region": "leaves",
+      "source": "code/chap16_case-recommender/rp_tree.ml",
+      "display_source": {
+        "path": "code/chap16_case-recommender/rp_tree.ml",
+        "region": "leaves"
+      },
+      "book_snapshot": "book/generated/chapter16/leaves.ml"
+    }
+  ]
+}

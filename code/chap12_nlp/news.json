@@ -1,0 +1,13 @@
+{
+  "name": "news.txt.gz",
+  "size": 96996403,
+  "sha": "a0e30c29eb6b408107ab22c393965770f56a772f",
+  "download_url": "https://raw.githubusercontent.com/owlbarn/owl_dataset/2dc4d388f7d0f0cec1597a06f2782b89a6814c8d/news.txt.gz",
+  "sha256": "9ce508acc568ca0ded425776292551f557c335d7902ecca4fb479a0c668bb6f4",
+  "decoded_sha256": "b3df31d063962be40061427e71ae13336763563f673b3a7f60cef2b1135dd971",
+  "decoded_bytes": 333383651,
+  "documents": 130000,
+  "repository": "https://github.com/owlbarn/owl_dataset",
+  "revision": "2dc4d388f7d0f0cec1597a06f2782b89a6814c8d",
+  "storage": "transient input; raw documents and reversible indices excluded from image"
+}

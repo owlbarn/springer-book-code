@@ -1,0 +1,400 @@
+{
+  "scope": "All 35 original Chapter 4 listings; actual input restored, numerical outputs regenerated.",
+  "seed": 74,
+  "listings": [
+    {
+      "listing": "linear-algebra:001",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 51,
+      "original_sha256": "da3d62800329a559be4574f5c5151b39abd7fcee8255e431e1d50bb0ea75bd4e",
+      "kind": "source",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "matrix-access",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/matrix-access.ml"
+    },
+    {
+      "listing": "linear-algebra:002",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 59,
+      "original_sha256": "e1df485d973036ac8ff4eb065879d4aad3c0135451dc87225da6ab59d21566ad",
+      "kind": "source",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "indexing",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/indexing.ml"
+    },
+    {
+      "listing": "linear-algebra:003",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 147,
+      "original_sha256": "e0a8a3b806a7043b2f86bc6d214be8d1dbe6ad2af3dfc870512a3e32a86a1a8e",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "lu-input",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/lu-input.txt"
+    },
+    {
+      "listing": "linear-algebra:004",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 160,
+      "original_sha256": "a7eaf8baa6e7ab50ff74ad05b63b9e870647a01ac8e1d268a8ab6b1efc85f29d",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "lu-factorisation",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/lu-factorisation.txt"
+    },
+    {
+      "listing": "linear-algebra:005",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 179,
+      "original_sha256": "c55e04355be173351a10624de33f5c3463748173b9bba551b71375490f33ea00",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "lu-product",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/lu-product.txt"
+    },
+    {
+      "listing": "linear-algebra:006",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 194,
+      "original_sha256": "c0d46cea4bbadfc36b6e476d9fe8083abf11ed6a3dcf7ff47d770914e5cba1c5",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "manual-permutation",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/manual-permutation.txt"
+    },
+    {
+      "listing": "linear-algebra:007",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 215,
+      "original_sha256": "793e2f6039e9c03f93f5862c89ac6f8ae0fbecfeafeb2e7da32d9aaa97c7cdb4",
+      "kind": "source",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "pivot-permutation",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/pivot-permutation.ml",
+      "display_source": {
+        "path": "code/chap04_linear-algebra/book_linear.ml",
+        "region": "pivot-permutation"
+      }
+    },
+    {
+      "listing": "linear-algebra:008",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 243,
+      "original_sha256": "02af34deed2a736ce41e7705a3c2380b7ba24d4c7210fe726d42930fda98dd63",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "diagonal",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/diagonal.txt"
+    },
+    {
+      "listing": "linear-algebra:009",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 255,
+      "original_sha256": "dd2e898b8df4a318251d0115a696914de4115fecba43483d927b1ddec9e590e8",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "inverse",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/inverse.txt"
+    },
+    {
+      "listing": "linear-algebra:010",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 268,
+      "original_sha256": "18c299a2917e3b4d9e8499e7119d830b51a6c47fbf7849b5929e43a9d61df6f6",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "transpose-product",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/transpose-product.txt"
+    },
+    {
+      "listing": "linear-algebra:011",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 293,
+      "original_sha256": "55d45d58cab1978ea991da0bec79afa015b2e08d3e31ccb5dfed378d623b7527",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "singular-lu",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/singular-lu.txt"
+    },
+    {
+      "listing": "linear-algebra:012",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 325,
+      "original_sha256": "c00d019a4da0cce2d1efb797c74bfb0ed8ede2df1311bd846883da04638f1735",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "null-space",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/null-space.txt"
+    },
+    {
+      "listing": "linear-algebra:013",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 346,
+      "original_sha256": "aaa35385e85d83ca85ccfbc350faa38e180782f152653e3f9515ce32f320a015",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "qr",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/qr.txt"
+    },
+    {
+      "listing": "linear-algebra:014",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 373,
+      "original_sha256": "11f2ace73eb4115de3d1f0a17f8ec09a6d5c8441cb464e037ebf8d404b6cb094",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "rank",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/rank.txt"
+    },
+    {
+      "listing": "linear-algebra:015",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 386,
+      "original_sha256": "b459b06ceda198433c20db2d4475ed138bb284a7864bee8b2f20d4e68d996972",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "rank-null",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/rank-null.txt"
+    },
+    {
+      "listing": "linear-algebra:016",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 408,
+      "original_sha256": "b856f58efc412204bd27851c2b1779e30158730d49025535ef392380cd18e61b",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "solve",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/solve.txt"
+    },
+    {
+      "listing": "linear-algebra:017",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 428,
+      "original_sha256": "56d7cd27d17644c30f0d2b40e330db1d9f33e618eef793d016c61fe3f46abce0",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "solution-null",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/solution-null.txt"
+    },
+    {
+      "listing": "linear-algebra:018",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 461,
+      "original_sha256": "eb78133d023c73e2f34644d73088b004a2dd6be831d5624badc171396a10ca8f",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "condition-number",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/condition-number.txt"
+    },
+    {
+      "listing": "linear-algebra:019",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 473,
+      "original_sha256": "ee78649cca960ba0e7504d2949f5c05be5c82f0aca3a66b27fe9e060bb2ccd73",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "ill-conditioned-inverse",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/ill-conditioned-inverse.txt"
+    },
+    {
+      "listing": "linear-algebra:020",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 483,
+      "original_sha256": "af31269bab6e2cee3ca1eab15add4ba4b1e8c8297b7a54dfa5bafd110c779894",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "perturbed-inverse",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/perturbed-inverse.txt"
+    },
+    {
+      "listing": "linear-algebra:021",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 520,
+      "original_sha256": "ebd2e5348134aef6edaaadbf562d19c9b176414074f9feb8555f3f40cb131785",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "determinant",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/determinant.txt"
+    },
+    {
+      "listing": "linear-algebra:022",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 555,
+      "original_sha256": "3ec33910a7b8f83d4d1f291e9ec03fad0b9e1d2f0b8033bda26afab88dd2ebf4",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "eigenspace",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/eigenspace.txt"
+    },
+    {
+      "listing": "linear-algebra:023",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 577,
+      "original_sha256": "faf1e93c292764aa59feeb4e319636daa35825828c9c411d6522fb265a47ee88",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "eigenvectors",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/eigenvectors.txt"
+    },
+    {
+      "listing": "linear-algebra:024",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 606,
+      "original_sha256": "621c31b89cbda6317a1947a82e6c1f41d57d30e15858a7b6419799352fc86239",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "hermitian",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/hermitian.txt"
+    },
+    {
+      "listing": "linear-algebra:025",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 623,
+      "original_sha256": "0ea937ffe12d06799871419aea38fb56a5c16fdbafffb91c2510b2fa080fcedd",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "conjugate-transpose",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/conjugate-transpose.txt"
+    },
+    {
+      "listing": "linear-algebra:026",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 633,
+      "original_sha256": "b75679f020f42a2231ce210f90c7b8f8b4c129721185475a55dbd977881257c9",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "hermitian-eigenvalues",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/hermitian-eigenvalues.txt"
+    },
+    {
+      "listing": "linear-algebra:027",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 659,
+      "original_sha256": "fe13dfc34651da8f65b954cd2bd48e0f5c7dd9082fc422961dc9385c91791c7c",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "schur",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/schur.txt"
+    },
+    {
+      "listing": "linear-algebra:028",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 686,
+      "original_sha256": "e5895a737bc215400822259d5bbad4501f05858158d792917f8bb3b92baec69c",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "unitary",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/unitary.txt"
+    },
+    {
+      "listing": "linear-algebra:029",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 731,
+      "original_sha256": "6edb0b19473a50eda957f7d7e707c25fd4bc7bc48de78211e104b156c1472a9d",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "cholesky",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/cholesky.txt"
+    },
+    {
+      "listing": "linear-algebra:030",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 749,
+      "original_sha256": "a50a976a9f0a91efa32c8607c709d6e47e686d1ae6dbf64ded89fa8f8cd1cdb6",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "positive-definite",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/positive-definite.txt"
+    },
+    {
+      "listing": "linear-algebra:031",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 865,
+      "original_sha256": "55acc2c34a613485b3af01e03061d5f48a87042bc49825f2edb869e7a87a624f",
+      "kind": "source",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "load-image",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/load-image.ml"
+    },
+    {
+      "listing": "linear-algebra:032",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 878,
+      "original_sha256": "4cdcfe4193614ce1e26845010dae6b5102e5d767216ab2d51322426cd6d1535f",
+      "kind": "transcript",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "svd",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/svd.txt",
+      "output_bindings": [
+        "s"
+      ]
+    },
+    {
+      "listing": "linear-algebra:033",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 892,
+      "original_sha256": "dd2dac940b576cb6b1d79bcd50dc84e0bd6eb0aeb1b0a1cbdefe3ea95456e4b2",
+      "kind": "source",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "truncate",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/truncate.ml"
+    },
+    {
+      "listing": "linear-algebra:034",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 901,
+      "original_sha256": "568db788f833d09fe19d693e16929c390a9ec635936435437f8f25c1f76e1bd7",
+      "kind": "source",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "reconstruct",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/reconstruct.ml"
+    },
+    {
+      "listing": "linear-algebra:035",
+      "manuscript": "book/chapters/linear-algebra.tex",
+      "line": 906,
+      "original_sha256": "3753435ffcb4bb8e59a33a9bb6b088a9b61a0644f22eecb6ca94a3b3831b8eee",
+      "kind": "source",
+      "source": "code/chap04_linear-algebra/sessions/chapter04.ml",
+      "region": "save-image",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter04/save-image.ml"
+    }
+  ],
+  "interactive_directory": "code/chap04_linear-algebra",
+  "matrix_printer": true
+}

@@ -1,0 +1,66 @@
+{
+  "repository": "https://github.com/owlbarn/owl_dataset",
+  "revision": "2dc4d388f7d0f0cec1597a06f2782b89a6814c8d",
+  "files": [
+    {
+      "path": "mnist-test-images.gz",
+      "sha": "6fde376aa1d919d21a717de59d14a17fb8245057",
+      "size": 2494735,
+      "url": "https://raw.githubusercontent.com/owlbarn/owl_dataset/2dc4d388f7d0f0cec1597a06f2782b89a6814c8d/mnist-test-images.gz",
+      "sha256": "7a36fd78d73e3d8a94d15eb713e8d303cc4a7fa8fc475996d4532e3823110851",
+      "decoded_sha256": "f9728a43df738ac0464334ba9d89b2cbfb0e7a501f79b9925afde71fcbe49388",
+      "decoded_size": 31360055
+    },
+    {
+      "path": "mnist-test-labels.gz",
+      "sha": "30ce91b5a526bbdc958592420bdf42c7d5190efc",
+      "size": 6894,
+      "url": "https://raw.githubusercontent.com/owlbarn/owl_dataset/2dc4d388f7d0f0cec1597a06f2782b89a6814c8d/mnist-test-labels.gz",
+      "sha256": "a9355bd86fa34a4cf2a1ee4973a333bea25a4a8a584d89ac0f10f7a9ad1473e3",
+      "decoded_sha256": "0e79e077aedea58cc791de3703989b0cd41c52f7ca0db5469a0285e21b06eddb",
+      "decoded_size": 40055
+    },
+    {
+      "path": "mnist-test-lblvec.gz",
+      "sha": "18913f8c716dead9967f7681f24d155f2c6f4af5",
+      "size": 10626,
+      "url": "https://raw.githubusercontent.com/owlbarn/owl_dataset/2dc4d388f7d0f0cec1597a06f2782b89a6814c8d/mnist-test-lblvec.gz",
+      "sha256": "6cc464c7b85bdd949dce76b0b78790800f195d50df34abf5e4826a001fcd3a46",
+      "decoded_sha256": "1aee1d7b2d90a14aa82496dcac8a3c0e08e6ce3706736e4e87a1f0ad396835df",
+      "decoded_size": 400055
+    },
+    {
+      "path": "mnist-train-images.gz",
+      "sha": "8a9b4b2a04bc6d7ce646ec3f938e9a6b057971aa",
+      "size": 15007196,
+      "url": "https://raw.githubusercontent.com/owlbarn/owl_dataset/2dc4d388f7d0f0cec1597a06f2782b89a6814c8d/mnist-train-images.gz",
+      "sha256": "38f31df32be607715bd382eac0131c908439379a25c45b71f91ac36d6f045d63",
+      "decoded_sha256": "081f7eb3e08bd43ff2464ecd8b942870e8a25a0e356cd94f22cbb0d43f0f8bfb",
+      "decoded_size": 188160055
+    },
+    {
+      "path": "mnist-train-labels.gz",
+      "sha": "1112059ad1d2e35f32bc738107d29c6d8d0185d8",
+      "size": 43386,
+      "url": "https://raw.githubusercontent.com/owlbarn/owl_dataset/2dc4d388f7d0f0cec1597a06f2782b89a6814c8d/mnist-train-labels.gz",
+      "sha256": "2bda6d92a268ccac6eac781024c64c9a91d9e0d4a5ae652dca6c0a10ae5c7f7f",
+      "decoded_sha256": "a61b154f1aa99682e547d3c6d62513abe4a7d79430704d1e3a1a7f73eff56e43",
+      "decoded_size": 240055
+    },
+    {
+      "path": "mnist-train-lblvec.gz",
+      "sha": "9de2040430973c13d416c140a157ddad34422643",
+      "size": 65704,
+      "url": "https://raw.githubusercontent.com/owlbarn/owl_dataset/2dc4d388f7d0f0cec1597a06f2782b89a6814c8d/mnist-train-lblvec.gz",
+      "sha256": "85b48c2e218e6dac975cfebe64ace1de98c91d802856df2df820fae11af49e85",
+      "decoded_sha256": "0e7e853245a337ff1ae9e2af43b9e3a6f3b1b8e2f4cd0eb20a7f4b633b2752d5",
+      "decoded_size": 2400055
+    }
+  ],
+  "license_declaration": {
+    "publisher": "ylecun/mnist",
+    "declared_license": "MIT",
+    "url": "https://huggingface.co/datasets/ylecun/mnist/raw/main/README.md",
+    "sha256": "8cd17b7ebe5c115eb401f2ce57f9b3c8b16a6e293dc312c35e4f37f7a81fc4a2"
+  }
+}

@@ -1,28 +1,7 @@
 open Owl
 open Owl_plplot
 
-let f x y = 2. *. x *. y +. x
-let f' x = 0.5 *. (Maths.exp (x *. x) -. 1.)
-
-let euler step target =
-  let x = ref 0. in
-  let y = ref 0. in
-  while !x <= target do
-    y := !y +. step *. (f !x !y);
-    x := !x +. step
-  done;
-  !y
-
-let midpoint step target =
-  let x = ref 0. in
-  let y = ref 0. in
-  while !x <= target do
-    let s1 = f !x !y in
-    let s2 = f (!x +. step /. 2.) (!y +. step /. 2. *. s1) in
-    y := !y +. step *. (s1 +. s2) /. 2.;
-    x := !x +. step
-  done;
-  !y
+open Book_ode
 
 let _ =
   let target = 2.6 in

@@ -1,10 +1,17 @@
+(library
+ (name book_signal)
+ (wrapped false)
+ (modules book_signal imageUtils)
+ (libraries owl owl-plplot))
+
 (executables
-  (names  dialtone
-          goog
-          imageUtils
-          ;; moonlanding
-          sine
-          sunspot
-          )
-  (flags   :standard -w -33)
-  (libraries owl owl-plplot))
+ (names dialtone goog moonlanding sine sunspot)
+ (modules dialtone goog moonlanding sine sunspot)
+ (flags (:standard -w -33))
+ (libraries book_signal owl owl-plplot))
+
+(test
+ (name test_signal)
+ (modes exe)
+ (modules test_signal)
+ (libraries book_signal owl))

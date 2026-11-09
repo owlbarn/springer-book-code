@@ -2,5 +2,10 @@
   (names  gamma_pdf
           plots
           )
+  (modules gamma_pdf plots)
   (flags   :standard -w -33)
   (libraries owl owl-plplot))
+(test
+ (name test_statistics)
+ (modules test_statistics)
+ (libraries owl))

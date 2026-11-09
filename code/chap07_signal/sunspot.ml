@@ -17,26 +17,8 @@ let plot_sunspot x y =
   Plot.plot ~h ~spec:[ RGB (255,0,0); LineStyle 1] x y;
   Plot.output h
 
-let get_frequency y =
-  let y' = Owl_fft.D.rfft ~axis:0 y in
-  let y' = Dense.Ndarray.Z.get_slice [[1; (Dense.Ndarray.Z.shape y').(0) - 1];[]] y' in
-  Dense.Ndarray.Z.(abs y' |> re)
+let get_frequency = Book_signal.get_frequency
 
-let plot_sunspot_freq p =
-  let n = (Arr.shape p).(0) in
-  let f = Arr.(mul_scalar (linspace 0. 1. n) 0.5) in
+let plot_sunspot_freq p = Book_signal.plot_sunspot_freq ~samples:(Mat.row_num y) p
 
-  let h = Plot.create ~m:1 ~n:2 "plot_sunspot_freq.png" in
-  Plot.set_pen_size h 3.;
-  Plot.subplot h 0 0;
-  Plot.set_xlabel h "cycle/year";
-  Plot.set_ylabel h "squared power";
-  Plot.plot ~h ~spec:[ RGB (255,0,0); LineStyle 1] f p;
-
-  Plot.subplot h 0 1;
-  Plot.set_xlabel h "year/cycle";
-  Plot.set_ylabel h "squared power";
-  let f' = Arr.(scalar_div 1. (get_slice [[1; Stdlib.(n-1)]] f)) in
-  Plot.plot ~h ~spec:[ RGB (255,0,0); LineStyle 1] f' p;
-  Plot.set_xrange h 0. 40.;
-  Plot.output h
+let () = plot_sunspot x y; plot_sunspot_freq (get_frequency y)

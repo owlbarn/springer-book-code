@@ -1,6 +1,15 @@
-(executables
-  (names  imageUtils
-          svd
-          )
-  (flags   :standard -w -33)
-  (libraries owl owl-plplot))
+(library
+ (name book_linear)
+ (wrapped false)
+ (modules book_linear imageUtils)
+ (libraries owl))
+
+(executable
+ (name svd)
+ (modules svd)
+ (libraries book_linear owl))
+
+(test
+ (name test_linear)
+ (modules test_linear)
+ (libraries book_linear owl))

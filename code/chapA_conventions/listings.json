@@ -1,0 +1,72 @@
+{
+  "scope": "Four current original examples: actual type, ndarray/scalar reduction and generic precision. Historical Owl.Ext example explicitly blocked because upstream removed that module.",
+  "seed": 103,
+  "interactive_packages": [
+    "owl"
+  ],
+  "interactive_opens": [
+    "Owl"
+  ],
+  "blocked_regions": {
+    "ext-interoperation": "Owl.Ext was removed by upstream commit f882ec0f137be3c0f4910427551c75881efbeccd (2023-01-29); current Owl main exposes no Ext module. Historical example is preserved and explicitly not executed; no compiler downgrade or silent compatibility layer."
+  },
+  "listings": [
+    {
+      "listing": "conventions:001",
+      "manuscript": "book/chapters/conventions.tex",
+      "line": 19,
+      "original_sha256": "57fbb977eb9b5612881ca6e940e08466cecf95e3fd2fb857c3428fa52d844b7b",
+      "kind": "interface",
+      "source": "code/chapA_conventions/sessions/chapterA.ml",
+      "region": "add-type",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterA/add-type.ml"
+    },
+    {
+      "listing": "conventions:002",
+      "manuscript": "book/chapters/conventions.tex",
+      "line": 52,
+      "original_sha256": "b8c3c1ee3888c2b0dfa3b1b1d5cbe084a92bfcdfb3512c90c85ae28ee383ca24",
+      "kind": "source",
+      "source": "code/chapA_conventions/sessions/chapterA.ml",
+      "region": "sum-array",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterA/sum-array.ml"
+    },
+    {
+      "listing": "conventions:003",
+      "manuscript": "book/chapters/conventions.tex",
+      "line": 59,
+      "original_sha256": "43fcc67997f9a1a1ee7b382451d6fe5fb87cf1762175fa927cabdb103fc3c22e",
+      "kind": "source",
+      "source": "code/chapA_conventions/sessions/chapterA.ml",
+      "region": "sum-scalar",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterA/sum-scalar.ml"
+    },
+    {
+      "listing": "conventions:004",
+      "manuscript": "book/chapters/conventions.tex",
+      "line": 179,
+      "original_sha256": "511ba4aedf0c6fa5e3f96b710e8d3f187c12df9acee9f4fab6412419c412c2e6",
+      "kind": "source",
+      "source": "code/chapA_conventions/sessions/chapterA.ml",
+      "region": "generic-sum",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterA/generic-sum.ml"
+    },
+    {
+      "listing": "conventions:005",
+      "manuscript": "book/chapters/conventions.tex",
+      "line": 258,
+      "original_sha256": "f6e477460d209d4e23ff9894a6aebab1ce88dda79f06ffee1826fce06f4b7a92",
+      "kind": "source",
+      "source": "code/chapA_conventions/sessions/chapterA.ml",
+      "region": "ext-interoperation",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterA/ext-interoperation.ml",
+      "execution_status": "blocked",
+      "reason": "Owl.Ext was removed by upstream commit f882ec0f137be3c0f4910427551c75881efbeccd (2023-01-29); current Owl main exposes no Ext module. Historical example is preserved and explicitly not executed; no compiler downgrade or silent compatibility layer."
+    }
+  ]
+}

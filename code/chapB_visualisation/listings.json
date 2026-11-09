@@ -1,0 +1,367 @@
+{
+  "scope": "All 24 original blocks: current API/type inspection plus 22 actual plotting examples and all original figures.",
+  "seed": 102,
+  "interactive_packages": [
+    "owl",
+    "owl-plplot"
+  ],
+  "interactive_opens": [
+    "Owl",
+    "Owl_plplot"
+  ],
+  "interactive_module_source": "/opt/book/code/chapB_visualisation/book_visualisation.ml",
+  "listings": [
+    {
+      "listing": "visualisation:001",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 13,
+      "original_sha256": "453b9ce6174e342e16f3b077f62d092f797a8b6d39c470e1a4795728a7c0c912",
+      "kind": "interface",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-01",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-01.ml"
+    },
+    {
+      "listing": "visualisation:002",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 18,
+      "original_sha256": "abee9c54088608bbc2b436d031ef2f8262d3cf7865546ac682fc242504870e61",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-02",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-02.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-02"
+      }
+    },
+    {
+      "listing": "visualisation:003",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 46,
+      "original_sha256": "708d59e28195ca0f958ff6113a71695d5b05a2d3d54e319fd656f2aebfcd24d7",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-03",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-03.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-03"
+      }
+    },
+    {
+      "listing": "visualisation:004",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 81,
+      "original_sha256": "d2fa3703e0a48bbf6fdef1abf4d5422541707bec563706c4c0c0ad514cc2c5bd",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-04",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-04.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-04"
+      }
+    },
+    {
+      "listing": "visualisation:005",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 119,
+      "original_sha256": "f836761575996298dfdf4f31272da387c2e1a9b3758dfeb3509bbc83db0bbbb9",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-05",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-05.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-05"
+      }
+    },
+    {
+      "listing": "visualisation:006",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 169,
+      "original_sha256": "23e4ce5de9d82c6d4e3b5cb4f26f6785c5540ba99c3681426db8dd50bbf78b5a",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-06",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-06.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-06"
+      }
+    },
+    {
+      "listing": "visualisation:007",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 196,
+      "original_sha256": "6918bec5b2f99536e5acd1dccbbefc0302899f654206e740b97f01fcbbce8f83",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-07",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-07.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-07"
+      }
+    },
+    {
+      "listing": "visualisation:008",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 226,
+      "original_sha256": "d2be909f556ef13aaa40c8ec8b1d8a2c53a3c18cb39d23dfac8673c8157bb722",
+      "kind": "interface",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-08",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-08.ml"
+    },
+    {
+      "listing": "visualisation:009",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 234,
+      "original_sha256": "d53736d45ee93f1087ca01dce4fc9c4caafade950448341b11467831a62c16fc",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-09",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-09.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-09"
+      }
+    },
+    {
+      "listing": "visualisation:010",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 283,
+      "original_sha256": "3c13761349158fa4dd828700bda1fab3b82bb77dd4ddc2bccce692fdc2d23a46",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-10",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-10.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-10"
+      }
+    },
+    {
+      "listing": "visualisation:011",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 302,
+      "original_sha256": "f7e7d927233bdf565ec9d79b6e94e4f84c6c51d72594fc91403b578e22545741",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-11",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-11.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-11"
+      }
+    },
+    {
+      "listing": "visualisation:012",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 339,
+      "original_sha256": "a5262622672d59fba916815019b0af730123799f017bdbe1e01b1f52a0577589",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-12",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-12.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-12"
+      }
+    },
+    {
+      "listing": "visualisation:013",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 357,
+      "original_sha256": "a5ab34c3e7f8b7128c5627b471246434eaa1b4833c68c0a5d761de400321a742",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-13",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-13.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-13"
+      }
+    },
+    {
+      "listing": "visualisation:014",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 404,
+      "original_sha256": "660083bdcaf99bbbe00d17c3f2fab5208cbc177734a5ae5071ce3edd7279911f",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-14",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-14.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-14"
+      }
+    },
+    {
+      "listing": "visualisation:015",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 430,
+      "original_sha256": "6e2b13b5413e5e464f67881fcd27890371d89565636f8638b82929d89fdafd27",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-15",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-15.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-15"
+      }
+    },
+    {
+      "listing": "visualisation:016",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 453,
+      "original_sha256": "97fea0f6add06bd2cd11830958589ae357cc1aa0391481cbb689ed074af479de",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-16",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-16.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-16"
+      }
+    },
+    {
+      "listing": "visualisation:017",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 477,
+      "original_sha256": "13f5916aef313d774ec8144f2affcb91ce1380452856ec1cbfd8dee1aafd795f",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-17",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-17.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-17"
+      }
+    },
+    {
+      "listing": "visualisation:018",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 503,
+      "original_sha256": "2bb28439d151468765ad0c07ae378f6e5ae49d9bd8e3f3de3b27c63b6db754fd",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-18",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-18.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-18"
+      }
+    },
+    {
+      "listing": "visualisation:019",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 529,
+      "original_sha256": "17aea878614a9b51d14c6aa5e64d647eb976a4af5e9d9d13b26b39310f2c33e1",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-19",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-19.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-19"
+      }
+    },
+    {
+      "listing": "visualisation:020",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 553,
+      "original_sha256": "bef43932ab7cbddcdb22146e98a8ebd96caad4dd6f3a9c61e8bc823585ef6e26",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-20",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-20.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-20"
+      }
+    },
+    {
+      "listing": "visualisation:021",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 596,
+      "original_sha256": "f9db3391ebdef5c922a2a5cbff761f5ec655dbea9a9530b84fa9abe00cf8deb4",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-21",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-21.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-21"
+      }
+    },
+    {
+      "listing": "visualisation:022",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 621,
+      "original_sha256": "fb48618b7c232878488ed4e12489319545791ecca17f40a6cc0f622c12a29fd3",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-22",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-22.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-22"
+      }
+    },
+    {
+      "listing": "visualisation:023",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 645,
+      "original_sha256": "995e6c7661b00605d6a50ec9418ed7867263e3333a23b498d13a02fcfdf8d130",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-23",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-23.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-23"
+      }
+    },
+    {
+      "listing": "visualisation:024",
+      "manuscript": "book/chapters/visualisation.tex",
+      "line": 682,
+      "original_sha256": "423e963560f368ef3354b13a9190b1572accf02e205db3cda602fe1ca228c136",
+      "kind": "source",
+      "source": "code/chapB_visualisation/sessions/chapterB.ml",
+      "region": "example-24",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapterB/example-24.ml",
+      "display_source": {
+        "path": "code/chapB_visualisation/book_visualisation.ml",
+        "region": "example-24"
+      }
+    }
+  ]
+}

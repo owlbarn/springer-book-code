@@ -1,0 +1,193 @@
+{
+  "scope": "All 17 original Chapter 3 listings; canonical sequential REPL inputs, with fixed RNG initialization.",
+  "seed": 73,
+  "listings": [
+    {
+      "listing": "statistics:001",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 59,
+      "original_sha256": "fb531b13bea6eeb0c730e0c3dc1b81d49c07303086d065e2da459e9d714a513c",
+      "kind": "source",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "uniform-data",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/uniform-data.ml"
+    },
+    {
+      "listing": "statistics:002",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 65,
+      "original_sha256": "d0f7e5bf6685a26659628c34e3be28eceb53ae02f542a29766b499053f77651d",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "descriptive",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/descriptive.txt"
+    },
+    {
+      "listing": "statistics:003",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 85,
+      "original_sha256": "cbe1f2929654f462dab70600f49d85112c1897e06d0bc82d4c59b829c2a9fccb",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "central-moment",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/central-moment.txt"
+    },
+    {
+      "listing": "statistics:004",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 127,
+      "original_sha256": "c4130a5214b94ae7c911bcda0e1c6613091c916bfd5079e252f42df22453721f",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "coin-tosses",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/coin-tosses.txt"
+    },
+    {
+      "listing": "statistics:005",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 143,
+      "original_sha256": "0dab86ffbc875dffc471b8c5e4f722e4d9438cd382bb7a57ed07111f784f36f0",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "binomial-pmf",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/binomial-pmf.txt"
+    },
+    {
+      "listing": "statistics:006",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 163,
+      "original_sha256": "db4dc0f10ea9f13f1b1ad3396e5620497014eca2d8ded9c258eb9874601a8d33",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "binomial-cdf",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/binomial-cdf.txt"
+    },
+    {
+      "listing": "statistics:007",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 192,
+      "original_sha256": "76e63a58ec3fca40c4592b70dfbd9c72bbb0e8ba40f6f3738e241e43d1a3428d",
+      "kind": "source",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "gaussian-data",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/gaussian-data.ml"
+    },
+    {
+      "listing": "statistics:008",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 202,
+      "original_sha256": "98bac80263eea21781fadb1b1cb3409508b429ca1848b4ca87704be2decddc85",
+      "kind": "source",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "gaussian-histogram",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/gaussian-histogram.ml"
+    },
+    {
+      "listing": "statistics:009",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 348,
+      "original_sha256": "c2078bcad34b62baad9f0861b1c93b37c31c620f2bbb27e3b4b349388b189e52",
+      "kind": "source",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "correlated-data",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/correlated-data.ml"
+    },
+    {
+      "listing": "statistics:010",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 366,
+      "original_sha256": "36d262e9e6d7ead5424dbfff3cf1c201e9b9a1aa0e5a4206c9401f7c50c3a7cf",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "correlation",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/correlation.txt"
+    },
+    {
+      "listing": "statistics:011",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 412,
+      "original_sha256": "333bda9baf72f0337755abf8a0699dbb43e0e90b36b1ce86ef16c682e155fc96",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "normal-interval",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/normal-interval.txt"
+    },
+    {
+      "listing": "statistics:012",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 429,
+      "original_sha256": "c07adc1231f3a7c178d4e0b0bd02fbfd8699204cf630b821ce58a1df1282da45",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "student-interval",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/student-interval.txt"
+    },
+    {
+      "listing": "statistics:013",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 463,
+      "original_sha256": "5e563ee856b2307b47048ac2cf12e3f8f867a6c811d64ed347585980057166ae",
+      "kind": "source",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "hypothesis-data",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/hypothesis-data.ml"
+    },
+    {
+      "listing": "statistics:014",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 473,
+      "original_sha256": "4ece377758e6f504096e0bf2a9e4b350bc71e662272cd80bc2c72f330b185d28",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "z-null",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/z-null.txt"
+    },
+    {
+      "listing": "statistics:015",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 484,
+      "original_sha256": "e33a24aa60c6fd5097c28a0cfd62af87e91410451a9a3f635873c2125e26852a",
+      "kind": "interface",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "hypothesis-type",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/hypothesis-type.txt"
+    },
+    {
+      "listing": "statistics:016",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 494,
+      "original_sha256": "016def1f11d1d88e936fa12e487c5d56f81cf764ac67be712877d65d11e7f793",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "z-shift",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/z-shift.txt"
+    },
+    {
+      "listing": "statistics:017",
+      "manuscript": "book/chapters/statistics.tex",
+      "line": 521,
+      "original_sha256": "7a302121c28bd2ab6076d92817e485be49b00adaa6395452c845d27a9693b80b",
+      "kind": "transcript",
+      "source": "code/chap03_stats/sessions/chapter03.ml",
+      "region": "two-sample",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter03/two-sample.txt"
+    }
+  ]
+}

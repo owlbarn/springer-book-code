@@ -1,0 +1,7 @@
+{
+  "repository": "https://github.com/owlbarn/owl",
+  "revision": "cb198b9e3c9b0c0fee4ba7e8f760be825632ac4b",
+  "path": "src/owl/nlp/owl_nlp_lda.ml",
+  "sha256": "982ba5f83116c47cedc86ba87656be16d66ac96442ad1d57cfedaf4c95ea27ed",
+  "scope": "Original model, init and SimpleLDA sampler; unsupported alternative samplers excluded; read-only count copies and token diagnostic added."
+}

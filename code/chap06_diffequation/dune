@@ -1,7 +1,17 @@
+(library
+ (name book_ode)
+ (wrapped false)
+ (modules book_ode)
+ (libraries owl))
+
 (executables
-  (names  lorenz_01
-          lorenz_02
-          midpoints
-          )
-  (flags   :standard -w -33)
-  (libraries owl owl-plplot owl-ode))
+ (names lorenz_01 lorenz_02 midpoints)
+ (modules lorenz_01 lorenz_02 midpoints)
+ (flags (:standard -w -33))
+ (libraries book_ode owl owl-plplot owl-ode))
+
+(test
+ (name test_ode)
+ (modes exe)
+ (modules test_ode)
+ (libraries book_ode owl owl-ode owl-ode-odepack))

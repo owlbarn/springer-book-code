@@ -30,3 +30,5 @@ let plot_sine_2 () =
 
   Plot.plot_fun ~h ~spec:[ RGB (52,168,83); LineStyle 1] f 0. 0.05;
   Plot.output h
+
+let () = plot_sine_1 (); plot_sine_2 ()

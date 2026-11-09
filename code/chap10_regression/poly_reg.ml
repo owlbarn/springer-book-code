@@ -24,6 +24,7 @@
   *)
 
 open Owl
+let () = Owl_stats_prng.init 80
 open Owl_plplot
 
 let data = Owl_io.read_csv ~sep:' ' "boston.csv"
@@ -41,41 +42,41 @@ let plot_boston () =
   Plot.output h
 
 
-let poly () = 
-  let a = Regression.D.poly lstat medv 2 in 
-  let a0 = Mat.get a 0 0 in 
-  let a1 = Mat.get a 1 0 in 
-  let a2 = Mat.get a 2 0 in 
-  fun x -> a0 +. a1 *. x +. a2 *. x *. x 
-
-
-let poly4 () = 
-  let a = Regression.D.poly lstat medv 4 in 
-  let a0 = Mat.get a 0 0 in 
-  let a1 = Mat.get a 1 0 in 
-  let a2 = Mat.get a 2 0 in 
-  let a3 = Mat.get a 3 0 in 
-  let a4 = Mat.get a 4 0 in 
+let poly () =
+  let a = Regression.D.poly lstat medv 2 in
+  let a0 = Mat.get a 0 0 in
+  let a1 = Mat.get a 1 0 in
+  let a2 = Mat.get a 2 0 in
   fun x -> a0 +. a1 *. x +. a2 *. x *. x
-    +. a3 *. x *. x *. x +. a4 *. x *. x *. x *. x 
 
 
-let poly6 () = 
-  let a = Regression.D.poly lstat medv 6 in 
-  let a0 = Mat.get a 0 0 in 
-  let a1 = Mat.get a 1 0 in 
-  let a2 = Mat.get a 2 0 in 
-  let a3 = Mat.get a 3 0 in 
-  let a4 = Mat.get a 4 0 in 
-  let a5 = Mat.get a 5 0 in 
-  let a6 = Mat.get a 6 0 in 
+let poly4 lstat medv =
+  let a = Regression.D.poly lstat medv 4 in
+  let a0 = Mat.get a 0 0 in
+  let a1 = Mat.get a 1 0 in
+  let a2 = Mat.get a 2 0 in
+  let a3 = Mat.get a 3 0 in
+  let a4 = Mat.get a 4 0 in
   fun x -> a0 +. a1 *. x +. a2 *. x *. x
-    +. a3 *. x *. x *. x +. a4 *. x *. x *. x *. x 
-    +. a5 *. x *. x *. x *. x *. x 
-    +. a6 *. x *. x *. x *. x *. x *. x 
+    +. a3 *. x *. x *. x +. a4 *. x *. x *. x *. x
 
 
-let plot_poly () = 
+let poly6 lstat medv =
+  let a = Regression.D.poly lstat medv 6 in
+  let a0 = Mat.get a 0 0 in
+  let a1 = Mat.get a 1 0 in
+  let a2 = Mat.get a 2 0 in
+  let a3 = Mat.get a 3 0 in
+  let a4 = Mat.get a 4 0 in
+  let a5 = Mat.get a 5 0 in
+  let a6 = Mat.get a 6 0 in
+  fun x -> a0 +. a1 *. x +. a2 *. x *. x
+    +. a3 *. x *. x *. x +. a4 *. x *. x *. x *. x
+    +. a5 *. x *. x *. x *. x *. x
+    +. a6 *. x *. x *. x *. x *. x *. x
+
+
+let plot_poly () =
   let h = Plot.create "reg_poly.png" in
   Plot.scatter ~h ~spec:[ MarkerSize 5.] lstat medv;
   Plot.set_xlabel h "lstat";
@@ -84,17 +85,17 @@ let plot_poly () =
   Plot.output h
 
 
-let plot_poly4 () = 
+let plot_poly4 () =
   let h = Plot.create "reg_poly4.png" in
   Plot.scatter ~h lstat medv;
-  Plot.plot_fun ~h (poly4 ()) 2. 36.;
+  Plot.plot_fun ~h (poly4 lstat medv) 2. 36.;
   Plot.output h
 
 
-let plot_poly6 () = 
+let plot_poly6 () =
   let h = Plot.create "reg_poly6.png" in
   Plot.scatter ~h lstat medv;
-  Plot.plot_fun ~h (poly6 ()) 2. 36.;
+  Plot.plot_fun ~h (poly6 lstat medv) 2. 36.;
   Plot.output h
 
 
@@ -114,66 +115,50 @@ let plot_sub () =
   Plot.scatter ~h slstat smedv;
   Plot.output h
 
-let plot_poly4s () = 
+let plot_poly4s () =
   let h = Plot.create "reg_poly4s.png" in
   Plot.scatter ~h slstat smedv;
-  Plot.plot_fun ~h (poly4 ()) 2. 36.;
+  Plot.plot_fun ~h (poly4 slstat smedv) 2. 36.;
   Plot.output h
 
-let plot_poly6s () = 
+let plot_poly6s () =
   let h = Plot.create "reg_poly6s.png" in
   Plot.scatter ~h slstat smedv;
-  Plot.plot_fun ~h (poly6 ()) 2. 36.;
+  Plot.plot_fun ~h (poly6 slstat smedv) 2. 36.;
   Plot.output h
 
 
 open Optimise.D
 open Optimise.D.Algodiff
 
-let poly_ridge ~alpha x y n =
-    let z =
-      Array.init (n + 1) (fun i -> A.(pow_scalar x (float_of_int i |> float_to_elt)))
-    in
-    let x = A.concatenate ~axis:1 z in
-    let params =
-      Params.config
-        ~batch:Batch.Full
-        ~learning_rate:(Learning_Rate.Const 1.)
-        ~gradient:Gradient.Newton
-        ~loss:Loss.Quadratic
-        ~regularisation:(Regularisation.L2norm alpha)
-        ~verbosity:false
-        ~stopping:(Stopping.Const 1e-16)
-        100.
-    in
-    (Regression.D._linear_reg false params x y).(0)
+let poly_ridge = Book_regression.poly_ridge
 
 module M = Dense.Matrix.D
 
-let poly4_reg lstat medv = 
-  let a = poly_ridge ~alpha:20. lstat medv 4 in 
-  let a0 = M.get a 0 0 in 
-  let a1 = M.get a 1 0 in 
-  let a2 = M.get a 2 0 in 
-  let a3 = M.get a 3 0 in 
-  let a4 = M.get a 4 0 in 
+let poly4_reg lstat medv =
+  let a = poly_ridge ~alpha:20. lstat medv 4 in
+  let a0 = M.get a 0 0 in
+  let a1 = M.get a 1 0 in
+  let a2 = M.get a 2 0 in
+  let a3 = M.get a 3 0 in
+  let a4 = M.get a 4 0 in
   fun x -> a0 +. a1 *. x +. a2 *. x *. x
-    +. a3 *. x *. x *. x +. a4 *. x *. x *. x *. x 
+    +. a3 *. x *. x *. x +. a4 *. x *. x *. x *. x
 
-let plot_poly4s_reg () = 
+let plot_poly4s_reg () =
   let h = Plot.create "reg_poly4s_reg.png" in
   Plot.scatter ~h slstat smedv;
   Plot.plot_fun ~h (poly4_reg slstat smedv) 2. 36.;
   Plot.output h
 
 let plot_exp ()  =
-  let a, b, e = Regression.D.exponential lstat medv in 
-  let f1 x = a *. Owl_maths.exp ((-1.) *. b *. x) +. e in  
-  let f2 x = a *. Owl_maths.exp ((-1.) *. e *. x) +. b in  
-  let f3 x = b *. Owl_maths.exp ((-1.) *. a *. x) +. e in  
-  let f4 x = b *. Owl_maths.exp ((-1.) *. e *. x) +. a in  
-  let f5 x = e *. Owl_maths.exp ((-1.) *. a *. x) +. b in  
-  let f6 x = e *. Owl_maths.exp ((-1.) *. b *. x) +. a in  
+  let a, b, e = Regression.D.exponential lstat medv in
+  let f1 x = a *. Owl_maths.exp ((-1.) *. b *. x) +. e in
+  let f2 x = a *. Owl_maths.exp ((-1.) *. e *. x) +. b in
+  let f3 x = b *. Owl_maths.exp ((-1.) *. a *. x) +. e in
+  let f4 x = b *. Owl_maths.exp ((-1.) *. e *. x) +. a in
+  let f5 x = e *. Owl_maths.exp ((-1.) *. a *. x) +. b in
+  let f6 x = e *. Owl_maths.exp ((-1.) *. b *. x) +. a in
   let h = Plot.create "fit_exp.png" in
   Plot.scatter ~h lstat medv;
   Plot.plot_fun ~h f1 2. 36.;
@@ -183,3 +168,7 @@ let plot_exp ()  =
   Plot.plot_fun ~h f5 2. 36.;
   Plot.plot_fun ~h f6 2. 36.;
   Plot.output h
+
+let () =
+  Owl_stats_prng.init 80;
+  plot_boston (); plot_poly (); plot_sub (); plot_poly4s (); plot_poly4s_reg ()

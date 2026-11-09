@@ -1,0 +1,316 @@
+{
+  "scope": "26 original Chapter 6 displays; three SUNDIALS-dependent source blocks restored but explicitly unexecuted on OCaml 5.",
+  "seed": 76,
+  "matrix_printer": true,
+  "blocked_regions": {
+    "cvode": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2.",
+    "vdp-cvode": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2.",
+    "vdp-cvode-plot": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2."
+  },
+  "listings": [
+    {
+      "listing": "diffequation:001",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 109,
+      "original_sha256": "a11779205361a8e1c2b55d9df8d3959707270a946949353503fa8ca5aec0c8e2",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "euler-loop",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/euler-loop.ml"
+    },
+    {
+      "listing": "diffequation:002",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 123,
+      "original_sha256": "6f7c708dded57cfeda5c8197ba2b3791f7b40bef363e35700c6de50b890d5f48",
+      "kind": "transcript",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "analytic-result",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/analytic-result.txt"
+    },
+    {
+      "listing": "diffequation:003",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 138,
+      "original_sha256": "0da398d3a454e2f139fdd30efeb5679e5b36c37d86ef8df0cc0b8199a79999f2",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "euler-midpoint",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/euler-midpoint.ml",
+      "display_source": {
+        "path": "code/chap06_diffequation/book_ode.ml",
+        "region": "euler-midpoint"
+      }
+    },
+    {
+      "listing": "diffequation:004",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 220,
+      "original_sha256": "a8479dcdbbb107e631e30aa8c5865421da12f28bbcbaa06e2fd0924413701a3e",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "linear-system",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/linear-system.ml"
+    },
+    {
+      "listing": "diffequation:005",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 228,
+      "original_sha256": "0f04c43484b51293cfbb7e0b164159c5c77c45b8f664a5b50c85f42702f4a307",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "time-specification",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/time-specification.ml"
+    },
+    {
+      "listing": "diffequation:006",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 235,
+      "original_sha256": "4fefdc7e96499c7baa3265d46b33fde7fb5c9b39b8955e18caea748a71ba2fdf",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "initial-state",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/initial-state.ml"
+    },
+    {
+      "listing": "diffequation:007",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 242,
+      "original_sha256": "d571d71ed1b02849f248bfdc78c87c38295af4c1ed6d5b89c02170abda975dbe",
+      "kind": "transcript",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "rk4-solution",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/rk4-solution.txt"
+    },
+    {
+      "listing": "diffequation:008",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 268,
+      "original_sha256": "1cbc458c3019e3aabbde55949c8a2bf930fdc23d56d0fbabf8913f7e4df4951c",
+      "kind": "interface",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "rk4-interface",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/rk4-interface.txt"
+    },
+    {
+      "listing": "diffequation:009",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 327,
+      "original_sha256": "35a2b55695a616766277609684c24ec4c242c8a8a710bbc67060320be07352a6",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "oscillator",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/oscillator.ml"
+    },
+    {
+      "listing": "diffequation:010",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 368,
+      "original_sha256": "16835cf3577d3192d4811dc90e8aaf9db5d7c54132d6173b27c93879dfff4c42",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "cvode",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/cvode.ml",
+      "execution_status": "blocked",
+      "reason": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2."
+    },
+    {
+      "listing": "diffequation:011",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 391,
+      "original_sha256": "50766f6539dac7db6628652d8753d7d3c9f76ed628a61e70dd4e19ea2438ba64",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "adaptive-solver",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/adaptive-solver.ml"
+    },
+    {
+      "listing": "diffequation:012",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 404,
+      "original_sha256": "ce05344c227ed90f36baa4f906c2fe783359a19e7f0d114ff4a69df4006c9292",
+      "kind": "transcript",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "adaptive-result",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/adaptive-result.txt"
+    },
+    {
+      "listing": "diffequation:013",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 436,
+      "original_sha256": "34e77d54d15bb5bc869d41d660ecae6e772bcd27bd0a1917e02398612903b5e4",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "two-body",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/two-body.ml"
+    },
+    {
+      "listing": "diffequation:014",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 459,
+      "original_sha256": "1788167e59c2d3312b94c3c08fb50c8b66a233ce88f92092e68193cb7c82533c",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "two-body-plot",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/two-body-plot.ml"
+    },
+    {
+      "listing": "diffequation:015",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 499,
+      "original_sha256": "95abc28006134bee52bffd244f5dd67678769ce6e4eab3dc1800944de100a277",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "lorenz-system",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/lorenz-system.ml"
+    },
+    {
+      "listing": "diffequation:016",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 513,
+      "original_sha256": "5bf77ec4e5498d20cff471c0305d12ac06ada918ff7644c10b638d632d995a72",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "lorenz-plot",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/lorenz-plot.ml"
+    },
+    {
+      "listing": "diffequation:017",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 542,
+      "original_sha256": "5dc5ad041991f48edfdffb837a5aca138f568150e8b47eac1f0eaff12d1537ac",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "lorenz-perturbation",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/lorenz-perturbation.ml"
+    },
+    {
+      "listing": "diffequation:018",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 551,
+      "original_sha256": "910aab9316c83e5ca7eef38612dee9c739c4ceeb5bb6f167d999d12dec073a49",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "shared-times",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/shared-times.ml"
+    },
+    {
+      "listing": "diffequation:019",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 562,
+      "original_sha256": "9e2fa69183a9ac38549e93f2786af4f5251422e937ae5f3243bfb09dd6d18253",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "lorenz-distance",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/lorenz-distance.ml"
+    },
+    {
+      "listing": "diffequation:020",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 611,
+      "original_sha256": "4e0a700f7d5cd68f39ad679190060e4f239261a115d07d0ca114d7bcde5e9727",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "damped-force",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/damped-force.ml"
+    },
+    {
+      "listing": "diffequation:021",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 619,
+      "original_sha256": "11ab78baf4912884961ea80ab0c67dd016be81e8ef8aeb7228926f9db78e8980",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "symplectic-solvers",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/symplectic-solvers.ml"
+    },
+    {
+      "listing": "diffequation:022",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 639,
+      "original_sha256": "74a7ce5b864abf56b773c16f93be7d18b7f3011f2e4ae1a2007b3b5ef85d2664",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "symplectic-plot",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/symplectic-plot.ml"
+    },
+    {
+      "listing": "diffequation:023",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 681,
+      "original_sha256": "b3806c2db1ee22791f3ef57cdfd3006cf5e23e02a7aa09c303dfe0848fc8e334",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "van-der-pol",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/van-der-pol.ml"
+    },
+    {
+      "listing": "diffequation:024",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 699,
+      "original_sha256": "c2c1486a1d91c438d7b9ed18493a40f9c50240a4494edaa384efd17332a05065",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "vdp-cvode",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/vdp-cvode.ml",
+      "execution_status": "blocked",
+      "reason": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2."
+    },
+    {
+      "listing": "diffequation:025",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 710,
+      "original_sha256": "b92de85bf751088d6bb01dbd3e1c635ad332d05300edb08d7bb56861933ce6b0",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "vdp-cvode-plot",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/vdp-cvode-plot.ml",
+      "execution_status": "blocked",
+      "reason": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2."
+    },
+    {
+      "listing": "diffequation:026",
+      "manuscript": "book/chapters/diffequation.tex",
+      "line": 749,
+      "original_sha256": "ba77a07b75a8610980ac76f520c0dc8160986eb1ad647ef33f7835bd51337941",
+      "kind": "source",
+      "source": "code/chap06_diffequation/sessions/chapter06.ml",
+      "region": "vdp-lsoda",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter06/vdp-lsoda.ml"
+    }
+  ],
+  "interactive_packages": [
+    "owl-ode",
+    "owl-ode-odepack"
+  ],
+  "interactive_opens": [
+    "Owl_ode",
+    "Owl_ode.Types"
+  ]
+}

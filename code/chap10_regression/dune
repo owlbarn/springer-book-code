@@ -1,8 +1,14 @@
+(library
+ (name book_regression)
+ (wrapped false)
+ (modules book_regression)
+ (libraries owl))
 (executables
-  (names   plot_reg
-           gaussian_kernel
-           mul_reg
-           poly_reg
-           svm)
-  (flags   :standard -w -33)
-  (libraries owl owl-plplot))
+ (names plot_reg gaussian_kernel mul_reg poly_reg svm)
+ (modules plot_reg gaussian_kernel mul_reg poly_reg svm)
+ (flags :standard -w -33)
+ (libraries book_regression owl owl-plplot))
+(test
+ (name test_regression)
+ (modules test_regression)
+ (libraries book_regression owl))

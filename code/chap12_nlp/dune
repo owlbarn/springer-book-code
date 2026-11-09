@@ -1,0 +1,13 @@
+(library
+ (name book_nlp)
+ (wrapped false)
+ (modules book_nlp book_lda)
+ (libraries owl str unix))
+(executable
+ (name chapter12_native)
+ (modules chapter12_native)
+ (libraries book_nlp owl owl-plplot str unix))
+(executable
+ (name dirichlet)
+ (modules dirichlet)
+ (libraries owl owl-plplot))

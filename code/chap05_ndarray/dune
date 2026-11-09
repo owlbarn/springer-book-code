@@ -1,0 +1,10 @@
+(library
+ (name book_ndarray)
+ (wrapped false)
+ (modules book_ndarray)
+ (libraries owl))
+
+(test
+ (name test_ndarray)
+ (modules test_ndarray)
+ (libraries book_ndarray owl))

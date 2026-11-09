@@ -1,0 +1,22 @@
+{
+  "scope": "Investigation only: no replacement historical CSV is bundled or treated as the first-edition snapshot.",
+  "sunspot_full.csv": {
+    "source": "https://www.sidc.be/SILSO/DATA/SN_y_tot_V2.0.csv",
+    "license_page": "https://www.sidc.be/SILSO/datafiles",
+    "current_license": "CC BY-NC 4.0",
+    "local_probe_sha256": "0ccb2104b03f2f0c4ad151c97f8721139414cae288a039cdeb37ee36c9e35b6d",
+    "status": "Original 1700-2020 snapshot missing; current source and publication/redistribution terms need author review."
+  },
+  "touchtone.csv": {
+    "source": "https://www.mathworks.com/matlabcentral/fileexchange/37976-numerical-computing-with-matlab",
+    "license_page": "https://addons.mathworks.com/downloads/e5/e5905be8-4a80-11e4-9553-005056977bd0/2.0.0/license.txt",
+    "status": "Original CSV absent; official archive returned HTTP 403. Current listed limited license is not a general redistribution grant. Do not silently substitute a new phone signal."
+  },
+  "goog.csv": {
+    "source": "https://query1.finance.yahoo.com/v8/finance/chart/GOOG",
+    "period": "2019-04-09 through 2020-04-09",
+    "local_probe_rows": 254,
+    "printed_rows": 251,
+    "status": "Original CSV missing; current official response is not authenticated as that snapshot. No raw quotes are bundled."
+  }
+}

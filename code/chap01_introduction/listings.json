@@ -1,0 +1,43 @@
+{
+  "scope": "Both original introductory code examples; corrected formula agrees with the printed equation and actual CNN forward properties.",
+  "seed": 101,
+  "interactive_packages": [
+    "owl"
+  ],
+  "interactive_opens": [
+    "Owl"
+  ],
+  "interactive_module_source": "/opt/book/code/chap01_introduction/book_introduction.ml",
+  "listings": [
+    {
+      "listing": "introduction:001",
+      "manuscript": "book/chapters/introduction.tex",
+      "line": 76,
+      "original_sha256": "c0341a08728eebeb3f4a7cb18a0de2ed366625bd2ecd18b84a221a174b2b27ef",
+      "kind": "source",
+      "source": "code/chap01_introduction/sessions/chapter01.ml",
+      "region": "black-scholes",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter01/black-scholes.ml",
+      "display_source": {
+        "path": "code/chap01_introduction/book_introduction.ml",
+        "region": "black-scholes"
+      }
+    },
+    {
+      "listing": "introduction:002",
+      "manuscript": "book/chapters/introduction.tex",
+      "line": 91,
+      "original_sha256": "f8434cdaeaebf5f988e6a955e556d51752ec1e87b57379b8fa85d9029d6e9a5e",
+      "kind": "source",
+      "source": "code/chap01_introduction/sessions/chapter01.ml",
+      "region": "network",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter01/network.ml",
+      "display_source": {
+        "path": "code/chap01_introduction/book_introduction.ml",
+        "region": "network"
+      }
+    }
+  ]
+}

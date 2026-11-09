@@ -13,7 +13,7 @@ let f y _t =
   let y2' = y.(0) *. y.(1) -. beta *. y.(2) in
   [| [|y0'; y1'; y2'|] |] |> Mat.of_arrays
 
-let y0 = Mat.of_array [|-1.; 0.; 0.5; 0.5|] 1 4
+let y0 = Mat.of_array [|-1.; 0.; 0.5|] 1 3
 let tspec = Owl_ode.Types.(T1 {
   t0 = 0.;
   duration = 20.;

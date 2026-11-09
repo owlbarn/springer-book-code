@@ -1,0 +1,157 @@
+{
+  "scope": "All 13 active Chapter 9 blocks, including actual numerical output and optimizer logging.",
+  "seed": 79,
+  "interactive_opens": [
+    "Owl_plplot"
+  ],
+  "listings": [
+    {
+      "listing": "optimisation:001",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 64,
+      "original_sha256": "d6524f9b86ff5966fd641a5b2c2900a415f8f095ef47aefbfb1d725b7fd28bd0",
+      "kind": "source",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "newton-root",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/newton-root.ml"
+    },
+    {
+      "listing": "optimisation:002",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 81,
+      "original_sha256": "26d70a0a1ca7102697bcebbba742929eb5c3a95c737406b85ee39e17cd208c2a",
+      "kind": "interface",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "newton-root",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/newton-root-output.txt",
+      "output_pattern": "^\\d+\\.\\d{15}$",
+      "output_lines": 7
+    },
+    {
+      "listing": "optimisation:003",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 104,
+      "original_sha256": "b8e5838ef1552f4fe9b6ea2f5534b75c22c83c4ea1a2cc060de111b2639b980c",
+      "kind": "transcript",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "brent-root",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/brent-root.txt"
+    },
+    {
+      "listing": "optimisation:004",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 127,
+      "original_sha256": "8ec3f892029ec66aff184835c6409e990f15b0cdfba5426cad37e9821af83040",
+      "kind": "source",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "humps",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/humps.ml"
+    },
+    {
+      "listing": "optimisation:005",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 163,
+      "original_sha256": "b0ac2895470b56e4b13b3a27fdb1cac36934aeb7b90934344d79ab47a5fed6dc",
+      "kind": "transcript",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "critical-points",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/critical-points.txt"
+    },
+    {
+      "listing": "optimisation:006",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 265,
+      "original_sha256": "273a6c577d073f8902e68732e5b576015b8b6a684cb96886ce633aba2a631cd0",
+      "kind": "source",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "rosenbrock",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/rosenbrock.ml"
+    },
+    {
+      "listing": "optimisation:007",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 278,
+      "original_sha256": "aa1dbe2681a59cf879642313f010457535bf3975f6e3120217c181857c99c348",
+      "kind": "source",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "gradient-init",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/gradient-init.ml"
+    },
+    {
+      "listing": "optimisation:008",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 288,
+      "original_sha256": "2cbedb7edbaa0b40750cf4f2ca3939e4134336658c64db518ea5ae3c188fcec7",
+      "kind": "source",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "gradient-steps",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/gradient-steps.ml"
+    },
+    {
+      "listing": "optimisation:009",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 299,
+      "original_sha256": "48458b8d227a40525b5d812c9a672326029232bc56edfb4aed8ab014df4cea9c",
+      "kind": "source",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "gradient-plot",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/gradient-plot.ml"
+    },
+    {
+      "listing": "optimisation:010",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 339,
+      "original_sha256": "4f2d6f63e48e3e0fef8e6669ce36d38a7b50d99061fa7650887bf1e42e9c51b3",
+      "kind": "source",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "owl-parameters",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/owl-parameters.ml"
+    },
+    {
+      "listing": "optimisation:011",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 349,
+      "original_sha256": "51232bd39d73376863af6d39798d5c1c61fccde23c513135c71bf6509076fb99",
+      "kind": "source",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "owl-minimise",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/owl-minimise.ml"
+    },
+    {
+      "listing": "optimisation:012",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 356,
+      "original_sha256": "3b3c59afa1d9073066c9a2cd6355c09a7cf425d369990622c0a10c845964518d",
+      "kind": "interface",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "owl-minimise",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/owl-log.txt",
+      "strip_ansi": true,
+      "output_pattern": "T: [^\\n]*? L: [0-9.]+",
+      "output_lines": 10
+    },
+    {
+      "listing": "optimisation:013",
+      "manuscript": "book/chapters/optimisation.tex",
+      "line": 419,
+      "original_sha256": "9de1edc015aca6faf901479839c592f8bf359ec185acce83cc8e3920e60e8534",
+      "kind": "source",
+      "source": "code/chap09_optimisation/sessions/chapter09.ml",
+      "region": "newton-optimise",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter09/newton-optimise.ml"
+    }
+  ]
+}

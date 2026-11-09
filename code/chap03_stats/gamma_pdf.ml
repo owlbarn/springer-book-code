@@ -20,7 +20,7 @@ let _ =
   let open Plot in
   set_xlabel h "";
   set_ylabel h "";
-  set_title h "Gamma distribution probablility density functions";
+  set_title h "Gamma distribution probability density functions";
   plot ~h ~spec:[ RGB (66, 133, 244); LineStyle 1; LineWidth 2. ] x y1;
   plot ~h ~spec:[ RGB (219, 68,  55); LineStyle 1; LineWidth 2. ] x y2;
   plot ~h ~spec:[ RGB (244, 180,  0); LineStyle 1; LineWidth 2. ] x y3;

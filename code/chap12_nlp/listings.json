@@ -1,0 +1,391 @@
+{
+  "scope": "27 original listings, including two text quotations; full 130000-line news input and 1000 native LDA iterations.",
+  "seed": 82,
+  "matrix_printer": {
+    "rows": 4,
+    "columns": 8
+  },
+  "interactive_packages": [
+    "owl",
+    "str"
+  ],
+  "interactive_module_sources": [
+    "/opt/book/code/chap12_nlp/book_lda.ml",
+    "/opt/book/code/chap12_nlp/book_nlp.ml"
+  ],
+  "export_from_baked_verification": true,
+  "support_scripts": [
+    "scripts/prepare_news.py"
+  ],
+  "listings": [
+    {
+      "listing": "nlp:001",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 40,
+      "original_sha256": "2ff07194c235d938734ee3e5a5bd1e76ef7b37a0839ff9d39f47f5e9c326b399",
+      "kind": "illustration",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "news-quote",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/news-quote.txt",
+      "text": "a brazilian man who earns a living by selling space for tattoo\nadverts on his body is now looking for a customer for his\nforehead , it appears ... borim says when clients do n't pay\nor cancel an ad , he crosses them out . \" skinvertising \"\ncaused a stir in the mid-2000s , when many dot.com companies\nexperimented with it..."
+    },
+    {
+      "listing": "nlp:002",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 59,
+      "original_sha256": "187983727117ba8a1f73d316cb126a55375b98c91c4c2855c0fbe7cd46cc6ce3",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "preprocess",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/preprocess.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "preprocess"
+      }
+    },
+    {
+      "listing": "nlp:003",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 74,
+      "original_sha256": "46889d83d002a787a62e61bb771da6cc9d36904f57ed31ce0dcc8389c5bd7bfc",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "vocabulary",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/vocabulary.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "vocabulary"
+      }
+    },
+    {
+      "listing": "nlp:004",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 83,
+      "original_sha256": "1d91b15e62c0a352bf7d31256b2f05c4d3f8e62440a6a52fdc04bd2fe1991bd3",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "print-freq",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/print-freq.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "print-freq"
+      }
+    },
+    {
+      "listing": "nlp:005",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 90,
+      "original_sha256": "3504c9537dfcf25febc9d561795f6d8eb0e4f4ca8423a260094279e5a9e968fb",
+      "kind": "interface",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "frequent",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/frequent.txt"
+    },
+    {
+      "listing": "nlp:006",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 96,
+      "original_sha256": "ca344e504c0785d84cd7b2eeb0918195665de4f87f45536ebbfc779faae206ac",
+      "kind": "interface",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "rare",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/rare.txt"
+    },
+    {
+      "listing": "nlp:007",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 104,
+      "original_sha256": "dcc883ba16b8838d3b568f76c26e6b7da5bdbd5d5ed9e13a1856e301a16e9ffb",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "trim-vocabulary",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/trim-vocabulary.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "trim-vocabulary"
+      }
+    },
+    {
+      "listing": "nlp:008",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 110,
+      "original_sha256": "a8a58374182e1cdbff3091ab0ea9f6b8eeb00a570c0a4db1c788e5c752745415",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "tokenise",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/tokenise.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "tokenise"
+      }
+    },
+    {
+      "listing": "nlp:009",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 117,
+      "original_sha256": "43fe48dc90fe37be2180ba134cd85a5528bab48049714afacdb04ea9ea59d010",
+      "kind": "transcript",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "tokens",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/tokens.txt"
+    },
+    {
+      "listing": "nlp:010",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 123,
+      "original_sha256": "176894011acd487699013134a78b9f0b1e7acb028c28526e944a91f503702b57",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "tokenise-all",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/tokenise-all.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "tokenise-all"
+      }
+    },
+    {
+      "listing": "nlp:011",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 148,
+      "original_sha256": "292d7183292e65254e841a2b4a01b2c0ac64af13cd8f81306f8158ca2b851b88",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "corpus",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/corpus.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "corpus"
+      }
+    },
+    {
+      "listing": "nlp:012",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 159,
+      "original_sha256": "cb39a87e37dca564381639b967b84dba05fd8356ba83601f61f6c25ae5f45357",
+      "kind": "native-output",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "corpus-output",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/corpus-output.txt",
+      "command_index": 1,
+      "start_marker": "BOOK_CORPUS_BEGIN",
+      "end_marker": "BOOK_CORPUS_END"
+    },
+    {
+      "listing": "nlp:013",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 228,
+      "original_sha256": "cb5ba91547c0cf00e6ab87976671dea98b9736f326951a1a913c2a0cebc512a5",
+      "kind": "illustration",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "poe-quote",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/poe-quote.txt",
+      "text": "...with a gesture of desperation, he tore the mask from his face\nand hurled it upon the ground."
+    },
+    {
+      "listing": "nlp:014",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 251,
+      "original_sha256": "2bdaffa83d0836379a9aaae0ec0b7148b4e1ed959d895c3ca09c373d80cd992c",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "term-count",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/term-count.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "term-count"
+      }
+    },
+    {
+      "listing": "nlp:015",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 263,
+      "original_sha256": "0483f0f27874a7fd5e40a4ec948040f5e8afc11bc9211b5729b4a4dacdac80d6",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "bag-of-words",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/bag-of-words.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "bag-of-words"
+      }
+    },
+    {
+      "listing": "nlp:016",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 290,
+      "original_sha256": "bf7d9767e2b73885017b1f5517ac876f8047631dfc5eaa8230663fa8938eea31",
+      "kind": "interface",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "tf-types",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/tf-types.txt"
+    },
+    {
+      "listing": "nlp:017",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 302,
+      "original_sha256": "2940b8be3b7abb25913fe0a9ea12fd5ab85d673b20fc5327281090e5697f4cf1",
+      "kind": "interface",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "df-types",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/df-types.txt"
+    },
+    {
+      "listing": "nlp:018",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 311,
+      "original_sha256": "834dddcc60ca74f7d2aa81b3a740b1cdae92cee2628d1e74f8d2f42fa64c2d29",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "tfidf",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/tfidf.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "tfidf"
+      }
+    },
+    {
+      "listing": "nlp:019",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 324,
+      "original_sha256": "b5c96c07fe777aaab0fa33033c4bef18991602e2e7275c3de7823072ec581419",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "tfidf-query",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/tfidf-query.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "tfidf-query"
+      }
+    },
+    {
+      "listing": "nlp:020",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 334,
+      "original_sha256": "8f8863fe6e6fd37af7ecc393b3d36dc96b6597b357133e2af684d4a1e6b93563",
+      "kind": "interface",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "knn",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/knn.txt"
+    },
+    {
+      "listing": "nlp:021",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 504,
+      "original_sha256": "efe6d84704d7c37744cce312711bbb8a539fbb1b568189ca4963f263a9fe1f91",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "lda",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/lda.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "lda"
+      }
+    },
+    {
+      "listing": "nlp:022",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 515,
+      "original_sha256": "cddf878fda0d1db02529b2461636a990f99aea585ac7600600615caf3d4e2a4e",
+      "kind": "interface",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "document-topics",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/document-topics.txt"
+    },
+    {
+      "listing": "nlp:023",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 529,
+      "original_sha256": "a3044e06d8fd6e2c12e17949954894ffa66b910490711efa605b24e3768be25f",
+      "kind": "interface",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "word-topics",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/word-topics.txt"
+    },
+    {
+      "listing": "nlp:024",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 542,
+      "original_sha256": "cbfd6066e06bba72c4faad3bf21f364a99310d4aed875438326d20b564353a83",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "get-topics",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/get-topics.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "get-topics"
+      }
+    },
+    {
+      "listing": "nlp:025",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 634,
+      "original_sha256": "6c08cec8f5034c541e604aef09a1f8c3bea69b7451f0524a6eb8b10a4eab2854",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "all-distances",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/all-distances.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "all-distances"
+      }
+    },
+    {
+      "listing": "nlp:026",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 645,
+      "original_sha256": "e70459ad7a8c02c00495cf2356be017c75b6d71f920fcb15c9e2ffdb85e7cd38",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "linear-query",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/linear-query.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "linear-query"
+      }
+    },
+    {
+      "listing": "nlp:027",
+      "manuscript": "book/chapters/nlp.tex",
+      "line": 654,
+      "original_sha256": "f7d3534a2c1c653325a9ffd5f41823fe1530a8d164299cb0f85e15b374d7b9e0",
+      "kind": "source",
+      "source": "code/chap12_nlp/sessions/chapter12.ml",
+      "region": "matrix-query",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter12/matrix-query.ml",
+      "display_source": {
+        "path": "code/chap12_nlp/book_nlp.ml",
+        "region": "matrix-query"
+      }
+    }
+  ],
+  "interactive_opens": [
+    "Owl"
+  ]
+}

@@ -26,3 +26,5 @@ let plot () =
   Plot.plot ~h x y3;
   Plot.plot ~h x y4;
   Plot.output h
+
+let () = plot ()

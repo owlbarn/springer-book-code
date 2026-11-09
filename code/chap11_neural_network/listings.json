@@ -1,0 +1,380 @@
+{
+  "scope": "32 active Chapter 11 listings including actual MNIST training and architecture calls.",
+  "seed": 81,
+  "random_seed": 81,
+  "matrix_printer": {
+    "rows": 4,
+    "columns": 10
+  },
+  "interactive_opens": [
+    "Owl_plplot"
+  ],
+  "listings": [
+    {
+      "listing": "neural-network:001",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 76,
+      "original_sha256": "b9b9e50c7c6e3dce2d1aec0558ada3d07a7ad27da77ea6cf9e9cdfd40884d3ed",
+      "kind": "transcript",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "mnist-shapes",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/mnist-shapes.txt",
+      "omit_output": [
+        0
+      ]
+    },
+    {
+      "listing": "neural-network:002",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 89,
+      "original_sha256": "eed09b9b4a52a9f26534ec10a328c83b66ecdd3b026a28d7af24219e8617727b",
+      "kind": "interface",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "mnist-labels",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/mnist-labels.txt"
+    },
+    {
+      "listing": "neural-network:003",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 113,
+      "original_sha256": "673f8df7a1137530f75f0297a72ab199fa4b9e00f82e2b7026a23bd1a24977ba",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "two-layer",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/two-layer.ml"
+    },
+    {
+      "listing": "neural-network:004",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 145,
+      "original_sha256": "45e6bba6f9750ddc60e84cfde3856659d39403361297da1b9c786dd183484721",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "binary-loss",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/binary-loss.ml"
+    },
+    {
+      "listing": "neural-network:005",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 160,
+      "original_sha256": "8a22a4a91671ebd9cf596fd492844f2778974a8c14ae58c119f42e082326c631",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "first-backprop",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/first-backprop.ml"
+    },
+    {
+      "listing": "neural-network:006",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 184,
+      "original_sha256": "904b3e6af594156887ff604e7ee7b85d48d2a9a1a3eb43a93dd8a4ad84728905",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "layer-types",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/layer-types.ml"
+    },
+    {
+      "listing": "neural-network:007",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 198,
+      "original_sha256": "d2fc488790d3919c2ecb392f352ef0909f70f826f2ea871f1f1bcd7fba4fe084",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "layer-run",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/layer-run.ml"
+    },
+    {
+      "listing": "neural-network:008",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 236,
+      "original_sha256": "900a6732901a12fd86318655c305c7e7e57e4867f3730b975b049d531b3b6df5",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "initial-layers",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/initial-layers.ml"
+    },
+    {
+      "listing": "neural-network:009",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 264,
+      "original_sha256": "099cee22e9a2bfdd7122322748b956b496b39f6194d149f532fc18fb32eba882",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "layer-loss",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/layer-loss.ml"
+    },
+    {
+      "listing": "neural-network:010",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 277,
+      "original_sha256": "28358c09c46902fe68be843f4103c382e1ab082f6dd0da6c88f7fafda171fd22",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "layer-backprop",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/layer-backprop.ml"
+    },
+    {
+      "listing": "neural-network:011",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 295,
+      "original_sha256": "3acce8b86a5b19eb61b55f2ad495a1bef2f4a3da5a7a197d3e98850edd785a39",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "layer-test",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/layer-test.ml"
+    },
+    {
+      "listing": "neural-network:012",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 308,
+      "original_sha256": "5a9a040d04abe6d76779f148f5950506f485387456d800b47fba4453edaada1a",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "handwritten-training",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/handwritten-training.ml"
+    },
+    {
+      "listing": "neural-network:013",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 323,
+      "original_sha256": "bbb5c5c377aefc545cf77822d6c6cee03ac6258b6c3f73b2729954f1afc70c20",
+      "kind": "interface",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "handwritten-training",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/handwritten-log.txt",
+      "strip_ansi": true,
+      "output_pattern": "#\\d{3} : loss = [0-9.eE+-]+",
+      "output_lines": 999,
+      "display_lines": 8
+    },
+    {
+      "listing": "neural-network:014",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 364,
+      "original_sha256": "dbb566bd43fee29dd51fb000702d9d795d8b92cfbd65b442f3b62f07ff4b5a97",
+      "kind": "interface",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "neuron-type",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/neuron-type.txt",
+      "display_source": {
+        "path": "code/chap11_neural_network/sessions/chapter11.ml",
+        "region": "neuron-context"
+      }
+    },
+    {
+      "listing": "neural-network:015",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 379,
+      "original_sha256": "c58561e3bac20e0d8b08daf004c4d8e2464659d268e60759233bf7dd787a13ab",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "neuron-create",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/neuron-create.ml"
+    },
+    {
+      "listing": "neural-network:016",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 391,
+      "original_sha256": "9a3b7d1004afe009d5ca09f11ea0f2aeeb2c3f208bbb0ff72aa0754644c0fa31",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "neuron-connect",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/neuron-connect.ml"
+    },
+    {
+      "listing": "neural-network:017",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 398,
+      "original_sha256": "38908ab198dcdcc3c1c45888a8be24f4dcaf678aebdb66e845620417bf2e46a3",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "neuron-init",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/neuron-init.ml"
+    },
+    {
+      "listing": "neural-network:018",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 407,
+      "original_sha256": "f2267fc321cc20091680040e74ea8461ed64d70ddb85456e26e8ab9a5df9c537",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "neuron-run",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/neuron-run.ml"
+    },
+    {
+      "listing": "neural-network:019",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 419,
+      "original_sha256": "fa452fb43f699d409a9d07a5d727374a80258cbaa763891925d6b97b58fb0817",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "neuron-parameters",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/neuron-parameters.ml"
+    },
+    {
+      "listing": "neural-network:020",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 441,
+      "original_sha256": "0955f133207b36f2721cbcf97a867390aaeba90a850e14839fd85cc0ba086f22",
+      "kind": "interface",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "node-type",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/node-type.txt"
+    },
+    {
+      "listing": "neural-network:021",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 455,
+      "original_sha256": "482238158b35adb161577b33bc0b05ece2b3df92dbda461c3a4e71859828d0ce",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "graph-layer",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/graph-layer.ml"
+    },
+    {
+      "listing": "neural-network:022",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 469,
+      "original_sha256": "bb6451048ded6135f359f8ba07426ba0026a7cf761212ccc08a69412a23938ad",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "graph-network",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/graph-network.ml"
+    },
+    {
+      "listing": "neural-network:023",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 490,
+      "original_sha256": "994d90466862027f8177576c4515afbde050654903fe75332c9bfc275a6f04af",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "batch",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/batch.ml"
+    },
+    {
+      "listing": "neural-network:024",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 503,
+      "original_sha256": "2a97f42c4ebffe07c0f1679cd12e856d99e10ede56610e99fb2013fd173eb3e1",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "graph-forward",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/graph-forward.ml"
+    },
+    {
+      "listing": "neural-network:025",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 509,
+      "original_sha256": "ac56216de988ec4e857cba4cc7c7b2fe4c2e06e67e533be4e16da651b9b92a1d",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "graph-loss",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/graph-loss.ml"
+    },
+    {
+      "listing": "neural-network:026",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 536,
+      "original_sha256": "e59c25d02b9790e4ef5b3e11fa97878636ddd88de657a28e303cb7bb4125d1e9",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "graph-regularisation",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/graph-regularisation.ml"
+    },
+    {
+      "listing": "neural-network:027",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 547,
+      "original_sha256": "ce9f8a682db58abbd612b0209d1f1de845c885f60bcb20b5cf172796d9e5910b",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "graph-train",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/graph-train.ml"
+    },
+    {
+      "listing": "neural-network:028",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 572,
+      "original_sha256": "173380c5b85bb6c4f4aaf4fb685980269beaea7f56d3eaa770014d8f574aad78",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "graph-test",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/graph-test.ml"
+    },
+    {
+      "listing": "neural-network:029",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 606,
+      "original_sha256": "1e5cc9a73558e7054a886308c8ebaf49cdbcd0a3deeafceb8137ebe33b738cfc",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "cnn",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/cnn.ml"
+    },
+    {
+      "listing": "neural-network:030",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 687,
+      "original_sha256": "ad7ba4893ae3af3aaa7aee1a0eff7f437025e135b88256c3148ae8fdf2ef0be6",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "rnn",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/rnn.ml"
+    },
+    {
+      "listing": "neural-network:031",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 725,
+      "original_sha256": "12f0eff8f9a4095fadfe906cfab8a5e456662e3a5cf97095ae9e248f350abed8",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "generator",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/generator.ml"
+    },
+    {
+      "listing": "neural-network:032",
+      "manuscript": "book/chapters/neural-network.tex",
+      "line": 749,
+      "original_sha256": "143d9377a8f9f215641f97c553741e30b4e7c0a44ff2023810f9957d0e4a6150",
+      "kind": "source",
+      "source": "code/chap11_neural_network/sessions/chapter11.ml",
+      "region": "discriminator",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter11/discriminator.ml"
+    }
+  ],
+  "support_scripts": [
+    "scripts/prepare_mnist.py"
+  ]
+}

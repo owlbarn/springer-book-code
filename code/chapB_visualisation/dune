@@ -1,0 +1,2 @@
+(library (name book_visualisation) (wrapped false) (modules book_visualisation) (libraries owl owl-plplot))
+(executable (name chapterB_native) (modules chapterB_native) (libraries book_visualisation owl owl-plplot))

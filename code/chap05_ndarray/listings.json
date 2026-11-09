@@ -1,0 +1,380 @@
+{
+  "scope": "32 original Chapter 5 blocks: 30 executable/interface blocks and 2 non-executable shape illustrations.",
+  "seed": 75,
+  "matrix_printer": {
+    "rows": 8,
+    "columns": 8
+  },
+  "listings": [
+    {
+      "listing": "ndarray:001",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 29,
+      "original_sha256": "c6282db885bf0cdf2f0e1e975a5455693ea56b2f507afd5aeba48a4279d83dbd",
+      "kind": "interface",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "ndarray-type",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/ndarray-type.txt"
+    },
+    {
+      "listing": "ndarray:002",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 61,
+      "original_sha256": "4ebfb8ed356ebd870b3bdda06257221eba27419b44b14ea35cb64dcfd373d6d4",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "initialisation",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/initialisation.txt"
+    },
+    {
+      "listing": "ndarray:003",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 91,
+      "original_sha256": "8d347e957fc6900182a659efdad9306dea3a1baafa3a2f6f6a0f71ceacd48b42",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "mapping",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/mapping.ml"
+    },
+    {
+      "listing": "ndarray:004",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 99,
+      "original_sha256": "b093a06d272a532ccc1857174264e57d979fbea2627ff8da9b713ed0ac5bdcd5",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "fold-sum",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/fold-sum.ml",
+      "display_source": {
+        "path": "code/chap05_ndarray/book_ndarray.ml",
+        "region": "fold-sum"
+      }
+    },
+    {
+      "listing": "ndarray:005",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 131,
+      "original_sha256": "a29999dd070826da69313413eb46a1deadbd00764faff47d93b07fd622f955a8",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "threshold",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/threshold.ml"
+    },
+    {
+      "listing": "ndarray:006",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 153,
+      "original_sha256": "79fb60fa2fa9a60b21cf51a1e63b705d8e52072506760f800701ba46ba18ddd5",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "sequential",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/sequential.txt"
+    },
+    {
+      "listing": "ndarray:007",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 166,
+      "original_sha256": "9fb1dfef26c53caa73e62da323ec2ad6b9de0e0cb5170c2b9ae9e40cc8b769ed",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "tiling",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/tiling.txt"
+    },
+    {
+      "listing": "ndarray:008",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 181,
+      "original_sha256": "30931a0402632d1738a6356a366b85679694e9faccc3178cfbe872a2da8d4e91",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "repetition",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/repetition.txt"
+    },
+    {
+      "listing": "ndarray:009",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 221,
+      "original_sha256": "cba9bf11b727c5ec33d0b0ea9e9f5174928b57745d0fbc13664e014abae6886c",
+      "kind": "interface",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "index-type",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/index-type.txt"
+    },
+    {
+      "listing": "ndarray:010",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 235,
+      "original_sha256": "1e404f0f1a409a93ab3997865ac39193be9af098a59f96b7102399b1d07f8ad5",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "slicing",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/slicing.ml"
+    },
+    {
+      "listing": "ndarray:011",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 262,
+      "original_sha256": "4fc9b962a764dc9a18c3dd4e1aa0b79d58eef87481650bad43f06e2ca6e35db6",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "element-index",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/element-index.ml"
+    },
+    {
+      "listing": "ndarray:012",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 271,
+      "original_sha256": "a4e77fe5df6b1ae4ad1247bc12ff5aa9e48e56a203f5583b1742b8f2ebf7f3e3",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "fancy-index",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/fancy-index.ml"
+    },
+    {
+      "listing": "ndarray:013",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 315,
+      "original_sha256": "74fdf876346d44d996d23ef4418af865cc89ba99e38b8064cb3429b412c0794e",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "column-slice",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/column-slice.txt"
+    },
+    {
+      "listing": "ndarray:014",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 333,
+      "original_sha256": "d449a3e829755f386774eec70cc7870b5a61a1466f4b7d2f06833ec08b26aaa5",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "row-slice",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/row-slice.txt"
+    },
+    {
+      "listing": "ndarray:015",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 352,
+      "original_sha256": "2feea95fbdb3a1ab4e14444000fb77c192ab2b123cd0c5f73a906f05471895af",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "selected-slice",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/selected-slice.txt"
+    },
+    {
+      "listing": "ndarray:016",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 363,
+      "original_sha256": "de405f6ec37da3b3d9693f600318e7f3b7ca10fa032f056de75f7148dbc83022",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "negative-index",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/negative-index.txt"
+    },
+    {
+      "listing": "ndarray:017",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 399,
+      "original_sha256": "9c27b07b36b939ba75a861dc3fbfbc7c53f5eefa6d2f4286e709bd93bbe1a90f",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "matrix-input",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/matrix-input.txt"
+    },
+    {
+      "listing": "ndarray:018",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 413,
+      "original_sha256": "96eb701afae76cc77c78e890f017a3675c1046fb5716150944927bd8daca6c66",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "reverse",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/reverse.txt",
+      "display_source": {
+        "path": "code/chap05_ndarray/book_ndarray.ml",
+        "region": "reverse"
+      }
+    },
+    {
+      "listing": "ndarray:019",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 428,
+      "original_sha256": "c53dfebe0bb6694bfa80913bd81cba0d4b0c70a8e17cb4fa1e6d64069bc7a42c",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "rotate",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/rotate.txt",
+      "display_source": {
+        "path": "code/chap05_ndarray/book_ndarray.ml",
+        "region": "rotate"
+      }
+    },
+    {
+      "listing": "ndarray:020",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 443,
+      "original_sha256": "14ece0ebe4c172601aa271d59ee55ed10d072c4ee3270c156e6dbf2628c0e254",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "circular-shift",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/circular-shift.ml",
+      "display_source": {
+        "path": "code/chap05_ndarray/book_ndarray.ml",
+        "region": "circular-shift"
+      }
+    },
+    {
+      "listing": "ndarray:021",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 454,
+      "original_sha256": "a5af8eadf7cffd48b8fe2727ac0a4af258128f104fe1ff9d802d82ef376f5243",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "shift-example",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/shift-example.txt"
+    },
+    {
+      "listing": "ndarray:022",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 474,
+      "original_sha256": "b47de0a86d2304117b3f77d58597455c385791959f6411618023a38b3d9c27ad",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "bias-tile",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/bias-tile.ml"
+    },
+    {
+      "listing": "ndarray:023",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 489,
+      "original_sha256": "a56fe2ab559d84b659615dacbb0874132f56ee759cf0b963f53d4d363da2ee97",
+      "kind": "illustration",
+      "source": "code/chap05_ndarray/listings.json",
+      "region": "broadcast-compatible",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/broadcast-compatible.txt",
+      "text": "  x : [| 2; 1; 3 |]    y : [| 1; 1; 1 |]\n  x : [| 2; 1; 3 |]    y : [| 2; 1; 1 |]\n  x : [| 2; 1; 3 |]    y : [| 2; 3; 1 |]\n  ...\n"
+    },
+    {
+      "listing": "ndarray:024",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 500,
+      "original_sha256": "e3220843aabb9ff3671f95108988cdb3006e84e69cdf085480aba907ef02eba2",
+      "kind": "illustration",
+      "source": "code/chap05_ndarray/listings.json",
+      "region": "broadcast-incompatible",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/broadcast-incompatible.txt",
+      "text": "  x : [| 2; 1; 3 |]    y : [| 1; 1; 2 |]\n  x : [| 2; 1; 3 |]    y : [| 3; 1; 1 |]\n  x : [| 2; 1; 3 |]    y : [| 3; 1; 1 |]\n  ...\n"
+    },
+    {
+      "listing": "ndarray:025",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 509,
+      "original_sha256": "3721ad7d7fb5c21720c7d73a7542723fd2a6c8339e66a27196339bebbff336a2",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "expand",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/expand.txt"
+    },
+    {
+      "listing": "ndarray:026",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 525,
+      "original_sha256": "30a205c9f9f640a7564ccf9e07d3984a1f515172aa7454f206940d579a88f1ed",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "scalar-product",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/scalar-product.ml"
+    },
+    {
+      "listing": "ndarray:027",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 539,
+      "original_sha256": "494663959690930248d2cf9de76ccdb418a69eae7922a925866210e0dbb49139",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "row-broadcast",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/row-broadcast.ml"
+    },
+    {
+      "listing": "ndarray:028",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 554,
+      "original_sha256": "d695e12f4d83435a65ace517cd911f3507290ea261366a73a6432734f81d114f",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "outer-broadcast",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/outer-broadcast.ml"
+    },
+    {
+      "listing": "ndarray:029",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 609,
+      "original_sha256": "d86be7de4fcb06d9e761e03bff1336d8b8c8a276214d75520c111522e82262dd",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "matrix-contraction",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/matrix-contraction.ml"
+    },
+    {
+      "listing": "ndarray:030",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 624,
+      "original_sha256": "23c3e86a3f535cd6a6ec58455bb39682dfdee65259a8b6bb64087fd454ad86b5",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "tensor-contraction",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/tensor-contraction.ml"
+    },
+    {
+      "listing": "ndarray:031",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 632,
+      "original_sha256": "3c10da20ce9de691cb2951828e1b8a1c7d4e020e15ae3e70c1bb7323ef8461c1",
+      "kind": "source",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "manual-contraction",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/manual-contraction.ml"
+    },
+    {
+      "listing": "ndarray:032",
+      "manuscript": "book/chapters/ndarray.tex",
+      "line": 659,
+      "original_sha256": "98622d17d478ef9efece30c6df8c7442281723c97b2f88db310cb9213ed4cca1",
+      "kind": "transcript",
+      "source": "code/chap05_ndarray/sessions/chapter05.ml",
+      "region": "trace-contraction",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter05/trace-contraction.txt"
+    }
+  ]
+}
