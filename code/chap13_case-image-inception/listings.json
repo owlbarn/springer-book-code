@@ -1,0 +1,327 @@
+{
+  "scope": "23 original blocks; original 299x299 panda and migrated exact original weights. Three incomplete TensorFlow/Keras/HDF5 excerpts are explicitly illustrative.",
+  "seed": 84,
+  "interactive_packages": [
+    "owl",
+    "unix"
+  ],
+  "interactive_opens": [
+    "Owl",
+    "Owl_types"
+  ],
+  "interactive_module_sources": [
+    "/opt/book/code/chap04_linear-algebra/imageUtils.ml",
+    "/opt/book/code/chap13_case-image-inception/inception_v3.ml"
+  ],
+  "support_scripts": [
+    "scripts/prepare_inception.py",
+    "code/chap04_linear-algebra/imageUtils.ml",
+    "docker/legacy/export_weights.ml",
+    "docker/legacy/ocaml.json",
+    "docker/legacy/build_reader.py"
+  ],
+  "listings": [
+    {
+      "listing": "case-image-inception:001",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 136,
+      "original_sha256": "3d4279c87504f037f80344e913660972a03b0a0fd2336c0fce676c81e90e72f7",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "conv2d-bn",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/conv2d-bn.ml",
+      "display_source": {
+        "path": "code/chap13_case-image-inception/inception_v3.ml",
+        "region": "conv2d-bn"
+      }
+    },
+    {
+      "listing": "case-image-inception:002",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 152,
+      "original_sha256": "755053d2f9075bfdd48827d6af1a2bacd594816bf704a0e7b4763070caa5869d",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "mix-typ1",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/mix-typ1.ml",
+      "display_source": {
+        "path": "code/chap13_case-image-inception/inception_v3.ml",
+        "region": "mix-typ1"
+      }
+    },
+    {
+      "listing": "case-image-inception:003",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 176,
+      "original_sha256": "73536a88a646fb9f46498317a512ed2c89589a904c001761fd1eb1be98cd7099",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "mix-typ4",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/mix-typ4.ml",
+      "display_source": {
+        "path": "code/chap13_case-image-inception/inception_v3.ml",
+        "region": "mix-typ4"
+      }
+    },
+    {
+      "listing": "case-image-inception:004",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 201,
+      "original_sha256": "aca2b9b8520e1c5a327daa18821f6aec4aa315f489d91edff8b69902063b16e1",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "factorisation",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/factorisation.ml"
+    },
+    {
+      "listing": "case-image-inception:005",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 219,
+      "original_sha256": "5b13c1aa27d1615db60a9f9f634554b7019dfa9baccd2529898f7a70a03baa4b",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "mix-typ9",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/mix-typ9.ml",
+      "display_source": {
+        "path": "code/chap13_case-image-inception/inception_v3.ml",
+        "region": "mix-typ9"
+      }
+    },
+    {
+      "listing": "case-image-inception:006",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 256,
+      "original_sha256": "381feab3fda258007c1ea272378a93399acde0752d5d3a0c092d8a99e1f9314c",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "mix-typ3",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/mix-typ3.ml",
+      "display_source": {
+        "path": "code/chap13_case-image-inception/inception_v3.ml",
+        "region": "mix-typ3"
+      }
+    },
+    {
+      "listing": "case-image-inception:007",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 272,
+      "original_sha256": "f16e4f3e01e90e4650baba0b755d1e679cea8a0fe897b0eefe7046437814b579",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "mix-typ8",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/mix-typ8.ml",
+      "display_source": {
+        "path": "code/chap13_case-image-inception/inception_v3.ml",
+        "region": "mix-typ8"
+      }
+    },
+    {
+      "listing": "case-image-inception:008",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 296,
+      "original_sha256": "0dfd079a1ee768e18c8122c19bcc7d0a98fb6e99640b50c0d4f03d57e832b506",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "make-network",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/make-network.ml",
+      "display_source": {
+        "path": "code/chap13_case-image-inception/inception_v3.ml",
+        "region": "make-network"
+      }
+    },
+    {
+      "listing": "case-image-inception:009",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 335,
+      "original_sha256": "f99906d7a3a03c22d03e6116912fc24dc0e8de0969e372c0d2559b2412ea9327",
+      "kind": "illustration",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "checkpoint-illustration",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/checkpoint-illustration.txt",
+      "text": "...\nreader = tf.train.NewCheckpointReader(checkpoint_file)\nfor key in layer_names:\n    data=reader.get_tensor(key).tolist()\n...",
+      "execution_status": "non-executable-first-edition-illustration"
+    },
+    {
+      "listing": "case-image-inception:010",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 345,
+      "original_sha256": "bcb0d5f0896ce8dc4c355aa1ed00a92fb3efeb003a2b4e225a824b9330db8f5d",
+      "kind": "illustration",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "keras-illustration",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/keras-illustration.txt",
+      "text": "...\nfor layer in model.layers:\n    weights = layer.get_weights()\n...",
+      "execution_status": "non-executable-first-edition-illustration"
+    },
+    {
+      "listing": "case-image-inception:011",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 354,
+      "original_sha256": "fa04fe6ee746da3fd1641159663dd64ab1a5171ba2c70fe1c7ce2fd2a2a778cb",
+      "kind": "illustration",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "hdf5-illustration",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/hdf5-illustration.txt",
+      "text": "...\nlet h = Hashtbl.create 50 in\nlet f = H5.open_rdonly h5file  in\nfor i = 0 to (Array.length layers - 1) do\n  let w = H5.read_float_genarray f layers.(i) C_layout in\n  Hashtbl.add h layers.(i) (Dense.Ndarray.Generic.cast_d2s w)\ndone;\n...",
+      "execution_status": "non-executable-first-edition-illustration"
+    },
+    {
+      "listing": "case-image-inception:012",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 367,
+      "original_sha256": "a0e186ca38140ea884fc73804eed5c89180df67a3407a8203f02b445e563a286",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "update-weights",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/update-weights.ml",
+      "display_source": {
+        "path": "code/chap13_case-image-inception/inception_v3.ml",
+        "region": "update-weights"
+      }
+    },
+    {
+      "listing": "case-image-inception:013",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 392,
+      "original_sha256": "5ead9214fd208cddb21bc9f32244db573ef1d30af84af2c945db927d75a171a4",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "blue-channel",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/blue-channel.ml"
+    },
+    {
+      "listing": "case-image-inception:014",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 399,
+      "original_sha256": "b881f8bed913e63af8248e2650cf0fa72003d602450d16529894b71412967e0f",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "interleave",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/interleave.ml"
+    },
+    {
+      "listing": "case-image-inception:015",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 406,
+      "original_sha256": "9fe60b4b7d73d553c1d559c606104138c06b97e1d632144f0bf0ea83186f1710",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "write-pixels",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/write-pixels.ml"
+    },
+    {
+      "listing": "case-image-inception:016",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 421,
+      "original_sha256": "3cd4de31c7b09464d5ac23b1e064673326d1298f809e37634eb0278f2363f7fc",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "ppm-header",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/ppm-header.ml"
+    },
+    {
+      "listing": "case-image-inception:017",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 430,
+      "original_sha256": "6479ba18c4d192e890b40f5befa82bb81c4d68d68a181496b61fdc1cb8f120a7",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "read-pixels",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/read-pixels.ml"
+    },
+    {
+      "listing": "case-image-inception:018",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 439,
+      "original_sha256": "66230bf684cb093e5063c6fc6949c3f272aefa906e2541cd6b3bf9e0f024b2d5",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "pixels-matrix",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/pixels-matrix.ml"
+    },
+    {
+      "listing": "case-image-inception:019",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 452,
+      "original_sha256": "c9ce80e48e8e352dfef34a094d9e90238018245dd50b16ca4e9fcda3664f03a3",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "matrix-image",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/matrix-image.ml"
+    },
+    {
+      "listing": "case-image-inception:020",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 468,
+      "original_sha256": "df817182cb5bcc6632f66dea0b115359bf4bb4f62dc392dc180e7ef26b7bb5cd",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "normalise",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/normalise.ml"
+    },
+    {
+      "listing": "case-image-inception:021",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 482,
+      "original_sha256": "067bc2a172a85b129bdd55e0b54e2443ebd930ab2e477f3924de5b2e66a43a6c",
+      "kind": "source",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "infer",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/infer.ml"
+    },
+    {
+      "listing": "case-image-inception:022",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 530,
+      "original_sha256": "86a899a849bdf284e5c7d2582be22bc97d49dd686328c76575da19b52240c48c",
+      "kind": "illustration",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "reader-command",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/reader-command.txt",
+      "text": "python3 scripts/run_chapter13.py --output /tmp/chapter13",
+      "execution_status": "verified-reader-command"
+    },
+    {
+      "listing": "case-image-inception:023",
+      "manuscript": "book/chapters/case-image-inception.tex",
+      "line": 535,
+      "original_sha256": "9e83bab1c060e9a6915de88d14a3adf8f73272db930bcd0040f19d8d3d245640",
+      "kind": "interface",
+      "source": "code/chap13_case-image-inception/sessions/chapter13.ml",
+      "region": "infer",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter13/inference-output.txt",
+      "output_pattern": "^(?:Top 5 Predictions:|Prediction #[0-4] .*?)$",
+      "output_lines": 6
+    }
+  ],
+  "interactive_bindings": [
+    "open Neural.S;;",
+    "open Neural.S.Graph;;",
+    "module N = Dense.Ndarray.S;;",
+    "let data_directory = Filename.concat (Sys.getenv \"HOME\") \".owl/dataset/inception\";;",
+    "let labels_file = Filename.concat data_directory \"imagenet1000.dict\";;"
+  ]
+}

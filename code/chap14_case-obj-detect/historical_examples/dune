@@ -1,0 +1,3 @@
+(executables
+  (names evalImage evalVideo demo benchmark)
+  (libraries mrcnn))

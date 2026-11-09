@@ -1,0 +1,6 @@
+{
+  "version": "4.08.1",
+  "url": "https://codeload.github.com/ocaml/ocaml/tar.gz/refs/tags/4.08.1",
+  "sha256": "b53ed3d487b83fd49bc181bded066ae8e6fb592cf40514261d27d36050d5db85",
+  "role": "Build-only reader for the pinned 2019 weights; excluded from final reader environment."
+}

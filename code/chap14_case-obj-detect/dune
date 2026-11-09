@@ -1,0 +1,10 @@
+(data_only_dirs historical_examples)
+(library
+ (name book_mrcnn)
+ (wrapped false)
+ (modules book_mrcnn)
+ (libraries mrcnn owl unix))
+(executable
+ (name chapter14_native)
+ (modules chapter14_native)
+ (libraries book_mrcnn mrcnn owl unix))

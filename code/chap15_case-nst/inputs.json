@@ -1,0 +1,82 @@
+{
+  "nst": {
+    "gist_revision": "e5b16d51a26c08ba0fc2fca00e0b09b8586ec804",
+    "files": [
+      {
+        "name": "vgg19_owl_short.weight",
+        "url": "https://gist.githubusercontent.com/jzstark/6f28d54e69d1a19c1819f52c5b16c1a1/raw/d59166bd5011c467b7a697bf1ac6f93c25f0ef6e/vgg19_owl_short.weight",
+        "bytes": 80099136,
+        "sha256": "8ea9c38abba1e457fc80849c9de6163e857dbdd1178430565d84f516d293439c",
+        "git_blob_sha1": "d59166bd5011c467b7a697bf1ac6f93c25f0ef6e"
+      },
+      {
+        "name": "content.png",
+        "url": "https://gist.githubusercontent.com/jzstark/6f28d54e69d1a19c1819f52c5b16c1a1/raw/a4cb59eb794cbae973f823ff23fa7ea1b3a03606/content.png",
+        "bytes": 81306,
+        "sha256": "a9f36de98e23078477600d5ea7f061cbd4064f76fcc97e317d67544f8a0e8c82",
+        "git_blob_sha1": "a4cb59eb794cbae973f823ff23fa7ea1b3a03606"
+      },
+      {
+        "name": "style.png",
+        "url": "https://gist.githubusercontent.com/jzstark/6f28d54e69d1a19c1819f52c5b16c1a1/raw/998eae0d025ed773e75342afef95e8c5afb15c99/style.png",
+        "bytes": 125667,
+        "sha256": "ef847dd7f21832b004da791f8d1e5cee2934441ada193523ebd1378eca8debe1",
+        "git_blob_sha1": "998eae0d025ed773e75342afef95e8c5afb15c99"
+      }
+    ]
+  },
+  "fst": {
+    "gist_revision": "1941cefed5917a264e068b35c1e1debbd2900a5c",
+    "files": [
+      {
+        "name": "example.png",
+        "url": "https://gist.githubusercontent.com/jzstark/f937ce439c8adcaea23d42753f487299/raw/925d136d50632f73e1c05f2bef09fd984e51cbb1/example.png",
+        "bytes": 98649,
+        "sha256": "c4fae8df2acff4f59558a3b8bcb02eebdf98189bc7bf9af8476eadae97dd34fc",
+        "git_blob_sha1": "925d136d50632f73e1c05f2bef09fd984e51cbb1"
+      },
+      {
+        "name": "fst_la_muse.weight",
+        "url": "https://gist.githubusercontent.com/jzstark/f937ce439c8adcaea23d42753f487299/raw/9c85da72eb33911fb327efa421d394d95ed8c377/fst_la_muse.weight",
+        "bytes": 6733496,
+        "sha256": "181353c78dafaa5b9c889249b9a7feb021350ed7278ce5769b468be1e112b1ff",
+        "git_blob_sha1": "9c85da72eb33911fb327efa421d394d95ed8c377"
+      },
+      {
+        "name": "fst_rain_princess.weight",
+        "url": "https://gist.githubusercontent.com/jzstark/f937ce439c8adcaea23d42753f487299/raw/6a1e3354f8a58223459ed29bfc32e2ae69db4e0a/fst_rain_princess.weight",
+        "bytes": 6733496,
+        "sha256": "58522c6b3ac01934972f3399984d7bebb541d8854ff461f5374f13f2dd2ac516",
+        "git_blob_sha1": "6a1e3354f8a58223459ed29bfc32e2ae69db4e0a"
+      },
+      {
+        "name": "fst_scream.weight",
+        "url": "https://gist.githubusercontent.com/jzstark/f937ce439c8adcaea23d42753f487299/raw/9a09634ee88a925293e0b53c73d89e3665d83c89/fst_scream.weight",
+        "bytes": 6733496,
+        "sha256": "e0548aed7814aa3f7d3d43f83fdc0e33a571fd4fbfb12df6320c3354cded7dd3",
+        "git_blob_sha1": "9a09634ee88a925293e0b53c73d89e3665d83c89"
+      },
+      {
+        "name": "fst_udnie.weight",
+        "url": "https://gist.githubusercontent.com/jzstark/f937ce439c8adcaea23d42753f487299/raw/489711b905e923125265b7e0aaa888f69fa941ae/fst_udnie.weight",
+        "bytes": 6733496,
+        "sha256": "2cc6770aa33b81f4be44faf44bda171a7da9d9b07cadd67dc99bd915da560c12",
+        "git_blob_sha1": "489711b905e923125265b7e0aaa888f69fa941ae"
+      },
+      {
+        "name": "fst_wave.weight",
+        "url": "https://gist.githubusercontent.com/jzstark/f937ce439c8adcaea23d42753f487299/raw/ad8b3107c621d369d86fad10af2635d086d59c59/fst_wave.weight",
+        "bytes": 6733496,
+        "sha256": "4cb9cac00d5132973379625fc6580add6c9e3c2b582c34907eb79b6afe0f62fa",
+        "git_blob_sha1": "ad8b3107c621d369d86fad10af2635d086d59c59"
+      },
+      {
+        "name": "fst_wreck.weight",
+        "url": "https://gist.githubusercontent.com/jzstark/f937ce439c8adcaea23d42753f487299/raw/9e49e5cd00d292456281b40de92ba8a2f9ab57a8/fst_wreck.weight",
+        "bytes": 6733496,
+        "sha256": "42c8dababacb8751b3da3434a57bfc4939e7e6f59159ea844d499db6ade14734",
+        "git_blob_sha1": "9e49e5cd00d292456281b40de92ba8a2f9ab57a8"
+      }
+    ]
+  }
+}

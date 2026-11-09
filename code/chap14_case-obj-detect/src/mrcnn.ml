@@ -1,0 +1,16 @@
+(* Restricts the interface of the Mrcnn module. *)
+
+module CGraph = CGraph
+module Configuration = Configuration
+module Model = Model
+module Resnet = Resnet
+module MrcnnUtil = MrcnnUtil
+module Visualise = Visualise
+module Image = Image
+
+module RegionProposalNetwork = RegionProposalNetwork
+module ProposalLayer = ProposalLayer
+module FeaturePyramidNetwork = FeaturePyramidNetwork
+module DetectionLayer = DetectionLayer
+module PyramidROIAlign = PyramidROIAlign
+module PortableWeights = PortableWeights

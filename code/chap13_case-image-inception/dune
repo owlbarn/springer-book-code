@@ -1,0 +1,10 @@
+(copy_files ../chap04_linear-algebra/imageUtils.ml)
+(library
+ (name book_inception)
+ (wrapped false)
+ (modules inception_v3 imageUtils)
+ (libraries owl unix))
+(executable
+ (name chapter13_native)
+ (modules chapter13_native)
+ (libraries book_inception owl unix))

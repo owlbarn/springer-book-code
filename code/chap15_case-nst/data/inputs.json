@@ -1,0 +1,20 @@
+[
+  {
+    "path": "hojo.png",
+    "bytes": 526012,
+    "sha256": "d40be1ba2b2492d75ebddca10b956579730b1f5f430bd04de25a6e49cb378df6",
+    "source": "Original first-edition manuscript asset"
+  },
+  {
+    "path": "hokusai.png",
+    "bytes": 629473,
+    "sha256": "b441e1dc59ca52715fe5473652cde381a1649142021b4656f5e3980989c3ac2f",
+    "source": "Original first-edition manuscript asset"
+  },
+  {
+    "path": "IMG_6754.png",
+    "bytes": 1147206,
+    "sha256": "598c87b10eac5cdc3d0de4f1a796b33564adea872034c2f2b4f23984e6df2c8d",
+    "source": "Original first-edition manuscript asset"
+  }
+]

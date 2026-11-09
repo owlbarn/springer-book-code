@@ -1,0 +1,22 @@
+(data_only_dirs upstream)
+(copy_files ../chap04_linear-algebra/imageUtils.ml)
+(library
+ (name book_style)
+ (modules imageUtils style_io portable_weights vgg19_short neural_transfer fst book_examples)
+ (libraries owl unix))
+(executable
+ (name chapter15_native)
+ (modules chapter15_native)
+ (libraries book_style owl unix))
+(executable
+ (name fst_native)
+ (modules fst_native)
+ (libraries book_style owl unix))
+(executable
+ (name reconstruct_native)
+ (modules reconstruct_native)
+ (libraries book_style owl unix))
+(executable
+ (name conv_regression)
+ (modules conv_regression)
+ (libraries owl))

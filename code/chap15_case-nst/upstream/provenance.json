@@ -1,0 +1,14 @@
+{
+  "NST_Gist": "6f28d54e69d1a19c1819f52c5b16c1a1",
+  "NST_revision": "e5b16d51a26c08ba0fc2fca00e0b09b8586ec804",
+  "VGG19_Gist": "da5cc7f771bc8d9699cedc491b23f856",
+  "VGG19_revision": "09f9b104736f52fb52dc5457241472324f3ffe8e",
+  "FST_Gist": "f937ce439c8adcaea23d42753f487299",
+  "FST_revision": "1941cefed5917a264e068b35c1e1debbd2900a5c",
+  "snapshots": {
+    "neural_transfer.ml": "d84565f14a6bd3e3c97e0089131b4420eb173c33bcbba4244b670273a679a89f",
+    "vgg19_short.ml": "829120348bdcb78d35f9c48f4353f6af2aa2f8704e011cd9df306343b3c79230",
+    "fst.ml": "abc97e531f60f8ca42a7254fc4cd7c524b856a2ed8a4f8ce4802f0369bea1eb1"
+  },
+  "licence": "Original author source; preserve attribution. No additional licence asserted."
+}

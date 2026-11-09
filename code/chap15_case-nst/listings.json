@@ -1,0 +1,257 @@
+{
+  "scope": "All fifteen original excerpts, analytic losses/gradients and optimizer resume, full 250-update combined NST, ten 100-update reconstructions, all six FST models and original-size Budapest figures.",
+  "seed": 95,
+  "export_from_baked_verification": true,
+  "support_scripts": [
+    "scripts/prepare_style.py",
+    "docker/legacy/export_weights.ml",
+    "docker/legacy/build_reader.py",
+    "docker/legacy/ocaml.json",
+    "docker/patches/owl-conv-block-offset.patch",
+    "docker/patches/owl-conv-block-offset.json"
+  ],
+  "interactive_packages": [
+    "owl"
+  ],
+  "interactive_opens": [
+    "Owl",
+    "Neural.S",
+    "Neural.S.Graph",
+    "Neural.S.Algodiff"
+  ],
+  "interactive_bindings": [
+    "#directory \"/opt/book/code/_build/default/chap15_case-nst/.book_style.objs/byte\";;",
+    "#directory \"/opt/book/code/_build/default/chap15_case-nst\";;",
+    "#load \"book_style.cma\";;",
+    "open Book_style;;",
+    "open Book_style.Neural_transfer;;",
+    "open Neural.S.Graph.Neuron;;"
+  ],
+  "listings": [
+    {
+      "listing": "case-nst:001",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 69,
+      "original_sha256": "6af2ca62f5afb9f8ee00c8d0e177569fc4d3c6137a7abbecfa7cde3103e3d5be",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "content-target",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/content-target.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "content-target"
+      }
+    },
+    {
+      "listing": "case-nst:002",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 79,
+      "original_sha256": "8fb1d11e6e67076f6af23f03b817ad92bcdaf562736ab91d690012d3313dd0a3",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "run-prefix",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/run-prefix.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "run-prefix"
+      }
+    },
+    {
+      "listing": "case-nst:003",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 92,
+      "original_sha256": "eb40c0326f845fca696cc7fb4ba155bc36a13157af2cd70fe60a5127c6dd6492",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "noise",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/noise.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "noise"
+      }
+    },
+    {
+      "listing": "case-nst:004",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 99,
+      "original_sha256": "a367fe3c47cc7afed723844d3d4df1f5665b6148f28399ce5488a5700cedba4b",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "content-loss",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/content-loss.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "content-loss"
+      }
+    },
+    {
+      "listing": "case-nst:005",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 110,
+      "original_sha256": "8bc1e3934ecfa8b37a127ac0009a48ffa16225672b12499e50845082af8856c6",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "content-objective",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/content-objective.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "content-objective"
+      }
+    },
+    {
+      "listing": "case-nst:006",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 119,
+      "original_sha256": "8f2b87fe42bd5562b924ad12254fb33140dd9d826ecaf9ab9e8e250aef9afd7c",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "resume",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/resume.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "resume"
+      }
+    },
+    {
+      "listing": "case-nst:007",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 133,
+      "original_sha256": "51ff8aab8d9118a122482cd78be09f2539a2d517132e1e5b52334c520220423f",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "adam",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/adam.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "adam"
+      }
+    },
+    {
+      "listing": "case-nst:008",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 174,
+      "original_sha256": "f3edca123f437b31928034d71a1cb5d97f6ecea85884262efe9465beff5f0ee1",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "gram",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/gram.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "gram"
+      }
+    },
+    {
+      "listing": "case-nst:009",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 185,
+      "original_sha256": "33a0626af417dec3b7536995afbdfccc4a83946ddc2f1a1728a5056ef57f3621",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "style-loss",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/style-loss.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "style-loss"
+      }
+    },
+    {
+      "listing": "case-nst:010",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 198,
+      "original_sha256": "7e1287996f075415d900ddd0b18099d83cf77bd59cc7163b59c9d24971bf98f1",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/neural_transfer.ml",
+      "region": "style-objective",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/style-objective.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/neural_transfer.ml",
+        "region": "style-objective"
+      }
+    },
+    {
+      "listing": "case-nst:011",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 259,
+      "original_sha256": "d698385354f87db9ab95ffd05ce253584ac151131a8ef511aafc67432eacec07",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/book_examples.ml",
+      "region": "run-nst",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/run-nst.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/book_examples.ml",
+        "region": "run-nst"
+      }
+    },
+    {
+      "listing": "case-nst:012",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 320,
+      "original_sha256": "e7b9f336cf8ec5abb6a39baa37c20d20ce850c6f673be5496474ef2e1df8eef2",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/fst.ml",
+      "region": "fst-layers",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/fst-layers.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/fst.ml",
+        "region": "fst-layers"
+      }
+    },
+    {
+      "listing": "case-nst:013",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 346,
+      "original_sha256": "71367cb568f6f0f7f1ad2e8ce1868499cd7eb689c507e8485de6d1fec41d16c9",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/fst.ml",
+      "region": "residual",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/residual.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/fst.ml",
+        "region": "residual"
+      }
+    },
+    {
+      "listing": "case-nst:014",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 356,
+      "original_sha256": "d2f277330ebf90ad6813d5a7694073f9aa104325e1e3a6af3ce3158e9544c117",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/fst.ml",
+      "region": "fst-network",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/fst-network.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/fst.ml",
+        "region": "fst-network"
+      }
+    },
+    {
+      "listing": "case-nst:015",
+      "manuscript": "book/chapters/case-nst.tex",
+      "line": 389,
+      "original_sha256": "a5fc83b71a71b9584c552e3d35e6aefb59f7fee893bbb01cfcaf40c8fd653db8",
+      "kind": "native-excerpt",
+      "source": "code/chap15_case-nst/book_examples.ml",
+      "region": "run-fst",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter15/run-fst.ml",
+      "display_source": {
+        "path": "code/chap15_case-nst/book_examples.ml",
+        "region": "run-fst"
+      }
+    }
+  ]
+}

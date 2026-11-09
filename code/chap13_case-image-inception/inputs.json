@@ -1,0 +1,41 @@
+{
+  "repository": "https://gist.github.com/jzstark/9428a62a31dbea75511882ab8218076f",
+  "revision": "9bc81caa0053cd5e07a0fb148623a3b3ab3257dc",
+  "files": [
+    {
+      "name": "inception_owl.weight",
+      "url": "https://gist.githubusercontent.com/jzstark/9428a62a31dbea75511882ab8218076f/raw/243ffd22deeb88fccec83a61f6c9b21a46cdd98d/inception_owl.weight",
+      "bytes": 95569774,
+      "sha256": "85a03ee37b8e9295c7a924b824faaf81ca35eb0e8739d93e0f7511106fbb8b45",
+      "git_blob_sha1": "243ffd22deeb88fccec83a61f6c9b21a46cdd98d"
+    },
+    {
+      "name": "panda.png",
+      "url": "https://gist.githubusercontent.com/jzstark/9428a62a31dbea75511882ab8218076f/raw/1573676664fccb266b6ba574d4df938d0fdb533e/panda.png",
+      "bytes": 154831,
+      "sha256": "1e3e83756960eb98b6cba3b126ebc3217834dbd576f143462013a9de51a95644",
+      "git_blob_sha1": "1573676664fccb266b6ba574d4df938d0fdb533e"
+    },
+    {
+      "name": "imagenet1000.dict",
+      "url": "https://gist.githubusercontent.com/jzstark/51eaf74c65fa14c8c466ecfab2351bbd/raw/35e8dc9258a05906bfb8cb683b687f4d81232f6a/imagenet1000.dict",
+      "bytes": 26732,
+      "sha256": "f2a8d37e5efafc1523909df3c5f42614e9461e78f1f13d77e0b9962a64d531de",
+      "git_blob_sha1": "35e8dc9258a05906bfb8cb683b687f4d81232f6a"
+    },
+    {
+      "name": "imagenet_cls.ml",
+      "url": "https://gist.githubusercontent.com/jzstark/51eaf74c65fa14c8c466ecfab2351bbd/raw/35cadadc7e052176f44e82d55b8114754b62599f/imagenet_cls.ml",
+      "bytes": 1343,
+      "sha256": "044956f72d0bd922f7e542e311bef067a363f1ec312e3b5d41b88e8a6be1b700",
+      "git_blob_sha1": "35cadadc7e052176f44e82d55b8114754b62599f"
+    },
+    {
+      "name": "imageUtils.ml",
+      "url": "https://gist.githubusercontent.com/jzstark/86a1748bbc898f2e42538839edba00e1/raw/a5ef443b2ce6357f440d1d1f69659cd7c768e440/imageUtils.ml",
+      "bytes": 5256,
+      "sha256": "76636712f7aea74eb65cf692679122a0dd44db1dc760f148375309ea873a00f7",
+      "git_blob_sha1": "a5ef443b2ce6357f440d1d1f69659cd7c768e440"
+    }
+  ]
+}

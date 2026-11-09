@@ -1,0 +1,8 @@
+{
+  "architecture": {
+    "gist_revision": "9bc81caa0053cd5e07a0fb148623a3b3ab3257dc",
+    "original_sha256": "c7cbc7a710232e452cd7abeef6a401c985e44626cb43e92c931bc947bf4f5562"
+  },
+  "image_helper": "Existing Chapter 4 restored ImageUtils; shared Dune copy, RGB nonsquare roundtrip fixes retained.",
+  "scope": "Same original InceptionV3 graph; replace retired Zoo side effects with explicit pinned inputs, check image size and safe argument-vector ImageMagick conversion."
+}

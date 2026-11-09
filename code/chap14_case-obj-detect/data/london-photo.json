@@ -1,0 +1,17 @@
+{
+  "title": "Regent Street, London (June 2009)",
+  "author": "Mark Pegrum (OzMark17)",
+  "source": "https://www.flickr.com/photos/ozmark17/3864732604/",
+  "url": "https://live.staticflickr.com/3481/3864732604_afea1ac548_k.jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "bytes": 822317,
+  "sha256": "52b0755b5d66033d663ada352377049aec1b8485904f620e65edd9155f69bd5e",
+  "crop": {
+    "x": 0,
+    "y": 620,
+    "width": 2048,
+    "height": 916
+  },
+  "crop_origin": "First-edition 2048x916 framing; matched to public 2048x1536 original with 218 geometric inliers and approximately -620px vertical translation."
+}

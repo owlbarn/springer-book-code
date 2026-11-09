@@ -1,0 +1,153 @@
+{
+  "scope": "Eight original native excerpts; first seven concatenate to one complete compiled constructor. Full 1024 real London inference, every parameter, geometry and masks; interpreter checks each architecture stage.",
+  "seed": 85,
+  "interactive_packages": [
+    "owl",
+    "camlimages.png",
+    "camlimages.jpeg",
+    "camlimages.freetype"
+  ],
+  "interactive_opens": [
+    "Owl"
+  ],
+  "interactive_bindings": [
+    "Sys.chdir \"/opt/book/code/chap14_case-obj-detect\";;",
+    "#directory \"/opt/book/code/_build/default/chap14_case-obj-detect/src/.mrcnn.objs/byte\";;",
+    "#directory \"/opt/book/code/_build/default/chap14_case-obj-detect/src\";;",
+    "#directory \"/opt/book/code/_build/default/chap14_case-obj-detect/.book_mrcnn.objs/byte\";;",
+    "#directory \"/opt/book/code/_build/default/chap14_case-obj-detect\";;",
+    "#load \"mrcnn.cma\";;",
+    "#load \"book_mrcnn.cma\";;",
+    "open Mrcnn;;",
+    "open CGraph;;",
+    "open Graph;;",
+    "open AD;;"
+  ],
+  "support_scripts": [
+    "scripts/prepare_mrcnn.py",
+    "docker/patches/camlimages-fpic.patch",
+    "docker/patches/camlimages-fpic.json"
+  ],
+  "listings": [
+    {
+      "listing": "case-obj-detect:001",
+      "manuscript": "book/chapters/case-obj-detect.tex",
+      "line": 154,
+      "original_sha256": "e7b36f022bb2e46be81becd60beaa6fe56eed0f8ec1291d9088f30036f0c3660",
+      "kind": "native-excerpt",
+      "source": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+      "region": "inputs",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter14/inputs.ml",
+      "display_source": {
+        "path": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+        "region": "inputs"
+      }
+    },
+    {
+      "listing": "case-obj-detect:002",
+      "manuscript": "book/chapters/case-obj-detect.tex",
+      "line": 185,
+      "original_sha256": "e78dddb4d3fa9a54d56769fd39e7441dbe06bbbdbdf62c5ad144e2bcf1cc2a60",
+      "kind": "native-excerpt",
+      "source": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+      "region": "feature-pyramid",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter14/feature-pyramid.ml",
+      "display_source": {
+        "path": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+        "region": "feature-pyramid"
+      }
+    },
+    {
+      "listing": "case-obj-detect:003",
+      "manuscript": "book/chapters/case-obj-detect.tex",
+      "line": 227,
+      "original_sha256": "bc34bcd7aec5da30715c60097abfe8b9f4a2606ca095b6095603deef17e1f6cb",
+      "kind": "native-excerpt",
+      "source": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+      "region": "rpn",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter14/rpn.ml",
+      "display_source": {
+        "path": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+        "region": "rpn"
+      }
+    },
+    {
+      "listing": "case-obj-detect:004",
+      "manuscript": "book/chapters/case-obj-detect.tex",
+      "line": 243,
+      "original_sha256": "86567fcad9b756d21de8a012c0506f75047fde7e3189e444d71c29645084109d",
+      "kind": "native-excerpt",
+      "source": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+      "region": "proposals",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter14/proposals.ml",
+      "display_source": {
+        "path": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+        "region": "proposals"
+      }
+    },
+    {
+      "listing": "case-obj-detect:005",
+      "manuscript": "book/chapters/case-obj-detect.tex",
+      "line": 265,
+      "original_sha256": "ed91b6e1ca4dfdcbbdbed6ed675c984c7073bc78f885bd32eded9a5bc1032f3d",
+      "kind": "native-excerpt",
+      "source": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+      "region": "detections",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter14/detections.ml",
+      "display_source": {
+        "path": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+        "region": "detections"
+      }
+    },
+    {
+      "listing": "case-obj-detect:006",
+      "manuscript": "book/chapters/case-obj-detect.tex",
+      "line": 286,
+      "original_sha256": "34f722fb57ef33f3cc98231cc06b8529d681489d3e3a6bcbd9589987dd223d42",
+      "kind": "native-excerpt",
+      "source": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+      "region": "masks",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter14/masks.ml",
+      "display_source": {
+        "path": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+        "region": "masks"
+      }
+    },
+    {
+      "listing": "case-obj-detect:007",
+      "manuscript": "book/chapters/case-obj-detect.tex",
+      "line": 294,
+      "original_sha256": "b3117706611f6d6a3ddb25970cd4ea016e2088574961d9a9502ddea68716d968",
+      "kind": "native-excerpt",
+      "source": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+      "region": "outputs",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter14/outputs.ml",
+      "display_source": {
+        "path": "code/chap14_case-obj-detect/src/mrcnn/model.ml",
+        "region": "outputs"
+      }
+    },
+    {
+      "listing": "case-obj-detect:008",
+      "manuscript": "book/chapters/case-obj-detect.tex",
+      "line": 305,
+      "original_sha256": "47d9538bded89d7c8fa786fe94f4e6eaa4550431cc9eec454d64c7cc4a3a7ef0",
+      "kind": "native-excerpt",
+      "source": "code/chap14_case-obj-detect/book_mrcnn.ml",
+      "region": "run-code",
+      "mapping": "manually-reviewed",
+      "book_snapshot": "book/generated/chapter14/run-code.ml",
+      "display_source": {
+        "path": "code/chap14_case-obj-detect/book_mrcnn.ml",
+        "region": "run-code"
+      }
+    }
+  ]
+}
