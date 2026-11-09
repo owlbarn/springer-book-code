@@ -1,0 +1,23 @@
+{
+  "version": "5.0.5",
+  "source": "opam source camlimages.5.0.5 (release archive verified by opam)",
+  "scope": "Preserve Dune standard C flags, including -fPIC, instead of replacing them with codec pkg-config flags. Keep Base/StdIO <v0.17 as required by this release configuration.",
+  "original_files": {
+    "exif/dune": "c156755a22ed516c0de4e0a9bd3b494e60a180dcd2e8df8920e70886493ce4fd",
+    "freetype/dune": "5ff0cb1662edac76bcd9b8a5d961523eb9568071929db9c41795b5e9e4c4d1f9",
+    "gif/dune": "f6807c44d9e8937b773896871fea624669896e786c4231e53d8d142df9cbd3c3",
+    "jpeg/dune": "5a337b8c5731e7abb4c0fcca916a02f675fc1fbe3da2e2a182ea92efdb7429f1",
+    "png/dune": "3b4ac2d36a8c7cef0cdb2f86096bd52dbd8764c52eaf870a14822688d075a870",
+    "tiff/dune": "7dd5956cadc07f3506acde4d924c8b33270d1dec88f2170f4f0b8dc5f0f51c1a",
+    "xpm/dune": "f6648cc509a4903220893886a25025836e236e4672e393bbeba3396fd6c8e2ec"
+  },
+  "patched_files": {
+    "exif/dune": "12c7810926b44992ecb448747a362a57c52aa920fd58a690b7408938416955c7",
+    "freetype/dune": "e7ea50ce34f9d770a22ea960a3655f56ebcfd229619fe623aebc6dff6de2f35f",
+    "gif/dune": "98379dbb7f7b82abc565a2e56db8c600938b7700dc490c483017b02dac5112d4",
+    "jpeg/dune": "e134c5156f19d62f57ad8b27ed225a183982d171b11165806720f8baf227ac2a",
+    "png/dune": "d9b6ba238c5b416809151ffc168036a6ee389bf3ac599e7ce618568f07f80847",
+    "tiff/dune": "1d17b09c1666f327920f1e1b501a6ea44db91b74d2d8eae2b99215ce71fde885",
+    "xpm/dune": "b9b244c61f822dbfed8660b30e76745eb98c66f201fef02637e40e26263f1766"
+  }
+}

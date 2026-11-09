@@ -1,0 +1,228 @@
+{
+  "01": {
+    "directory": "code/chap01_introduction",
+    "output": "chapter01",
+    "plots": []
+  },
+  "02": {
+    "directory": "code/chap02_maths",
+    "output": ".",
+    "plots": [
+      "interp.png",
+      "example_integrals.png",
+      "fig_inter_poly.pdf",
+      "special_airy.png",
+      "example_bessel.png",
+      "example_gamma.png",
+      "example_struve.png",
+      "example_erf.png"
+    ]
+  },
+  "03": {
+    "directory": "code/chap03_stats",
+    "output": "chapter03",
+    "plots": [
+      "plot_02.png",
+      "plot_gaussian_cdf.pdf",
+      "plot_01.png",
+      "gamma_pdf.png"
+    ]
+  },
+  "04": {
+    "directory": "code/chap04_linear-algebra",
+    "output": "chapter04",
+    "plots": [
+      "cat_bw.png",
+      "cat_10.png",
+      "cat_20.png",
+      "cat_50.png"
+    ]
+  },
+  "05": {
+    "directory": "code/chap05_ndarray",
+    "output": "chapter05",
+    "plots": []
+  },
+  "06": {
+    "directory": "code/chap06_diffequation",
+    "output": "chapter06",
+    "plots": [
+      "plot_rk01.png",
+      "plot_circle.png",
+      "two_body.png",
+      "lorenz_01.png",
+      "lorenz_02.png",
+      "damped.png",
+      "vdp_odepack_stiff.png"
+    ],
+    "blocked_regions": {
+      "cvode": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2.",
+      "vdp-cvode": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2.",
+      "vdp-cvode-plot": "sundialsml 6.1.1p1 conflicts with base-domains; upstream dev NEWS reports OCaml 5 example segfaults. Compiler remains 5.5.2."
+    }
+  },
+  "07": {
+    "directory": "code/chap07_signal",
+    "output": "chapter07",
+    "plots": [
+      "plot_sine_1.pdf",
+      "plot_sine_2.pdf",
+      "plot_sine_3.pdf",
+      "cat_noise.png",
+      "cat_denoise.png",
+      "img_fft1.pdf",
+      "img_fft2.pdf"
+    ],
+    "blocked_regions": {
+      "sunspot-input": "Original sunspot_full.csv absent; current official SILSO data carries CC BY-NC terms, needs publication/distribution review.",
+      "sunspot-plot": "Depends on the original sunspot input and its distribution review.",
+      "tone-input": "Original touchtone.csv absent; referenced MathWorks toolbox download/license does not establish redistribution rights.",
+      "tone-times": "Depends on the missing original touchtone.csv.",
+      "tone-spectrum": "Depends on the missing original touchtone.csv.",
+      "first-tone": "Depends on the missing original touchtone.csv.",
+      "stock-input": "Original 2019-04-09 to 2020-04-09 goog.csv absent; current Yahoo query gives 254 observations, not the printed 251, and is not the original snapshot.",
+      "stock-close": "Depends on the original goog.csv.",
+      "moving-average": "Depends on the original goog.csv.",
+      "stock-transform": "Depends on the original goog.csv.",
+      "stock-spectrum": "Historical output only; original goog.csv missing.",
+      "stock-mask": "Depends on the original goog.csv.",
+      "stock-inverse": "Depends on the original goog.csv.",
+      "convolution": "Depends on the original goog.csv."
+    }
+  },
+  "08": {
+    "directory": "code/chap08_algodiff",
+    "output": "chapter08",
+    "plots": []
+  },
+  "09": {
+    "directory": "code/chap09_optimisation",
+    "output": "chapter09",
+    "plots": [
+      "plot_hump.png",
+      "plot_gradients.png"
+    ]
+  },
+  "10": {
+    "directory": "code/chap10_regression",
+    "output": "chapter10",
+    "plots": [
+      "regdata.png",
+      "reg_options.png",
+      "reg_cost.png",
+      "reg_gd.png",
+      "boston.png",
+      "reg_poly.png",
+      "reg_poly4s.png",
+      "reg_poly4s_reg.png",
+      "reg_logistic.png",
+      "reg_svm.png",
+      "sigmoid.pdf",
+      "kernel.png",
+      "svm_cost.png"
+    ]
+  },
+  "11": {
+    "directory": "code/chap11_neural_network",
+    "output": "chapter11",
+    "datasets": [
+      "mnist"
+    ],
+    "plots": [
+      "activations.png",
+      "prediction.png"
+    ]
+  },
+  "12": {
+    "directory": "code/chap12_nlp",
+    "output": "chapter12",
+    "external_network": true,
+    "datasets": [
+      "news"
+    ],
+    "plots": [
+      "dirichlet.png"
+    ]
+  },
+  "13": {
+    "directory": "code/chap13_case-image-inception",
+    "output": "chapter13",
+    "datasets": [
+      "inception"
+    ],
+    "plots": [],
+    "illustrations": [
+      "checkpoint-illustration",
+      "keras-illustration",
+      "hdf5-illustration"
+    ]
+  },
+  "14": {
+    "directory": "code/chap14_case-obj-detect",
+    "output": "chapter14",
+    "datasets": [
+      "mrcnn"
+    ],
+    "plots": [
+      "london.png"
+    ]
+  },
+  "15": {
+    "directory": "code/chap15_case-nst",
+    "output": "chapter15",
+    "datasets": [
+      "style"
+    ],
+    "plots": [
+      "contents-reconstruction.png",
+      "style-reconstruction.png",
+      "hojo-wave.png",
+      "6754_0.png",
+      "6754_1.png"
+    ]
+  },
+  "16": {
+    "directory": "code/chap16_case-recommender",
+    "output": "chapter16",
+    "plots": [],
+    "illustrations": [
+      "rest-protocol"
+    ]
+  },
+  "A": {
+    "directory": "code/chapA_conventions",
+    "output": "chapterA",
+    "plots": [],
+    "blocked_regions": {
+      "ext-interoperation": "Owl.Ext was removed by upstream commit f882ec0f137be3c0f4910427551c75881efbeccd (2023-01-29); current Owl main exposes no Ext module. Historical example is preserved and explicitly not executed; no compiler downgrade or silent compatibility layer."
+    }
+  },
+  "B": {
+    "directory": "code/chapB_visualisation",
+    "output": "chapterB",
+    "plots": [
+      "plot_001.png",
+      "plot_020.png",
+      "plot_021.png",
+      "plot_002.png",
+      "plot_024.png",
+      "plot_025.png",
+      "plot_026.png",
+      "plot_004.png",
+      "plot_005.png",
+      "plot_022.png",
+      "plot_006.png",
+      "plot_007.png",
+      "plot_008.png",
+      "plot_009.png",
+      "plot_010.png",
+      "plot_011.png",
+      "plot_012.png",
+      "plot_013.png",
+      "plot_014.png",
+      "plot_015.png",
+      "plot_016.png",
+      "plot_017.png"
+    ]
+  }
+}

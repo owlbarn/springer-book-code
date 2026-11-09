@@ -1,0 +1,33 @@
+--- a/src/owl/core/owl_ndarray_conv_impl.h
++++ b/src/owl/core/owl_ndarray_conv_impl.h
+@@ -418,7 +418,7 @@
+       int idx_kn_base = k * out_channel;
+       for (int n = 0; n < out_channel; n += nc) {
+         int actual_nc = fminf(n + nc, out_channel) - n;
+-        idx_kn_base += n;
++        idx_kn_base = k * out_channel + n;
+ 
+         // fill in the kernel matrix
+         int cnk = 0;
+@@ -586,8 +586,8 @@
+ 
+       for (int n = 0; n < out_channel; n += nc) {
+         int actual_nc = fminf(n + nc, out_channel) - n;
+-        idx_kn_base += n;
+-        idx_mn_base += n;
++        idx_kn_base = k * out_channel + n;
++        idx_mn_base = m * out_channel + n;
+ 
+         int cnk = 0;
+         for (int ik = 0; ik < actual_kc; ik++) {
+@@ -851,8 +851,8 @@
+ 
+       for (int n = 0; n < out_channel; n += nc) {
+         int actual_nc = fminf(n + nc, out_channel) - n;
+-        idx_mn_base += n;
+-        idx_kn_base += n;
++        idx_mn_base = m * out_channel + n;
++        idx_kn_base = k * out_channel + n;
+ 
+         int cmn = 0;
+         for (int ix = 0; ix < actual_mc; ix++) {

@@ -1,0 +1,84 @@
+--- a/exif/dune
++++ b/exif/dune
+@@ -8,8 +8,7 @@
+  (foreign_stubs
+    (language c)
+    (names exif_c)
+-   (flags
+-     (:include ../config/exif_c_flags.sexp)))
++   (flags (:standard (:include ../config/exif_c_flags.sexp))))
+  (c_library_flags
+    (:include ../config/exif_c_library_flags.sexp)))
+ 
+--- a/freetype/dune
++++ b/freetype/dune
+@@ -6,8 +6,7 @@
+  (foreign_stubs
+    (language c)
+    (names ftintf)
+-   (flags
+-     (:include ../config/freetype_c_flags.sexp)))
++   (flags (:standard (:include ../config/freetype_c_flags.sexp))))
+  (c_library_flags
+   (:include ../config/freetype_c_library_flags.sexp)))
+ 
+--- a/gif/dune
++++ b/gif/dune
+@@ -7,8 +7,7 @@
+  (foreign_stubs
+    (language c)
+    (names gifread gifwrite)
+-   (flags
+-     (:include ../config/gif_c_flags.sexp)))
++   (flags (:standard (:include ../config/gif_c_flags.sexp))))
+  (c_library_flags
+   (:include ../config/gif_c_library_flags.sexp)))
+ 
+--- a/jpeg/dune
++++ b/jpeg/dune
+@@ -7,8 +7,7 @@
+  (foreign_stubs
+    (language c)
+    (names jpegread jpegwrite)
+-   (flags
+-     (:include ../config/jpeg_c_flags.sexp)))
++   (flags (:standard (:include ../config/jpeg_c_flags.sexp))))
+  (c_library_flags
+   (:include ../config/jpeg_c_library_flags.sexp)))
+ 
+--- a/png/dune
++++ b/png/dune
+@@ -8,8 +8,7 @@
+  (foreign_stubs
+    (language c)
+    (names pngread pngwrite)
+-   (flags
+-     (:include ../config/png_c_flags.sexp)))
++   (flags (:standard (:include ../config/png_c_flags.sexp))))
+  (c_library_flags
+   (:include ../config/png_c_library_flags.sexp)))
+ 
+--- a/tiff/dune
++++ b/tiff/dune
+@@ -7,8 +7,7 @@
+  (foreign_stubs
+    (language c)
+    (names tiffwrite tiffread)
+-   (flags
+-     (:include ../config/tiff_c_flags.sexp)))
++   (flags (:standard (:include ../config/tiff_c_flags.sexp))))
+  (c_library_flags
+   (:include ../config/tiff_c_library_flags.sexp)))
+ 
+--- a/xpm/dune
++++ b/xpm/dune
+@@ -8,8 +8,7 @@
+  (foreign_stubs
+    (language c)
+    (names xpmread xpmwrite)
+-   (flags
+-     (:include ../config/xpm_c_flags.sexp)))
++   (flags (:standard (:include ../config/xpm_c_flags.sexp))))
+  (c_library_flags     
+   (:include ../config/xpm_c_library_flags.sexp)))
+ 

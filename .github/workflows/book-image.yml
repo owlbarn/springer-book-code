@@ -23,7 +23,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v7
 
@@ -79,7 +79,7 @@ jobs:
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         env:
           IMAGE_ID: ${{ steps.image.outputs.imageid }}
-        run: python3 docker/publish.py --image "$IMAGE_ID" --resolved "${RUNNER_TEMP}/book-build.json" --output "${RUNNER_TEMP}/book-published.json" --run-id "${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+        run: python3 docker/publish.py --image "$IMAGE_ID" --resolved "${RUNNER_TEMP}/book-build.json" --validation "${RUNNER_TEMP}/book-validation.json" --output "${RUNNER_TEMP}/book-published.json" --run-id "${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
 
       - name: Save version and validation records
         if: always()

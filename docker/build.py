@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Resolve release/compiler sources once; build locally or supply CI build args."""
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -31,8 +32,8 @@ def resolve():
     with urllib.request.urlopen(request, timeout=60) as response:
         version = stable_version(json.load(response))
     refs = {}
-    for name in ('owl', 'owl-plplot'):
-        sha = run('git', 'ls-remote', f'https://github.com/owlbarn/{name}.git', 'refs/heads/main').split()[0]
+    for name, repository, branch in [('owl','owl','main'),('owl-plplot','owl-plplot','main'),('owl-ode','owl_ode','master')]:
+        sha = run('git', 'ls-remote', f'https://github.com/owlbarn/{repository}.git', 'refs/heads/'+branch).split()[0]
         if not re.fullmatch(r'[0-9a-f]{40}', sha):
             raise ValueError(f'Invalid {name} commit')
         refs[name] = sha
@@ -42,6 +43,9 @@ def resolve():
     if not re.fullmatch(r'sha256:[0-9a-f]{64}', digest):
         raise ValueError('Could not resolve base-image digest')
     return {'ocaml': version, **refs, 'base_image': base_tag+'@'+digest,
+            'owl-ode-patch':hashlib.sha256((ROOT/'docker/patches/owl-ode-rk45-step.patch').read_bytes()).hexdigest(),
+            'owl-conv-patch':hashlib.sha256((ROOT/'docker/patches/owl-conv-block-offset.patch').read_bytes()).hexdigest(),
+            'camlimages-patch':hashlib.sha256((ROOT/'docker/patches/camlimages-fpic.patch').read_bytes()).hexdigest(),
             'code_revision': run('git', '-C', str(ROOT), 'rev-parse', 'HEAD'),
             'code_dirty': bool(run('git', '-C', str(ROOT), 'status', '--porcelain'))}
 
@@ -49,12 +53,13 @@ def resolve():
 def build_args(resolved):
     return {'BASE_IMAGE': resolved['base_image'], 'OCAML_VERSION': resolved['ocaml'],
             'BOOK_CODE_REV': resolved['code_revision'], 'BOOK_CODE_DIRTY': str(resolved['code_dirty']).lower(),
-            'OWL_REF': resolved['owl'], 'OWL_PLPLOT_REF': resolved['owl-plplot']}
+            'OWL_REF': resolved['owl'], 'OWL_PLPLOT_REF': resolved['owl-plplot'],
+            'OWL_ODE_REF': resolved['owl-ode']}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--tag', default='matrixanger/springer-book-code:pilot')
+    parser.add_argument('--tag', default='matrixanger/springer-book-code:candidate')
     parser.add_argument('--resolve-only', action='store_true')
     parser.add_argument('--resolved', type=Path, help='Reuse an already resolved build specification')
     parser.add_argument('--output', type=Path)

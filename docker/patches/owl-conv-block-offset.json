@@ -1,0 +1,8 @@
+{
+  "upstream": "https://github.com/owlbarn/owl",
+  "commit": "cb198b9e3c9b0c0fee4ba7e8f760be825632ac4b",
+  "path": "src/owl/core/owl_ndarray_conv_impl.h",
+  "original_sha256": "5ac2d1f346140129dee872adf881e12c591a2135de757d628a711a1dfb9d0cf1",
+  "patched_sha256": "e6e63cd2f43561b731f23c1f20f3203e75a2bfb6007be86ed6190ebf0a6020d4",
+  "problem": "Blocked convolution forward, input and kernel gradients accumulate absolute n offsets and retain m offsets across kernel blocks; compute each matrix block offset from its absolute indices."
+}

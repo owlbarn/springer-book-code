@@ -1,0 +1,20 @@
+--- a/src/base/native/native_generic.ml
++++ b/src/base/native/native_generic.ml
+@@ -253,7 +253,7 @@
+       in
+       let err_max = tol *. max (M.l1norm' y0) 1.0 in
+       (* Update step size *)
+-      let dt =
++      let dt_next =
+         if err > 0. then min dtmax (0.85 *. dt *. ((err_max /. err) ** 0.2)) else dt
+       in
+       let t = t0 +. dt in
+@@ -267,7 +267,7 @@
+           + (k5 *$ (dt *. c.(4)))
+           + (k6 *$ (dt *. c.(5))))
+       in
+-      y, t, dt, err <= err_max
++      y, t, dt_next, err <= err_max
+ 
+ 
+   let rk45 ~tol ~dtmax =
