@@ -170,6 +170,25 @@ class VerificationTests(unittest.TestCase):
         self.assertEqual(policy['chapters']['03']['action'],'reused-full')
         self.assertEqual(policy['chapters']['12']['action'],'full')
 
+    def test_latest_baseline_takes_precedence_over_legacy_main(self):
+        with patch('ci_plan.subprocess.run',return_value=type('Result',(),{'returncode':0})()) as pull:
+            self.assertEqual(ci_plan.pull_baseline(),ci_plan.REPOSITORY+':latest')
+        self.assertEqual(pull.call_count,1)
+
+    def test_missing_latest_falls_back_to_legacy_main_and_missing_both_returns_none(self):
+        result=lambda code:type('Result',(),{'returncode':code})()
+        with patch('ci_plan.subprocess.run',side_effect=[result(1),result(0)]) as pull:
+            self.assertEqual(ci_plan.pull_baseline(),ci_plan.REPOSITORY+':main')
+        self.assertEqual([c.args[0][-1] for c in pull.call_args_list],
+                         [ci_plan.REPOSITORY+':latest',ci_plan.REPOSITORY+':main'])
+        with patch('ci_plan.subprocess.run',return_value=result(1)):
+            self.assertIsNone(ci_plan.pull_baseline())
+
+    def test_migration_publishes_latest_even_if_legacy_inputs_are_unchanged(self):
+        with patch('ci_plan.needs_build',return_value=(False,'unchanged')):
+            self.assertTrue(ci_plan.migration_plan({}, {}, {}, 'auto',ci_plan.REPOSITORY+':main')[0])
+            self.assertFalse(ci_plan.migration_plan({}, {}, {}, 'auto',ci_plan.REPOSITORY+':latest')[0])
+
     def test_daily_no_change_skips_but_environment_source_and_full_rebuild(self):
         resolved={'ocaml':self.env['ocaml'],'base_image':self.env['base_image'],**self.env['sources'],
                   'owl-ode-patch':'owl-ode','owl-conv-patch':'owl-conv','camlimages-patch':'camlimages'}

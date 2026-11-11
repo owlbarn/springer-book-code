@@ -194,26 +194,27 @@ class PipelineTests(unittest.TestCase):
                     publish.main()
                     result=json.loads(report.read_text())
                     self.assertEqual(result['registry_pull_validation'],'passed')
-                    self.assertEqual(result['main_tag'],publish.REPOSITORY+':main')
+                    self.assertEqual(result['latest_tag'],publish.REPOSITORY+':latest')
                     self.assertNotIn('pilot_tag',result)
+                    self.assertNotIn('main_tag',result)
                     self.assertEqual(result['unique_tag'],publish.REPOSITORY+':build-'+self.resolved['code_revision'][:12]+'-42-1')
                     self.assertEqual(result['registry_digest'],'sha256:'+'e'*64)
                 return [call.args[0] for call in run.call_args_list]
 
     def test_failed_pulled_image_cannot_replace_reader_tags(self):
         commands=self.exercise_publication(remote_error=True)
-        for tag in ('pilot','main'):
+        for tag in ('pilot','main','latest'):
             self.assertFalse(any(publish.REPOSITORY+':'+tag in cmd for cmd in commands))
 
-    def test_promotion_reuses_the_tested_image_and_never_updates_pilot_or_latest(self):
+    def test_promotion_reuses_the_tested_image_and_never_updates_pilot_or_main(self):
         commands=self.exercise_publication()
         tags=[cmd for cmd in commands if cmd[:2]==['docker','tag']]
         self.assertEqual(len(tags),2)
         self.assertTrue(all(cmd[2]==tags[0][2] for cmd in tags))
         self.assertEqual([cmd[-1] for cmd in tags[1:]],
-                         [publish.REPOSITORY+':main'])
-        self.assertEqual(commands[-1],['docker','push',publish.REPOSITORY+':main'])
-        self.assertFalse(any(':latest' in arg or ':pilot' in arg for cmd in commands for arg in cmd))
+                         [publish.REPOSITORY+':latest'])
+        self.assertEqual(commands[-1],['docker','push',publish.REPOSITORY+':latest'])
+        self.assertFalse(any(':main' in arg or ':pilot' in arg for cmd in commands for arg in cmd))
 
     def test_registry_identity_mismatch_cannot_replace_reader_tags(self):
         commands=self.exercise_publication(remote_image='sha256:'+'0'*64)
@@ -222,8 +223,8 @@ class PipelineTests(unittest.TestCase):
     def test_failed_initial_validation_never_pushes_any_tag(self):
         self.assertEqual(self.exercise_publication(initial_error=True),[])
 
-    def test_main_digest_mismatch_cannot_report_success(self):
-        self.exercise_publication(wrong_digest_tag=publish.REPOSITORY+':main')
+    def test_latest_digest_mismatch_cannot_report_success(self):
+        self.exercise_publication(wrong_digest_tag=publish.REPOSITORY+':latest')
 
 
 if __name__=='__main__':unittest.main()

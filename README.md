@@ -9,7 +9,7 @@ unchanged chapters. Pull requests use short real checks for LDA/style training.
 Environment changes invalidate the old full results. Manual Actions runs offer
 `auto`, `quick` (never publishes) and `full` (reruns everything).
 Daily checks skip the build when upstream versions and runtime inputs match
-`:main`. See [the verification policy](docker/README.md#verification-policy).
+`:latest`. See [the verification policy](docker/README.md#verification-policy).
 
 New self-contained examples go in `code/chapXX_*/examples/name.ml`. They are
 compiled and run automatically by `scripts/book_examples.py` when new or changed.
@@ -52,7 +52,7 @@ All 18 publication snapshots, both code styles and the independent publisher
 package pass. Consult the manuscript repository's `STATUS.md` for the immutable
 image, exact source evidence and next review steps.
 
-CI updates `matrixanger/springer-book-code:main` after main-branch pushes and
+CI updates `matrixanger/springer-book-code:latest` after main-branch pushes and
 daily builds pass the full book and registry-pull checks. Each publication also
 retains a unique `build-<code revision>-<run ID>` tag and digest. Failed checks
 preserve the previous reader image. The former `:pilot` alias is retired.

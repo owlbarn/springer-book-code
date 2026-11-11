@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish a unique tested image, verify a registry pull, then promote main."""
+"""Publish a unique tested image, verify a registry pull, then promote latest."""
 import argparse
 import datetime
 import json
@@ -57,18 +57,18 @@ def main():
     if remote_id != image_id:raise ValueError('Registry returned a different image')
     # Digest/identity, complete baked evidence, PTY and a short reader run.
     validate(pulled,resolved,profile='registry')
-    # Promote only main, using the exact image validated by registry digest.
-    alias=REPOSITORY+':main'
+    # Promote only latest, using the exact image validated by registry digest.
+    alias=REPOSITORY+':latest'
     subprocess.run(['docker','tag',image_id,alias],check=True)
     push=subprocess.run(['docker','push',alias],text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,check=True)
     print(push.stdout,end='')
-    if pushed_digest(push.stdout) != digest:raise ValueError('Promoted main digest differs')
+    if pushed_digest(push.stdout) != digest:raise ValueError('Promoted latest digest differs')
     report={'image_id':image_id,'unique_tag':unique,'registry_digest':digest,
             'validation_policy':precheck.get('policy'),
-            'main_tag':REPOSITORY+':main','resolved':resolved,'registry_pull_validation':'passed'}
+            'latest_tag':REPOSITORY+':latest','resolved':resolved,'registry_pull_validation':'passed'}
     a.output.parent.mkdir(parents=True,exist_ok=True)
     a.output.write_text(json.dumps(report,indent=2)+'\n')
-    print('Published verified main:',pulled)
+    print('Published verified latest:',pulled)
 
 
 if __name__=='__main__':main()

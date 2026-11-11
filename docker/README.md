@@ -41,8 +41,8 @@ After the first successful publication of this workflow, pull the continuously
 updated book image and enter its environment:
 
 ```sh
-docker pull matrixanger/springer-book-code:main
-docker run --rm -it matrixanger/springer-book-code:main utop
+docker pull matrixanger/springer-book-code:latest
+docker run --rm -it matrixanger/springer-book-code:latest utop
 ```
 
 To inspect the results generated during the build, copy them from a stopped
@@ -50,7 +50,7 @@ container (no Docker Hub upload is needed):
 
 ```sh
 mkdir -p results/chapter02
-docker create --name springer-book-results matrixanger/springer-book-code:main true
+docker create --name springer-book-results matrixanger/springer-book-code:latest true
 docker cp springer-book-results:/opt/book/verification/. results/chapter02/
 docker rm springer-book-results
 ```
@@ -96,12 +96,12 @@ different initialization path and is not used to validate the interactive entry.
 The canonical automated sessions use `ocaml -noinit` with explicit imports. It pushes a unique
 `build-<code revision>-<run ID>` tag, pulls that registry digest, checks image
 identity and all baked evidence, then repeats PTY and Chapter 2 checks.
-Only then does it tag and push the same image as `:main`, checking its registry
-digest. The former `:pilot` alias is no longer published. `:main` is the reader-facing
+Only then does it tag and push the same image as `:latest`, checking its registry
+digest. The former `:pilot` alias is no longer published. `:latest` is the reader-facing
 rolling tag; main-branch pushes and the daily 04:23 UTC workflow keep it current
 when validation succeeds. Publication jobs are serialised in this repository.
-Failed builds or reader/registry checks leave the previous `:main` in place.
-This workflow does not publish `latest`. Downloaded-image identity, the unique tag, main
+Failed builds or reader/registry checks leave the previous `:latest` in place.
+This workflow does not publish `main` or `pilot`. Downloaded-image identity, the unique tag, latest
 and the registry digest are recorded as CI artifacts; no rebuild occurs between
 testing and pushing. Pin an edition to its digest rather than a rolling tag.
 
@@ -237,18 +237,21 @@ promotion. This avoids a duplicate pre-push long training run, not the registry 
 | Manuscript only | Manuscript checks and PDF, in the book repo | No image build |
 | Companion documentation only | No image workflow (example input files are excluded from this shortcut) | None |
 | PR | Reuse matching full results; run changed chapters/examples, with quick Chapter 12/15 checks | Never |
-| Main push, `auto` | Reuse matching full results; run affected/missing chapters/examples fully | Promote `main` only after complete evidence and reader checks |
-| Daily check, unchanged inputs | Resolve upstream versions and compare with published `main`; skip build | None |
+| Main push, `auto` | Reuse matching full results; run affected/missing chapters/examples fully | Promote `latest` only after complete evidence and reader checks |
+| Daily check, unchanged inputs | Resolve upstream versions and compare with published `latest`; skip build | None |
 | Compiler/Owl/base/shared dependency change | Invalidated chapters run fully in `auto` | Only after passing |
 | Manual `full` | Force every chapter/example to run, bypassing the final verification layer cache | Only on main |
 | Manual `quick` | Same reduced training checks as a PR | Never |
 
 The first build under this policy needs a complete baseline. Subsequent builds
-reuse results only from the last published `matrixanger/springer-book-code:main`,
+Normally reuse results only from the last published `matrixanger/springer-book-code:latest`,
 resolved to its immutable registry digest; arbitrary PR caches are not baselines.
 CI removes the pulled baseline image after extracting its small evidence directory,
 so an environment upgrade does not need to retain two complete reader images.
-A missing baseline falls back to actual execution. A missing, altered or stale
+For migration, if `:latest` cannot be pulled, the planner may reuse matching
+complete evidence from the old `:main`. It still builds/publishes `:latest` even
+when those legacy inputs match. The old tag is not updated. Once latest exists,
+it takes precedence. If neither tag can be pulled, actual execution is required. A missing, altered or stale
 chapter receipt forces that chapter to run again. A missing registry is not
 interpreted as “nothing changed”.
 
@@ -279,7 +282,7 @@ Local equivalents:
 
 ```sh
 # Default run_book remains a complete rerun.
-docker run --rm matrixanger/springer-book-code:main python3 scripts/run_book.py --mode quick
+docker run --rm matrixanger/springer-book-code:latest python3 scripts/run_book.py --mode quick
 # Prepare an incremental baseline from the published image, then build.
 python3 docker/build.py --resolve-only --output /tmp/book-build.json
 python3 docker/ci_plan.py --resolved /tmp/book-build.json --output /tmp/book-plan.json

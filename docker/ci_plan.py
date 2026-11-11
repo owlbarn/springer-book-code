@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plan an image build against the last published main image, never a PR cache."""
+"""Plan an image build against the last published latest image, never a PR cache."""
 import argparse
 import json
 import os
@@ -33,6 +33,22 @@ def needs_build(resolved, inputs, baseline, mode):
     return False,'Published environment and runtime inputs are unchanged'
 
 
+def pull_baseline():
+    # Existing main is a migration baseline only; publishing never updates it.
+    for tag in ('latest','main'):
+        image=REPOSITORY+':'+tag
+        result=subprocess.run(['docker','pull',image],capture_output=True,text=True)
+        if result.returncode==0:return image
+    return None
+
+
+def migration_plan(resolved, inputs, baseline, mode, baseline_tag):
+    needed,reason=needs_build(resolved,inputs,baseline,mode)
+    if baseline_tag==REPOSITORY+':main':
+        return True,'Migrate legacy main baseline to latest; '+reason
+    return needed,reason
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--resolved',type=Path,required=True)
@@ -44,10 +60,10 @@ def main():
     cache.mkdir()
     baseline=None;origin=None
     # A pull failure is never treated as evidence that inputs are unchanged.
-    pull=subprocess.run(['docker','pull',REPOSITORY+':main'],capture_output=True,text=True)
-    if pull.returncode==0:
-        inspect=json.loads(subprocess.check_output(['docker','image','inspect',REPOSITORY+':main'],text=True))[0]
-        origin={'image_id':inspect['Id'],'registry_digest':next((d for d in inspect['RepoDigests'] if d.startswith(REPOSITORY+'@')),None)}
+    baseline_tag=pull_baseline()
+    if baseline_tag:
+        inspect=json.loads(subprocess.check_output(['docker','image','inspect',baseline_tag],text=True))[0]
+        origin={'tag':baseline_tag,'image_id':inspect['Id'],'registry_digest':next((d for d in inspect['RepoDigests'] if d.startswith(REPOSITORY+'@')),None)}
         if origin['registry_digest'] is None:raise ValueError('Published baseline has no immutable registry digest')
         container=subprocess.check_output(['docker','create',origin['registry_digest'],'true'],text=True).strip()
         try:
@@ -60,7 +76,7 @@ def main():
     else:
         print('Published baseline unavailable; a fresh build/verification is required.',flush=True)
     resolved=json.loads(a.resolved.read_text())
-    needed,reason=needs_build(resolved,pipeline_inputs(ROOT),baseline,a.mode)
+    needed,reason=migration_plan(resolved,pipeline_inputs(ROOT),baseline,a.mode,baseline_tag)
     plan={'build':needed,'mode':a.mode,'reason':reason,'baseline':origin}
     a.output.write_text(json.dumps(plan,indent=2)+'\n')
     print(json.dumps(plan,indent=2),flush=True)
