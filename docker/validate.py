@@ -52,6 +52,9 @@ print(json.dumps({'environment':env,'chapters':chapters,'policy':policy,
             raise ValueError(f'Image uses a different {name} commit')
     if env.get('dependency_patches',{}).get('owl-ode',{}).get('sha256') != resolved['owl-ode-patch']:
         raise ValueError('Image does not record the expected ODE accuracy patch')
+    rllib=env.get('rllib',{})
+    if rllib.get('commit') != resolved['owl-rllib'] or not rllib.get('python_packages'):
+        raise ValueError('Image uses a different owl-rllib commit or lacks its Python environment record')
     conv=env.get('dependency_patches',{}).get('owl-conv',{})
     if not resolved.get('owl-conv-patch') or conv.get('sha256')!=resolved['owl-conv-patch'] or not conv.get('patched_file_sha256'):
         raise ValueError('Missing or different Owl blocked-convolution accuracy patch')

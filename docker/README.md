@@ -150,6 +150,24 @@ regression checks cover the analytic problem that failed before this fix. If
 upstream changes make the patch stop applying, builds fail visibly until the
 patch is reviewed; this is not advertised as an unmodified OwlDE installation.
 
+## owl-rllib and its Python bridge
+
+The image builds an exact `owlbarn/owl-rllib` main commit, resolved daily with
+Owl, owl-plplot and OwlDE, into the `book` switch, so examples can use
+`owl-rllib`, `owl-rllib.llm` and `owl-rllib.bridges`. It is installed with Dune,
+not an opam pin, because owl-rllib requires `owl > 1.2` while Owl's main branch
+still carries version 1.2. Its complete test suite runs during the build.
+
+The bridge's Python packages (Gymnasium, Box2D, MuJoCo, VizDoom) are installed
+from wheels into `/opt/book-python/venv` on Ubuntu's Python 3.12, which
+`OWL_RLLIB_PYTHON` names. `docker/rllib-requirements.txt` pins the complete
+set, about 300 MB. The build fails if any package cannot be imported, so the
+bridge tests cannot be skipped silently.
+
+The owl-rllib commit and `pip freeze` are recorded under `rllib` in
+`environment.json`, apart from `sources`. An owl-rllib update therefore
+rebuilds and retests the image without invalidating chapters that do not use it.
+
 ## Pinned MNIST data
 
 The image prepares only the six existing MNIST files used in Chapter 11, pinned

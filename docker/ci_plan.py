@@ -22,6 +22,10 @@ def same_environment(resolved, env):
     for key, patch in [('owl-ode','owl-ode-patch'),('owl-conv','owl-conv-patch'),('camlimages','camlimages-patch')]:
         if env.get('dependency_patches',{}).get(key,{}).get('sha256')!=resolved[patch]:
             return False
+    # owl-rllib is recorded apart from 'sources': its updates rebuild the image
+    # without invalidating chapters that do not use it.
+    if env.get('rllib',{}).get('commit')!=resolved['owl-rllib']:
+        return False
     return True
 
 

@@ -23,6 +23,10 @@ data = {'code_revision': os.environ.get('BOOK_CODE_REV'),
         'packages': run('opam', 'list', '--switch=book', '--installed', '--columns=name,version', '--short'),
         'sources': {name: run('git', '-C', f'/opt/book-sources/{name}', 'rev-parse', 'HEAD')
                     for name in ('owl', 'owl-plplot', 'owl-ode')}}
+rllib_python=os.environ['OWL_RLLIB_PYTHON']
+data['rllib']={'commit':run('git','-C','/opt/book-sources/owl-rllib','rev-parse','HEAD'),
+               'python':run(rllib_python,'--version'),
+               'python_packages':run(rllib_python,'-m','pip','freeze')}
 conv_patch=Path('/opt/book/docker/patches/owl-conv-block-offset.patch')
 conv_metadata=conv_patch.with_suffix('.json')
 conv=json.loads(conv_metadata.read_text())

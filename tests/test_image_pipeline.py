@@ -16,10 +16,11 @@ from validate import validate
 
 class PipelineTests(unittest.TestCase):
     def setUp(self):
-        self.resolved={'ocaml':'5.5.2','owl':'a'*40,'owl-plplot':'b'*40,'owl-ode':'1'*40,'owl-ode-patch':'patch-sha','owl-conv-patch':'conv-sha',
+        self.resolved={'ocaml':'5.5.2','owl':'a'*40,'owl-plplot':'b'*40,'owl-ode':'1'*40,'owl-rllib':'2'*40,'owl-ode-patch':'patch-sha','owl-conv-patch':'conv-sha',
                        'base_image':'ubuntu@sha256:'+'c'*64,
                        'code_revision':'d'*40,'code_dirty':False}
         self.record={'environment':{'ocaml':'5.5.2','sources':{'owl':'a'*40,'owl-plplot':'b'*40,'owl-ode':'1'*40},
+                       'rllib':{'commit':'2'*40,'python_packages':'gymnasium==0.29.1'},
                        'dependency_patches':{'owl-ode':{'sha256':'patch-sha'},'owl-conv':{'sha256':'conv-sha','patched_file_sha256':'patched'}},
                        'owl_cflags':'-O3 -march=x86-64','base_image':self.resolved['base_image'],'code_revision':'d'*40,'code_dirty':'false','source_hashes':{'example.ml':'source-hash'}},
                      'chapters':{'02':{'plots':['plot.png']}},
@@ -56,6 +57,10 @@ class PipelineTests(unittest.TestCase):
         record=json.loads(json.dumps(self.record));record['environment']['sources']['owl']='wrong'
         with patch('validate.subprocess.check_output',return_value=json.dumps(record)),self.assertRaises(ValueError):
             validate('image',self.resolved)
+        for rllib in ({'commit':'wrong','python_packages':'x'},{'commit':'2'*40}):
+            record=json.loads(json.dumps(self.record));record['environment']['rllib']=rllib
+            with patch('validate.subprocess.check_output',return_value=json.dumps(record)),self.assertRaisesRegex(ValueError,'owl-rllib'):
+                validate('image',self.resolved)
 
     def test_host_specific_cpu_build_is_rejected(self):
         self.record['environment']['owl_cflags']='-O3 -march=native'

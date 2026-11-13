@@ -33,7 +33,8 @@ def resolve():
     with urllib.request.urlopen(request, timeout=60) as response:
         version = stable_version(json.load(response))
     refs = {}
-    for name, repository, branch in [('owl','owl','main'),('owl-plplot','owl-plplot','main'),('owl-ode','owl_ode','master')]:
+    for name, repository, branch in [('owl','owl','main'),('owl-plplot','owl-plplot','main'),('owl-ode','owl_ode','master'),
+                                     ('owl-rllib','owl-rllib','main')]:
         sha = run('git', 'ls-remote', f'https://github.com/owlbarn/{repository}.git', 'refs/heads/'+branch).split()[0]
         if not re.fullmatch(r'[0-9a-f]{40}', sha):
             raise ValueError(f'Invalid {name} commit')
@@ -55,7 +56,7 @@ def build_args(resolved):
     return {'BASE_IMAGE': resolved['base_image'], 'OCAML_VERSION': resolved['ocaml'],
             'BOOK_CODE_REV': resolved['code_revision'], 'BOOK_CODE_DIRTY': str(resolved['code_dirty']).lower(),
             'OWL_REF': resolved['owl'], 'OWL_PLPLOT_REF': resolved['owl-plplot'],
-            'OWL_ODE_REF': resolved['owl-ode']}
+            'OWL_ODE_REF': resolved['owl-ode'], 'OWL_RLLIB_REF': resolved['owl-rllib']}
 
 
 def main():

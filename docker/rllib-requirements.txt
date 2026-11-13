@@ -1,0 +1,20 @@
+# Python packages for owl-rllib.bridges (Gymnasium, Box2D, MuJoCo, VizDoom).
+# Direct versions follow owl-rllib's README (its test fixtures were recorded
+# with them); the rest is the complete resolved set, pinned for reproducibility.
+gymnasium==0.29.1
+numpy==1.26.4
+Box2D==2.3.10
+mujoco==3.1.2
+imageio==2.38.1
+vizdoom==1.2.3
+absl-py==2.5.1
+cloudpickle==3.1.2
+etils==1.15.0
+farama-notifications==0.0.6
+fsspec==2026.9.0
+glfw==2.11.0
+pillow==13.0.0
+pygame==2.6.1
+pyopengl==3.1.10
+typing-extensions==4.16.0
+zipp==4.1.2

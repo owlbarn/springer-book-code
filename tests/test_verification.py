@@ -16,7 +16,7 @@ class VerificationTests(unittest.TestCase):
         self.temp=tempfile.TemporaryDirectory();self.addCleanup(self.temp.cleanup)
         self.root=Path(self.temp.name)/'repo';self.root.mkdir()
         self.env={'ocaml':'5.5.2','sources':{'owl':'a','owl-plplot':'b','owl-ode':'c'},
-                  'base_image':'ubuntu@digest','packages':'owl 1','system_packages':'libblas=1',
+                  'base_image':'ubuntu@digest','rllib':{'commit':'r'},'packages':'owl 1','system_packages':'libblas=1',
                   'dependency_patches':{n:{'sha256':n} for n in ['owl-ode','owl-conv','camlimages']},
                   'build_inputs':{'code/dune':'original'},'datasets':{'news':{'sha256':'news'}}}
         self.chapters={'03':{'directory':'code/chap03_stats','output':'chapter03','plots':[]},
@@ -190,7 +190,7 @@ class VerificationTests(unittest.TestCase):
             self.assertFalse(ci_plan.migration_plan({}, {}, {}, 'auto',ci_plan.REPOSITORY+':latest')[0])
 
     def test_daily_no_change_skips_but_environment_source_and_full_rebuild(self):
-        resolved={'ocaml':self.env['ocaml'],'base_image':self.env['base_image'],**self.env['sources'],
+        resolved={'ocaml':self.env['ocaml'],'base_image':self.env['base_image'],**self.env['sources'],'owl-rllib':'r',
                   'owl-ode-patch':'owl-ode','owl-conv-patch':'owl-conv','camlimages-patch':'camlimages'}
         inputs=v.pipeline_inputs(self.root);baseline={**self.env,'pipeline_inputs':inputs}
         self.assertFalse(ci_plan.needs_build(resolved,inputs,baseline,'auto')[0])
@@ -198,6 +198,13 @@ class VerificationTests(unittest.TestCase):
         self.assertTrue(ci_plan.needs_build(resolved,inputs,None,'auto')[0])
         self.assertTrue(ci_plan.needs_build({**resolved,'ocaml':'next'},inputs,baseline,'auto')[0])
         self.assertTrue(ci_plan.needs_build(resolved,{},baseline,'auto')[0])
+
+    def test_owl_rllib_update_rebuilds_without_invalidating_chapters(self):
+        resolved={'ocaml':self.env['ocaml'],'base_image':self.env['base_image'],**self.env['sources'],'owl-rllib':'next',
+                  'owl-ode-patch':'owl-ode','owl-conv-patch':'owl-conv','camlimages-patch':'camlimages'}
+        inputs=v.pipeline_inputs(self.root)
+        self.assertTrue(ci_plan.needs_build(resolved,inputs,{**self.env,'pipeline_inputs':inputs},'auto')[0])
+        self.assertEqual(self.key(env={**self.env,'rllib':{'commit':'next'}}),self.key())
 
 
 if __name__=='__main__':unittest.main()

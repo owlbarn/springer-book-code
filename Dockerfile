@@ -91,6 +91,31 @@ COPY --from=legacy-model --chown=opam:opam /opt/inception-portable /home/opam/.o
 COPY --from=legacy-style-model --chown=opam:opam /opt/style-portable /home/opam/.owl/dataset/style
 ENV QT_QPA_PLATFORM=offscreen
 ENV OPENBLAS_NUM_THREADS=1
+# owl-rllib and the Python environment its bridge runs (Gymnasium, MuJoCo, VizDoom).
+# Ubuntu's Python 3.12 suits VizDoom 1.2.3; wheels only, nothing is compiled.
+USER root
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    python3-venv && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /opt/book-python && chown opam:opam /opt/book-python
+USER opam
+COPY --chown=opam:opam docker/rllib-requirements.txt /opt/book-python/requirements.txt
+RUN python3 -m venv /opt/book-python/venv \
+    && /opt/book-python/venv/bin/pip install --no-cache-dir --only-binary=:all: -r /opt/book-python/requirements.txt \
+    && /opt/book-python/venv/bin/python -I -c 'import gymnasium, Box2D, mujoco, imageio, vizdoom'
+ENV OWL_RLLIB_PYTHON=/opt/book-python/venv/bin/python
+RUN opam install --switch=book --yes --jobs=2 alcotest
+ARG OWL_RLLIB_REF
+# Built with dune rather than pinned: owl-rllib requires owl > 1.2, while the
+# path-pinned Owl main branch still carries version 1.2. Its tests, including the
+# bridge tests against the Python packages above, must pass in this environment.
+RUN test -n "$OWL_RLLIB_REF" \
+    && git clone https://github.com/owlbarn/owl-rllib.git /opt/book-sources/owl-rllib \
+    && git -C /opt/book-sources/owl-rllib checkout "$OWL_RLLIB_REF" \
+    && cd /opt/book-sources/owl-rllib \
+    && opam exec --switch=book -- dune build \
+    && opam exec --switch=book -- dune test --force \
+    && opam exec --switch=book -- dune install \
+    && rm -rf _build
 FROM book-tools AS book
 ARG BASE_IMAGE
 ARG BOOK_VALIDATION_MODE=auto
