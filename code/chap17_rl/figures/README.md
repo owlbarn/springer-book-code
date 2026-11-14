@@ -14,27 +14,11 @@ python3 plot_lunar.py lunar-lander /path/to/springer/book/figures/rl
 python3 plot_doom.py vizdoom-dqn /path/to/springer/book/figures/rl
 ```
 
-The experiment used an unpublished local image built from the book environment.
-`preview.Dockerfile` documents that build; its tar input is the owl-rllib checkout
-at the recorded base commit plus `owl-rllib-frame-export.patch`, excluding `.git`
-and `_build`. The first LunarLander run used only the Gym renderer part of the
-patch; its immutable image ID is retained separately. These are preview inputs,
-not a claim that the public reader image already contains the renderer changes.
-
-The author should commit the owl-rllib extension first, then the companion
-examples and existing runner changes together, and rebuild the reference image
-through the normal validation workflow. Re-export manuscript snapshots from the
-committed source before running the pinned-source publication gate. Do not repeat
-unchanged full case training merely to regenerate a PDF or check a short example.
-
-The final short-example image is
-`sha256:b7ba7089e475554ff5d98dfc77ca773fe27bf720b5206626f1c96f1a71db22c2`.
-It corrects inherited environment metadata only: the installed runtime is identical
-to the image used for the accepted Doom run. The earlier experiment images recorded
-the actual local owl-rllib source identity in `sources.owl-rllib`; their inherited
-`rllib.commit` still referred to the parent image. The final preview puts the actual
-base commit and dirty source-tree digest together under `rllib`, and the book
-exporter retains this block, including Python dependency versions.
+The full runs used local images built while the bridges' frame export was being
+written (image IDs in `provenance.json`). That change is exactly owl-rllib commit
+`6e664e1` (base `a1aca6a` plus the change gives an identical tree), which the
+published book image includes. Do not repeat unchanged full case training merely
+to regenerate a PDF or check a short example.
 
 Fig. 12.11 now uses real RGB24 renderings. The policy still observes GRAY8.
 `vizdoom-dqn/record_actions.ml` reconstructs the initial network and reloads the

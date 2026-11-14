@@ -11,7 +11,7 @@
   "evaluation_after": 271.11,
   "image_id": "sha256:7303bcf41cd4406bd2a2ab6e3458569e659b18247a1126819e83e65ec75982b2",
   "owl_rllib_commit": "a1aca6a8194fa6d1443a268159faa6801c6987e1",
-  "owl_rllib_changes": "gym renderer and test; see owl-rllib-frame-export.patch",
+  "owl_rllib_changes": "Gym renderer and test, part of owl-rllib commit 6e664e1",
   "source_sha256": "dc047d3cbc9e5ed79981125e69da86383101f3e335c0d70d24b5e8b73e92ab64",
   "command": "./lunar.exe --steps 1000000 --frames",
   "figure_command": "python3 plot_lunar.py lunar-lander /path/to/springer/book/figures/rl",

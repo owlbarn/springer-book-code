@@ -14,7 +14,7 @@
   "checkpoint_sha256": "12d70760adfa3ac4b6f47404bdcec33fbf244d89a60ac0e8e66f776dc6aaf00d",
   "image_id": "sha256:1b568abdd34f997e026b3523b92b73598893cb90e0e94c8ed99855a8d6e7737e",
   "owl_rllib_commit": "a1aca6a8194fa6d1443a268159faa6801c6987e1",
-  "owl_rllib_changes": "owl-rllib-frame-export.patch",
+  "owl_rllib_changes": "frame export, identical to owl-rllib commit 6e664e1",
   "source_sha256": "964cc2dc6beca54e57eb643aa05150f5a89d52d97ade6fb5487ebd7325ff68aa",
   "command": "./doom.exe --steps 50000 --frames",
   "figure_command": "python3 plot_doom.py vizdoom-dqn /path/to/springer/book/figures/rl",
