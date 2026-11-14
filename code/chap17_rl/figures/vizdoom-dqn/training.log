@@ -1,0 +1,3 @@
+before evaluation (20 episodes): -300.00
+after evaluation (20 episodes): 43.45
+seed=0 steps=50000 episodes=2129 seconds=140.38 initial=-300.00 final=43.45

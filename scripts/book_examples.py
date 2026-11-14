@@ -67,15 +67,18 @@ def configuration(source):
     config = json.loads(path.read_text()) if path.exists() else {}
     if not isinstance(config, dict):
         raise ValueError('Example configuration must be a JSON object')
-    if set(config)-{'packages', 'timeout'}:
-        raise ValueError('Unknown example option; supported: packages, timeout')
+    if set(config)-{'packages', 'timeout', 'run'}:
+        raise ValueError('Unknown example option; supported: packages, timeout, run')
     packages = config.get('packages', ['owl', 'owl-plplot'])
     if not isinstance(packages, list) or any(not isinstance(p, str) or not re.fullmatch(r'[A-Za-z0-9_.-]+', p) for p in packages):
         raise ValueError('packages must be a list of OCaml findlib package names')
     timeout = config.get('timeout', 180)
     if type(timeout) is not int or not 1 <= timeout <= 3600:
         raise ValueError('timeout must be an integer from 1 to 3600 seconds')
-    return packages, timeout
+    run = config.get('run', True)
+    if type(run) is not bool:
+        raise ValueError('run must be true or false')
+    return packages, timeout, run
 
 
 def check_figure(path):
@@ -96,7 +99,7 @@ def run_example(root, identity, output):
     inputs = source_inputs(root, source)
     text = source.read_text()
     excerpts = regions(text)
-    packages, timeout = configuration(source)
+    packages, timeout, execute = configuration(source)
     output.mkdir(parents=True, exist_ok=True)
     # Only export a complete successful run; old publication files live elsewhere.
     (output/'result.json').unlink(missing_ok=True)
@@ -114,13 +117,17 @@ def run_example(root, identity, output):
         if packages:
             compile_command += ['-package', ','.join(packages)]
         compile_command += ['-linkpkg', '-o', str(build/'example.exe'), str(local_source)]
-        for command, cwd in [(compile_command, build), ([str(build/'example.exe')], run)]:
+        # "run": false compiles display-only code without executing it.
+        steps = [(compile_command, build)]+([([str(build/'example.exe')], run)] if execute else [])
+        for command, cwd in steps:
             result = subprocess.run(command, cwd=cwd, capture_output=True, text=True, timeout=timeout)
             commands.append({'command':command, 'returncode':result.returncode,
                              'stdout':result.stdout, 'stderr':result.stderr})
             if result.returncode:
                 raise ValueError('Example failed: '+identity+'\n'+result.stdout+result.stderr)
-        publication = {'source.ml': text.encode(), 'output.txt': commands[-1]['stdout'].encode()}
+        publication = {'source.ml': text.encode()}
+        if execute:
+            publication['output.txt'] = commands[-1]['stdout'].encode()
         publication.update({'region-'+name+'.ml': body.encode() for name, body in excerpts.items()})
         figures = []
         for path in sorted(run.iterdir()):
@@ -139,7 +146,7 @@ def run_example(root, identity, output):
         evidence = {'commands':commands, 'sources':inputs, 'packages':packages,
                     'ocaml':subprocess.check_output(['ocamlc', '-version'], text=True).strip()}
         (output/'execution.json').write_text(json.dumps(evidence, indent=2)+'\n')
-        report = {'id':identity, 'status':'passed', 'sources':inputs, 'figures':figures,
+        report = {'id':identity, 'status':'passed', 'executed':execute, 'sources':inputs, 'figures':figures,
                   'regions':list(excerpts), 'ocaml':evidence['ocaml'],
                   'artifacts':{name:hashlib.sha256(content).hexdigest() for name, content in publication.items()},
                   'execution_sha256':digest(output/'execution.json')}

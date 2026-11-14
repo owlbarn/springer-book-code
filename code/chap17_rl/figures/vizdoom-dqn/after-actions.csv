@@ -1,0 +1,13 @@
+action,reward,terminated,truncated
+0,-4,false,false
+0,-4,false,false
+0,-4,false,false
+0,-4,false,false
+0,-4,false,false
+2,-4,false,false
+2,-9,false,false
+1,-4,false,false
+1,-4,false,false
+1,-4,false,false
+2,-4,false,false
+2,99,true,false

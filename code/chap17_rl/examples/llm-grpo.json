@@ -1,0 +1,9 @@
+{
+  "packages": [
+    "owl",
+    "owl-plplot",
+    "owl-rllib",
+    "owl-rllib.llm"
+  ],
+  "timeout": 60
+}

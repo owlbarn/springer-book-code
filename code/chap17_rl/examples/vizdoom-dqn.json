@@ -1,0 +1,8 @@
+{
+  "packages": [
+    "owl",
+    "owl-rllib",
+    "owl-rllib.bridges"
+  ],
+  "timeout": 180
+}

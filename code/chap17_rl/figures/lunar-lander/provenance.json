@@ -1,0 +1,68 @@
+{
+  "case": "LunarLander-v2",
+  "gymnasium": "0.29.1",
+  "seed": 0,
+  "requested_steps": 1000000,
+  "actual_steps": 999424,
+  "training_seconds": 88.62,
+  "evaluation_seed": 1000,
+  "evaluation_episodes": 20,
+  "evaluation_before": -449.9,
+  "evaluation_after": 271.11,
+  "image_id": "sha256:7303bcf41cd4406bd2a2ab6e3458569e659b18247a1126819e83e65ec75982b2",
+  "owl_rllib_commit": "a1aca6a8194fa6d1443a268159faa6801c6987e1",
+  "owl_rllib_changes": "gym renderer and test; see owl-rllib-frame-export.patch",
+  "source_sha256": "dc047d3cbc9e5ed79981125e69da86383101f3e335c0d70d24b5e8b73e92ab64",
+  "command": "./lunar.exe --steps 1000000 --frames",
+  "figure_command": "python3 plot_lunar.py lunar-lander /path/to/springer/book/figures/rl",
+  "artifacts": {
+    "after-final.ppm": "733e428f19126fa8dee6718ac40a92db1134c7e7198adf1bbeae8dc928e3c9dc",
+    "after-0050.ppm": "6b6a0e8a4153cd48524c061d5aa3b1cb532b7d44bc78a0128768cd955d20ba64",
+    "before-final.ppm": "30d20eae4367c8b9e8632285bd75e2c4f20dbcbdffe30fd773de5911b3f2f724",
+    "training.log": "782c646dc0e6e9ec9ad1c431a890e9932babd91e06e282ff5cda23ec3c96023e",
+    "run-container.sh": "c105ef8b3ba8debf5ffede35b7c1e63d15e480850cb4e093a7f25814fde72aaa",
+    "lunar-lander.csv": "34f2d24c7cebcf4c2c660aef49da39c1d06e1473b527584f5878923d47c3c897",
+    "before-0050.ppm": "abf3274ff3052d62c4d748475a86eefd40d0afcfd196ff8aeba8f04c5a561221"
+  },
+  "publication_assets": {
+    "book/figures/rl/lunar-learning.pdf": "b29fbfc80007d8b93604956a403d461e3420a1af2e6d617a4daa12613a733848",
+    "book/figures/rl/lunar-frames.png": "4c307358085d7592a47639f2b9e4d087e6e321e679531f4481a8a93f91bb44ce"
+  },
+  "plot_source_sha256": "13224702cedf6ce1dd01f617b0d81167218ca72dbdc030974213bc1f936960d6",
+  "combined_renderer_patch_sha256": "a2c642cd7746186640c1d512754af059dc8e8f75ade06a28f28926c425941bcc",
+  "evidence_directory": ".book-evidence/rl/lunar-lander/",
+  "current_example": {
+    "date": "2026-11-14",
+    "source_sha256": "c9da89490f9642c78ccfa93453eb6c45d3392a31ec4fc6bcf4a97f2bc8cae9eb",
+    "full_run_source_sha256": "dc047d3cbc9e5ed79981125e69da86383101f3e335c0d70d24b5e8b73e92ab64",
+    "changes": "Printed region boundaries and comments; timing now includes environment construction. Lunar update-count calculation and assertion moved before environment construction. Training settings, RNG calls, model and learning operations unchanged.",
+    "algorithm_tokens_match_after_removing_comments_whitespace_and_relocated_statements": true,
+    "default_short_run_reexecuted": true,
+    "short_numerical_output_matches_previous": true,
+    "full_training_rerun": false
+  },
+  "frame_layout": {
+    "date": "2026-11-14",
+    "common_view_xyxy": [
+      60,
+      0,
+      420,
+      330
+    ],
+    "before_final_detail_xyxy": [
+      70,
+      230,
+      170,
+      330
+    ],
+    "after_final_detail_xyxy": [
+      250,
+      230,
+      350,
+      330
+    ],
+    "detail_windows_same_scale": true,
+    "raw_frames_unchanged": true,
+    "figure_command": "python3 plot_lunar.py lunar-lander /path/to/springer/book/figures/rl --frames-only"
+  }
+}

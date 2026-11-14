@@ -1,0 +1,30 @@
+[
+  {
+    "policy": "before",
+    "format": "GRAY8",
+    "actions": 75,
+    "all_rewards_and_boundaries_match": true,
+    "original_gray_frames_match": true
+  },
+  {
+    "policy": "before",
+    "format": "RGB24",
+    "actions": 75,
+    "all_rewards_and_boundaries_match": true,
+    "original_gray_frames_match": false
+  },
+  {
+    "policy": "after",
+    "format": "GRAY8",
+    "actions": 12,
+    "all_rewards_and_boundaries_match": true,
+    "original_gray_frames_match": true
+  },
+  {
+    "policy": "after",
+    "format": "RGB24",
+    "actions": 12,
+    "all_rewards_and_boundaries_match": true,
+    "original_gray_frames_match": false
+  }
+]

@@ -48,6 +48,17 @@ class VerificationTests(unittest.TestCase):
         self.write('code/chap03_stats/native.ml','new stats')
         self.assertEqual(k12,self.key());self.assertNotEqual(k03,self.key('03'))
 
+    def test_only_examples_using_owl_rllib_depend_on_its_commit(self):
+        self.write('code/chap17_rl/examples/ppo.ml','ppo')
+        self.write('code/chap17_rl/examples/ppo.json','{"packages":["owl","owl-rllib.bridges"]}')
+        self.write('code/chap17_rl/examples/plain.ml','plain')
+        self.write('code/chap17_rl/examples/plain.json','{"packages":["owl"]}')
+        from book_examples import source_inputs
+        newer={**self.env,'rllib':{'commit':'next'}}
+        for name,depends in [('ppo',True),('plain',False)]:
+            inputs=source_inputs(self.root,self.root/f'code/chap17_rl/examples/{name}.ml')
+            self.assertEqual(v.example_key(self.root,inputs,self.env)!=v.example_key(self.root,inputs,newer),depends)
+
     def test_docs_and_new_examples_do_not_invalidate_historical_chapter(self):
         key=self.key()
         self.write('code/chap12_nlp/README.md','new docs')

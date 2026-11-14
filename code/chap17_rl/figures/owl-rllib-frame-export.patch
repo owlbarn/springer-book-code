@@ -1,0 +1,210 @@
+diff --git a/bridges/doom.ml b/bridges/doom.ml
+index aadde54..35e05b4 100644
+--- a/bridges/doom.ml
++++ b/bridges/doom.ml
+@@ -47,6 +47,8 @@ def handle(command, args):
+     if command == 'reset':
+         game.new_episode()
+         reply(screen())
++    elif command == 'render':
++        reply(screen())
+     elif command == 'step':
+         action = [0] * buttons
+         action[int(args[0])] = 1
+@@ -64,7 +66,7 @@ let hex_digit c = match c with
+   | _ -> failwith "Doom: malformed screen"
+ 
+ module Make (A : Owl_types_ndarray_algodiff.Sig) = struct
+-  let make ?(frame_skip = 4) ?(downsample = 2) ~seed scenario : (A.arr, int) Ndenv.t =
++  let make_with_renderer ?(frame_skip = 4) ?(downsample = 2) ~seed scenario =
+     if frame_skip <= 0 || downsample <= 0 then invalid_arg "Doom.make: positive frame_skip and downsample required";
+     let name = "VizDoom " ^ scenario in
+     let process, info = Python.start ~name ~script [| scenario; string_of_int seed; string_of_int frame_skip |] in
+@@ -99,9 +101,20 @@ module Make (A : Owl_types_ndarray_algodiff.Sig) = struct
+           { Ndenv.obs = screen hex; reward = float_of_string reward; terminated; truncated }
+       | _ -> failwith (name ^ ": malformed step reply")
+     in
++    let frame () =
++      match Python.request process "render" with
++      | [ hex ] when String.length hex = 2 * rows * columns ->
++          let gray = Bytes.init (rows * columns) (fun i ->
++            Char.chr (16 * hex_digit hex.[2*i] + hex_digit hex.[2*i+1])) in
++          columns, rows, gray
++      | _ -> failwith (name ^ ": reset before requesting a frame")
++    in
+     let n = height * width in
+     { Ndenv.observation_space = Space.box ~low:(Array.make n 0.) ~high:(Array.make n 1.) ~shape:[| height; width; 1 |]
+-    ; action_space = Space.Discrete buttons; reset; step }
++    ; action_space = Space.Discrete buttons; reset; step }, frame
++
++  let make ?frame_skip ?downsample ~seed scenario =
++    fst (make_with_renderer ?frame_skip ?downsample ~seed scenario)
+ end
+ 
+ module S = Make (Owl.Neural.S.Algodiff.A)
+diff --git a/bridges/doom.mli b/bridges/doom.mli
+index 4d56761..16b384e 100644
+--- a/bridges/doom.mli
++++ b/bridges/doom.mli
+@@ -16,6 +16,14 @@ module Make (A : Owl_types_ndarray_algodiff.Sig) : sig
+       that ends otherwise (a kill, a death) is terminated. VizDoom renders no screen after the end,
+       so the final observation repeats the last one. Raises [Invalid_argument] unless [downsample]
+       divides 120 and 160. *)
++
++  val make_with_renderer :
++    ?frame_skip:int -> ?downsample:int -> seed:int -> string ->
++    (A.arr, int) Owl_rllib.Ndenv.t * (unit -> int * int * bytes)
++  (** Like [make], with a callback returning width, height and row-major
++      8-bit grayscale pixels at the original screen resolution. Call after
++      reset or step. At episode end, returns the last available frame.
++      Rendering does not advance the environment. *)
+ end
+ 
+ module S : module type of Make (Owl.Neural.S.Algodiff.A)
+diff --git a/bridges/gym.ml b/bridges/gym.ml
+index 54c22ed..e175066 100644
+--- a/bridges/gym.ml
++++ b/bridges/gym.ml
+@@ -12,7 +12,7 @@ let script =
+ try:
+     import gymnasium as gym
+     import numpy as np
+-    env = gym.make(sys.argv[1])
++    env = gym.make(sys.argv[1], **({"render_mode": "rgb_array"} if sys.argv[3] == "1" else {}))
+     seed = int(sys.argv[2])
+ 
+     def space(s):
+@@ -36,6 +36,11 @@ def handle(command, args):
+         obs, _ = env.reset(seed=seed)
+         seed = None
+         reply(observation(obs))
++    elif command == 'render':
++        frame = np.asarray(env.render(), dtype=np.uint8)
++        if frame.ndim != 3 or frame.shape[2] != 3:
++            raise ValueError('Gym: expected an RGB frame')
++        reply(frame.shape[1], frame.shape[0], frame.tobytes().hex())
+     elif command == 'step':
+         if isinstance(env.action_space, gym.spaces.Discrete):
+             action = int(args[0])
+@@ -68,8 +73,8 @@ let space = function
+ module Make (A : Owl_types_ndarray_algodiff.Sig) = struct
+   let array shape words = A.of_array (Array.map A.float_to_elt (floats words)) shape
+ 
+-  let make ~seed id ~encode =
+-    let process, info = Python.start ~name:("Gym " ^ id) ~script [| id; string_of_int seed |] in
++  let make ~render ~seed id ~encode =
++    let process, info = Python.start ~name:("Gym " ^ id) ~script [| id; string_of_int seed; if render then "1" else "0" |] in
+     let observation_space, rest = space info in
+     let action_space, _ = space rest in
+     let shape = match observation_space with
+@@ -90,20 +95,37 @@ module Make (A : Owl_types_ndarray_algodiff.Sig) = struct
+           { Ndenv.obs = array shape obs; reward = float_of_string reward; terminated; truncated }
+       | _ -> failwith ("Gym " ^ id ^ ": malformed step reply")
+     in
+-    { Ndenv.observation_space; action_space; reset; step }
++    let frame () =
++      match Python.request process "render" with
++      | [ width; height; hex ] ->
++          let width = int_of_string width and height = int_of_string height in
++          let rgb = Bytes.init (String.length hex / 2) (fun i ->
++            Char.chr (int_of_string ("0x" ^ String.sub hex (2 * i) 2))) in
++          if Bytes.length rgb <> width * height * 3 then failwith "Gym: short RGB frame";
++          width, height, rgb
++      | _ -> failwith "Gym: malformed frame reply"
++    in
++    { Ndenv.observation_space; action_space; reset; step }, frame
+ 
+   let discrete ~seed id : (A.arr, int) Ndenv.t =
+-    let env = make ~seed id ~encode:string_of_int in
++    let env, _ = make ~render:false ~seed id ~encode:string_of_int in
+     (match env.action_space with
+      | Discrete _ -> ()
+      | Box _ -> invalid_arg ("Gym.discrete: " ^ id ^ " has continuous actions"));
+     env
+ 
++  let discrete_with_renderer ~seed id =
++    let env, frame = make ~render:true ~seed id ~encode:string_of_int in
++    (match env.Ndenv.action_space with
++     | Discrete _ -> ()
++     | Box _ -> invalid_arg ("Gym.discrete_with_renderer: " ^ id ^ " has continuous actions"));
++    env, frame
++
+   let continuous ~seed id : (A.arr, A.arr) Ndenv.t =
+     let encode action =
+       let flat = A.reshape action [| A.numel action |] in
+       String.concat " " (List.init (A.numel action) (fun i -> Python.hex (A.elt_to_float (A.get flat [| i |])))) in
+-    let env = make ~seed id ~encode in
++    let env, _ = make ~render:false ~seed id ~encode in
+     (match env.action_space with
+      | Box _ -> ()
+      | Discrete _ -> invalid_arg ("Gym.continuous: " ^ id ^ " has discrete actions"));
+diff --git a/bridges/gym.mli b/bridges/gym.mli
+index 9a84737..bcd9b18 100644
+--- a/bridges/gym.mli
++++ b/bridges/gym.mli
+@@ -16,6 +16,12 @@ module Make (A : Owl_types_ndarray_algodiff.Sig) : sig
+       [Invalid_argument] if the actions are not discrete. Raises [Failure] if Python cannot create
+       the environment. *)
+ 
++  val discrete_with_renderer : seed:int -> string ->
++    (A.arr, int) Owl_rllib.Ndenv.t * (unit -> int * int * bytes)
++  (** Like [discrete], with [render_mode="rgb_array"]. The callback returns
++      width, height and row-major RGB bytes for the current state, after reset
++      or step. Rendering does not advance the environment. *)
++
+   val continuous : seed:int -> string -> (A.arr, A.arr) Owl_rllib.Ndenv.t
+   (** The same with Box actions. *)
+ end
+diff --git a/test/test_bridges.ml b/test/test_bridges.ml
+index 51e7c48..99e23b8 100644
+--- a/test/test_bridges.ml
++++ b/test/test_bridges.ml
+@@ -104,6 +104,20 @@ let gym_contract () =
+   Alcotest.check_raises "wrong action space" (Invalid_argument "Gym.continuous: CartPole-v1 has discrete actions")
+     (fun () -> ignore (Gym.S.continuous ~seed:0 "CartPole-v1"))
+ 
++let gym_renderer () =
++  let plain = Gym.S.discrete ~seed:17 "CartPole-v1" in
++  let env, frame = Gym.S.discrete_with_renderer ~seed:17 "CartPole-v1" in
++  Alcotest.check floats "render preserves reset" (values (plain.reset ())) (values (env.reset ()));
++  let w, h, rgb = frame () in
++  Alcotest.(check bool) "nonempty RGB" true (w > 0 && h > 0 && Bytes.length rgb = w * h * 3);
++  let _, _, again = frame () in
++  Alcotest.(check bool) "render does not advance" true (rgb = again);
++  List.iter (fun a ->
++    let a1 = plain.step a and a2 = env.step a in
++    ignore (frame ());
++    Alcotest.check floats "render preserves trajectory" (values a1.obs) (values a2.obs);
++    Alcotest.(check (float 0.)) "render preserves reward" a1.reward a2.reward) [0; 1; 0; 1]
++
+ let doom_fixture () =
+   let env = Doom.S.make ~seed:7 "basic" in
+   Alcotest.(check bool) "spaces" true
+@@ -127,10 +141,27 @@ let doom_fixture () =
+   Alcotest.(check bool) "fixture covers a kill and a time limit" true
+     (List.mem (true, false) !ends && List.mem (false, true) !ends)
+ 
++let doom_renderer () =
++  let env, frame = Doom.S.make_with_renderer ~seed:7 "basic" in
++  let obs = env.reset () in
++  let w, h, gray = frame () in
++  Alcotest.(check (pair int int)) "screen size" (160,120) (w,h);
++  Alcotest.(check int) "pixel count" (w*h) (Bytes.length gray);
++  let _, _, again = frame () in
++  Alcotest.(check bool) "render does not advance" true (gray = again);
++  for r = 0 to 59 do for c = 0 to 79 do
++    let pixel r c = float_of_int (Char.code (Bytes.get gray (r*w+c))) in
++    let expected = (pixel (2*r) (2*c) +. pixel (2*r+1) (2*c) +.
++      pixel (2*r) (2*c+1) +. pixel (2*r+1) (2*c+1)) /. 1020. in
++    Alcotest.(check (float 1e-7)) "frame agrees with observation" expected (A.get obs [|r;c;0|])
++  done done
++
+ let () =
+   Alcotest.run "bridges"
+     [ "wrappers", [ Alcotest.test_case "frame stack" `Quick frame_stack; Alcotest.test_case "cnn" `Quick cnn ]
+     ; "bridges",
+       [ Alcotest.test_case "gymnasium trajectories" `Quick (requires "gymnasium" gym_fixture)
+       ; Alcotest.test_case "gymnasium contract" `Quick (requires "gymnasium" gym_contract)
++      ; Alcotest.test_case "gymnasium renderer" `Quick (requires "gymnasium,pygame" gym_renderer)
++      ; Alcotest.test_case "vizdoom renderer" `Quick (requires "vizdoom" doom_renderer)
+       ; Alcotest.test_case "vizdoom trajectories" `Quick (requires "vizdoom" doom_fixture) ] ]

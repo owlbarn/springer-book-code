@@ -1,0 +1,22 @@
+{
+  "historical_repository": "owl-rl",
+  "base_commit": "393dffbf22df62ff5a1f70b794c037500f1ae34f",
+  "files": {
+    "docs/M4.md": "12a3e1c6223502209c8494d1ca08674d938ed8230e6f6601f7e36162f8d5485f",
+    "docs/M6.md": "280430cf70b0589d21d99f81d3a32c3e4ebdea013b7ed07efca5bece1b9cd77b",
+    "docs/ACCEPTANCE.md": "6ac8c1df6b74f9bd9ffcc45d3001886a6f901c580dad05034de1a749e820f404",
+    "benchmarks/m4_results.csv": "0e3bb652c5c3611cc7d94ad32e3dfd11c69013a4f86492f5588ca4e51457f301",
+    "benchmarks/m6_results.csv": "3d2ee339d09972ec88cf2d8104a2622ccdffa029703c5a9900f1be5682df5d17",
+    "tutorials/llm/b1_formulation.ml": "a62d2b25917598220c1bc7d1636a4fd024ba43a78befe033052fca061a73d3b8",
+    "tutorials/llm/b2_reinforce.ml": "4f1aa48f73aa924014e7cd8ea05d854cee27f4b8f9f2a601ef0e36a04fc3ada4",
+    "benchmarks/m4_experiment.ml": "db8c7e766bfa9704568d63f7d6ffa8e599b63508056b9b7dd9d2bb2dcb56195c"
+  },
+  "current_repository": "https://github.com/owlbarn/owl-rllib",
+  "current_base_commit": "a1aca6a8194fa6d1443a268159faa6801c6987e1",
+  "current_programs": {
+    "examples/llm/b1_formulation.ml": "ff84d92f2d265d84885af63a45f6d8d146285fadd847100408e5feab12522014",
+    "examples/llm/b2_reinforce.ml": "b3ec79fb92f577b9b8d7bf01358db5942cd6aa6a48f530f1eab3fba02141053b",
+    "examples/llm/common.ml": "0ddf75473ca5da4659dff16debae24384163d2f30911bcb7bc04dd79cdc217a3"
+  },
+  "note_sha256": "b58088468a380e880f5e75b5b85f2c1e65f0c1837e9c53cbd8bdeccde6fef28f"
+}

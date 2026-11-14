@@ -52,9 +52,22 @@ def chapter_key(root, number, spec, env):
                    'datasets':{name:env.get('datasets',{}).get(name) for name in spec.get('datasets',[])}})
 
 
+def uses_rllib(root, inputs):
+    for name in inputs:
+        path = Path(name)
+        if path.suffix == '.json' and path.parent.name == 'examples':
+            packages = json.loads((root/name).read_text()).get('packages', [])
+            return any(p.split('.')[0] == 'owl-rllib' for p in packages)
+    return False
+
+
 def example_key(root, inputs, env):
-    return digest({'schema':SCHEMA,'environment':environment_key(env),'sources':inputs,
-                   'policy':file_hash(root/'scripts/verification.py')})
+    value = {'schema':SCHEMA,'environment':environment_key(env),'sources':inputs,
+             'policy':file_hash(root/'scripts/verification.py')}
+    # owl-rllib is kept out of environment_key; only examples using it depend on its commit.
+    if uses_rllib(root, inputs):
+        value['rllib'] = env.get('rllib',{}).get('commit')
+    return digest(value)
 
 
 def receipt(directory, key, action, origin=None):

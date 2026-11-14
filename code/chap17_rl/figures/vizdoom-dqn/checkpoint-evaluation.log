@@ -1,0 +1,21 @@
+episode=1 return=50.00 actions=12 terminated=true truncated=false
+episode=2 return=38.00 actions=15 terminated=true truncated=false
+episode=3 return=50.00 actions=12 terminated=true truncated=false
+episode=4 return=50.00 actions=12 terminated=true truncated=false
+episode=5 return=83.00 actions=5 terminated=true truncated=false
+episode=6 return=79.00 actions=6 terminated=true truncated=false
+episode=7 return=-25.00 actions=27 terminated=true truncated=false
+episode=8 return=95.00 actions=2 terminated=true truncated=false
+episode=9 return=38.00 actions=15 terminated=true truncated=false
+episode=10 return=71.00 actions=7 terminated=true truncated=false
+episode=11 return=50.00 actions=12 terminated=true truncated=false
+episode=12 return=38.00 actions=15 terminated=true truncated=false
+episode=13 return=-49.00 actions=33 terminated=true truncated=false
+episode=14 return=-63.00 actions=34 terminated=true truncated=false
+episode=15 return=95.00 actions=2 terminated=true truncated=false
+episode=16 return=95.00 actions=2 terminated=true truncated=false
+episode=17 return=38.00 actions=15 terminated=true truncated=false
+episode=18 return=95.00 actions=2 terminated=true truncated=false
+episode=19 return=-46.00 actions=31 terminated=true truncated=false
+episode=20 return=87.00 actions=4 terminated=true truncated=false
+mean=43.45
