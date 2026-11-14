@@ -10,6 +10,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'docker'))
 import build
+import prune_tags
 import publish
 from validate import validate
 
@@ -230,6 +231,17 @@ class PipelineTests(unittest.TestCase):
 
     def test_latest_digest_mismatch_cannot_report_success(self):
         self.exercise_publication(wrong_digest_tag=publish.REPOSITORY+':latest')
+
+
+
+class PruneTagTests(unittest.TestCase):
+    def test_only_superseded_build_tags_are_deleted(self):
+        found={'latest':'sha256:new','build-new':'sha256:new','build-old':'sha256:old',
+               'build-older':'sha256:older','edition-2':'sha256:old'}
+        self.assertEqual(prune_tags.superseded(found),['build-old','build-older'])
+
+    def test_missing_latest_prunes_nothing(self):
+        with self.assertRaises(SystemExit):prune_tags.superseded({'build-old':'sha256:old'})
 
 
 if __name__=='__main__':unittest.main()

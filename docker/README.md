@@ -82,8 +82,9 @@ distributed image does not require the build runner's optional CPU extensions.
 The actual flags are recorded and checked before publication.
 
 PRs build/test only. Publications from main require the repository Actions secret
-`DOCKERHUB_TOKEN`, a matrixanger personal token with **Read & Write** repository
-permission. The username is fixed to `matrixanger`; no username secret is needed.
+`DOCKERHUB_TOKEN`, a matrixanger personal token with **Read, Write & Delete**
+repository permission (Delete is used only to remove superseded build tags; with a
+Read & Write token publication still works and the cleanup prints a warning). The username is fixed to `matrixanger`; no username secret is needed.
 Tokens are passed only to the login action, not Docker build arguments.
 
 The pipeline first loads the image into Docker, validates the exact image ID,
@@ -97,7 +98,9 @@ The canonical automated sessions use `ocaml -noinit` with explicit imports. It p
 `build-<code revision>-<run ID>` tag, pulls that registry digest, checks image
 identity and all baked evidence, then repeats PTY and Chapter 2 checks.
 Only then does it tag and push the same image as `:latest`, checking its registry
-digest. The former `:pilot` alias is no longer published. `:latest` is the reader-facing
+digest. Finally `docker/prune_tags.py` deletes the older `build-*` tags: only
+`latest`, the build tag it points to, and tags not named `build-*` (such as an
+edition tag) are kept. The book records source commits, not image versions. The former `:pilot` alias is no longer published. `:latest` is the reader-facing
 rolling tag; main-branch pushes and the daily 04:23 UTC workflow keep it current
 when validation succeeds. Publication jobs are serialised in this repository.
 Failed builds or reader/registry checks leave the previous `:latest` in place.

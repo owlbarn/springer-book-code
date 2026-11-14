@@ -53,8 +53,8 @@ package pass. Consult the manuscript repository's `STATUS.md` for the immutable
 image, exact source evidence and next review steps.
 
 CI updates `matrixanger/springer-book-code:latest` after main-branch pushes and
-daily builds pass the full book and registry-pull checks. Each publication also
-retains a unique `build-<code revision>-<run ID>` tag and digest. Failed checks
+daily builds pass the full book and registry-pull checks. Each publication pushes a
+unique `build-<code revision>-<run ID>` tag and then deletes the older build tags. Failed checks
 preserve the previous reader image. The former `:pilot` alias is retired.
-Reproduce an edition using its recorded digest.
+To keep an edition's image, give it its own tag (for example `edition-2`); such tags are never deleted.
 Local candidate tags are not Docker Hub release tags.

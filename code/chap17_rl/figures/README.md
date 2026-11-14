@@ -60,3 +60,24 @@ full run. `current_example` separately records later excerpt/timing edits and th
 short-run checks; it does not relabel the historical full run as a fresh run.
 Supplementary token, baseline and reference-implementation results are recorded
 in [the historical experiment notes](../notes/historical-experiments.md).
+
+## Web animations
+
+The online tutorial shows `lunar-frames.gif` and `doom-frames.gif` from
+`book/figures/rl/` in place of the PNG panels; the PDF keeps the PNGs. They use
+the same layout, so the captions still apply: the left column is the static
+frame of the PDF figure and the right column plays the whole first evaluation
+episode (seed 1000), stopping on its final frame. `make_gifs.py` assembles them
+with Pillow.
+
+- VizDoom: `vizdoom-dqn/replay_frames.py OUT`, run in the book image in that
+  directory, replays the recorded actions in RGB24 one tic at a time. The summed
+  rewards and episode boundaries must match the action CSVs. Its last frame is a
+  few tics later than the PDF's "last available" frame, which was taken at the
+  four-tic action boundary. Then `python3 make_gifs.py doom OUT TARGET`.
+- LunarLander: no weights were kept, so `lunar-lander/record-frames.sh` repeats
+  the full run (about 1.5 minutes) and saves every evaluation step. The
+  2026-11-14 repeat reproduced `training.log` (-449.90 to 271.11) and
+  `lunar-lander.csv` exactly. Its frames differ from the PDF frames only in
+  exhaust particles, because each `render()` call ages them; the lander positions
+  are identical. Then `python3 make_gifs.py lunar OUT TARGET`.
