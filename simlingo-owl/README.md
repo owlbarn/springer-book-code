@@ -78,8 +78,17 @@ by projected image features. Generation is greedy, with EOS 151645 and at most
 100 new tokens; EOS is included before appending the 30 driving queries.
 Both output heads use cumulative sums along the point sequence.
 
-There is no KV cache: each generated token reruns all 24 Qwen2 layers over the
-complete sequence. CPU inference takes minutes. `--max-new-tokens 3` is useful
+The default follows the book's full-sequence implementation: each generated
+token reruns all 24 Qwen2 layers over the complete sequence. Add `--kv-cache`
+to reuse previous keys and values. The first pass processes the prompt; later
+passes process one new token each. The final selected token and 30 driving
+queries form one causal chunk, including EOS when it was generated.
+
+Each request owns its cache. It stores the two KV heads per layer, with RoPE
+positions continuing from the cached prefix. Storage is allocated once for
+the prompt, token limit and driving queries; a 546-row prompt with a limit of
+100 reserves 15.84 MiB of FP32 keys and values. Model weights and prefill arrays
+still account for most memory. `--max-new-tokens 3` is useful
 for debugging but truncates the answer and changes the driving-head context;
 check `eos_reached` in the output. A truncated run is not a complete demo.
 
@@ -129,6 +138,25 @@ The loader tests reject incorrect shapes and corrupted checksums. Another 17
 cases check UTF-8 decoding, including token-limited partial characters.
 Non-ASCII questions fail explicitly; decoding handles UTF-8 vocabulary bytes.
 
+The cache regression uses real weights and a previously exported straight-road
+input. It checks chunked and single-token passes, causal masking, position
+offsets, capacity, reset, failed-append recovery and request isolation. It also
+checks token-limit stops and compares every decoding step's logits and the
+final driving outputs against the full-sequence implementation:
+
+```sh
+dune build test/cache.exe
+OPENBLAS_NUM_THREADS=4 OMP_NUM_THREADS=4 \
+  _build/default/test/cache.exe artifacts/weights \
+  artifacts/frame/owl/input_embeddings.npy artifacts/frame/owl/output.json \
+  artifacts/frame/cache-checks.json
+```
+
+Use an untruncated straight-road run for these input/output files. Greedy IDs
+and EOS must match exactly; arrays are compared with an absolute tolerance of
+0.001 (metres for driving outputs). FP32 results can differ slightly when
+matrix operations process different numbers of rows.
+
 ## Recorded frames
 
 To prepare an OverDrive recording, select only rows with available images:
@@ -150,6 +178,43 @@ python tools/run_frame.py --frame demo/straight --weights artifacts/weights \
   --out artifacts/replay-straight
 ```
 
+For cached inference, append `--kv-cache` and choose a new output directory:
+
+```sh
+python tools/run_frame.py --frame demo/straight --weights artifacts/weights \
+  --kv-cache --out artifacts/replay-straight-cached
+```
+
+`tools/book_run.py` also accepts `--kv-cache`. Use `--measure-memory` to record
+each complete inference process's elapsed time and peak RSS in the reference
+container. Run the two modes sequentially with separate `--out` directories.
+
+```sh
+python tools/book_run.py --out artifacts/kv-baseline --measure-memory
+python tools/book_run.py --out artifacts/kv-cached --measure-memory --kv-cache
+python tools/compare_cache.py artifacts/kv-baseline artifacts/kv-cached \
+  --out artifacts/kv-comparison.json
+```
+
+The comparison checks identical source/weight hashes, complete token sequences,
+EOS and all coordinates. Measurements include image processing, first-use weight
+loading and checksum verification, text generation and the driving heads.
+
+Measured on 2026-11-16 with the reference image, an i9-13900KF and four BLAS
+threads (one sequential replay per mode):
+
+| Frame | Full sequence | KV cache | Speedup |
+| --- | ---: | ---: | ---: |
+| straight | 174.77 s | 42.32 s | 4.13× |
+| curve | 116.27 s | 40.01 s | 2.91× |
+| close_follow | 147.21 s | 40.98 s | 3.59× |
+| brake | 131.32 s | 39.72 s | 3.31× |
+
+Peak RSS remained about 4.10–4.12 GiB in both modes. All four answers and token
+sequences, including EOS, matched exactly; the largest trajectory difference
+was 0.00000954 m. Source hashes, per-scene measurements and the 44 numerical
+cache checks are recorded in [kv-cache-verification.json](demo/kv-cache-verification.json).
+
 The wrapper decodes the retained PNG to PPM and runs the OCaml executable,
 streaming progress and saving it in `run.log`. Its `--threads` option defaults
 to 4 and explicitly sets both BLAS and OpenMP thread counts.
@@ -164,9 +229,11 @@ braking-frame counterexample.
 | `Nn` | Dense-array normalization, activations, linear and per-head attention |
 | `Vit` | InternViT, pixel-shuffle v2 and image projection |
 | `Qwen2` | RoPE, GQA, causal attention and SwiGLU |
+| `Qwen2_cached` | Per-layer KV buffers, absolute positions and causal chunk append |
 | `Tokenizer` | ASCII pretokenization, byte BPE and UTF-8 byte decoding |
 | `Preprocess` | P6 PPM parsing, optional crop, bilinear resize and normalization |
 | `Simlingo` | Prompt, placeholder replacement, greedy decode and driving heads |
+| `Simlingo_cached` | Cached decoding and the final driving-query chunk |
 
 This directory is self-contained and can be moved into its own repository.
 It is intentionally outside the book's automatically executed chapter examples:

@@ -20,6 +20,9 @@ def main():
     parser.add_argument('--image', default='springer-simlingo:chapter18')
     parser.add_argument('--weights', type=Path, default=Path('artifacts/weights'))
     parser.add_argument('--out', type=Path, default=Path('artifacts/book'))
+    parser.add_argument('--kv-cache', action='store_true')
+    parser.add_argument('--measure-memory', action='store_true',
+                        help='record each inference process wall time and peak RSS')
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     out = args.out.resolve()
@@ -28,6 +31,8 @@ def main():
     sources = sorted([*root.glob('lib/*'), *root.glob('bin/*'),
                       root/'dune-project', root/'simlingo-owl.opam',
                       root/'Dockerfile.book', Path(__file__).resolve()])
+    if args.measure_memory:
+        sources.append(root/'tools/measure_memory.py')
     for name in frames:
         sources += [root/'demo'/name/f for f in ['frame.png', 'input.json', 'targets.json']]
         target = out/name
@@ -51,13 +56,20 @@ def main():
     import shlex
     for name in frames:
         inp = json.loads((root/'demo'/name/'input.json').read_text())
-        commands.append(' '.join(shlex.quote(str(v)) for v in [
+        inference = [
             '_build/default/bin/main.exe', '--weights', '/weights',
             '--image', '/results/'+name+'/frame.ppm',
             '--speed', inp['speed'], '--crop-bottom', inp['crop_bottom'],
             '--targets', '/source/demo/'+name+'/targets.json',
-            '--question', inp['question'], '--output', '/results/'+name+'/output.json']))
+            '--question', inp['question'], '--output', '/results/'+name+'/output.json']
+        if args.kv_cache:
+            inference.append('--kv-cache')
+        if args.measure_memory:
+            inference = ['python3', '/source/tools/measure_memory.py', '--report',
+                         '/results/'+name+'/measurement.json', '--'] + inference
+        commands.append(' '.join(shlex.quote(str(v)) for v in inference))
     command = ['docker', 'run', '--rm', '--network', 'none',
+               '--memory=16g', '--memory-swap=16g',
                '--user', str(os.getuid())+':'+str(os.getgid()),
                '-e', 'OPENBLAS_NUM_THREADS=4', '-e', 'OMP_NUM_THREADS=4',
                '-v', str(root)+':/source:ro',
@@ -73,6 +85,7 @@ def main():
             log.write(line)
         status = process.wait()
     evidence = {'schema': 'simlingo-book-run-v1', 'image_id': image_id,
+                'kv_cache': args.kv_cache,
                 'sources': recorded, 'command': command, 'exit_code': status,
                 'elapsed_seconds': time.time()-start,
                 'weights_manifest_sha256': sha(args.weights/'manifest.json')}

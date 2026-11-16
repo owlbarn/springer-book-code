@@ -1,0 +1,197 @@
+{
+  "passed": true,
+  "absolute_tolerance_metres": 0.001,
+  "image_id": "sha256:50e0f7aa5aaf41239292a70c0a01f2480a8e267d42d060981b53dfca2f89d01d",
+  "weights_manifest_sha256": "8dc7b0c816ade49bf2a4a6917cfe86414c730baf08e5a10bac0fbea4bb9fb965",
+  "sources": {
+    "Dockerfile.book": "62ca52207936e2154e1f6aed9e4ed5e064ddf1948fe4ebfaa8e0a70dcdd6fdc1",
+    "bin/dune": "1fad77f37f58f38b984e5b7cd1f3313973dd607e7066e2ced56b20eb3c547400",
+    "bin/main.ml": "ef38a67a9858fb9287837325f8f45374926248f197561c6ad00f1cb9ab856b37",
+    "dune-project": "edb1e527dae9abd4c65f39b18f7c8c0583e57b26a1b1fa193cbc235042dfe1d4",
+    "lib/dune": "15f5077f88e89640ff459460a4b60cff66de9a34b4845ddebce0c518a720a2d0",
+    "lib/nn.ml": "28f41e83ec5997529200eb4abeb9ab4e761bdb183adc9cc1b94d98934fdfc31b",
+    "lib/preprocess.ml": "55201372c863f55482774562f7820874472581fef1d167e11a93ffd1858c8a51",
+    "lib/qwen2.ml": "a7aad396a6cc0031b0f7e007d6e5b99901cb6fcbaf826c555030daea03fd0231",
+    "lib/qwen2_cached.ml": "b88240a9ca52b76f9e847bdcd7a89898afdda8723ede76f042117266cd03db18",
+    "lib/qwen2_cached.mli": "74d33d09a81dd3fa4b756f6ae85fd741c14bc8955a4b030038e69d5abe71bfe7",
+    "lib/simlingo.ml": "375fe9ee5514ef06e5b9a33e49d2cb003fd43a8245d81bcbbecc5f4a93ddb860",
+    "lib/simlingo_cached.ml": "7c93c068bd813c235f0f0f1f6f5864056d27fecc829f0377431bdb7ee7f88877",
+    "lib/simlingo_cached.mli": "2f33081a6d211c451dca4dffbee0f1c07d7202bf236a9822334b8fe8a8474ce6",
+    "lib/tokenizer.ml": "5f20d51eab1f9a60308580813ef7090f11484f7590c577420004bd63aa58c985",
+    "lib/vit.ml": "e20eba9d4857d5722eaa20f109ee2d5676d821f9da506c5da07a016eee1aa4e8",
+    "lib/weights.ml": "02ce77a9845713882f820b079be54f127f2fa82220e9946567b1e718a3e87e7c",
+    "simlingo-owl.opam": "76fa4fb8d7afc2d8fd3eaf8b6ff5f63b88187501dda425d4c93ced73de091462",
+    "tools/book_run.py": "0e1e4af3902bb1a153169d2534c4ab5382c349ea3fd32aa37020f7e69a56f207",
+    "tools/measure_memory.py": "8b2e607c7b24cb03df2b7b96422fc6e73e05b9dda26c07ccde809ee938e22c31",
+    "demo/straight/frame.png": "2434a0073ae7ff9f0d323aa7f8d8592a7219d522d381d0fcd370ecaba2b76f20",
+    "demo/straight/input.json": "8b90135cd0ec79d0b424a04f6826b01dfa265678a35b6e083630c6064dcb40ce",
+    "demo/straight/targets.json": "8657a96df496019c6d3b49bf5b60ca5ba86d11d55734561b607e783d6c87b3fb",
+    "demo/curve/frame.png": "c1281a9c7393cbf80edad1ca8b561997b3b8c6d297315b52e71c82d9a36fc41b",
+    "demo/curve/input.json": "e7c41f1ada67ba6c84b3f2336b4d6012519b1bea26168ff859cd23ada8df083f",
+    "demo/curve/targets.json": "c8f20d60ce73b0ebc35aa72b98fea7372e6b9ce9698cd26549313e5fd9e60f1e",
+    "demo/close_follow/frame.png": "d65d2196a1e6361d6e9f2076631b85e575956a3de03826da4469e0142e7fa0b3",
+    "demo/close_follow/input.json": "1f16504ff641b866a218ec403042345f86fcf606554f00b857e228be10e843d8",
+    "demo/close_follow/targets.json": "edaeeb759cf6b9ac8fa502f98f753cf5e756434128d43661e1f3123b4e48d221",
+    "demo/brake/frame.png": "90c828f0aed93d55f3a9a1980d9be2f878e7ebc602d1af4d83213d4e82bfe0c3",
+    "demo/brake/input.json": "cde22507015096535ad4cdaf688593d88684204f99c29108ee553ad35901820b",
+    "demo/brake/targets.json": "b1041ad15281549cc274b9ee4331f8cbb3c8e2ec949892029f881160ddfcc58e"
+  },
+  "execution_sha256": {
+    "baseline": "cffdd2a39d546724dadf4147d4f9c16509d551269faabc5e36211bb5e05c9304",
+    "cached": "1eb7d90360c565d8c11faab33dabc235c2ec4db329b7abb4da1038a62d6fabb8"
+  },
+  "scenes": {
+    "straight": {
+      "tokens": 31,
+      "max_absolute_error_metres": {
+        "route": 6.370246410369873e-07,
+        "speed_waypoints": 2.86102294921875e-06
+      },
+      "baseline": {
+        "elapsed_seconds": 174.76745728985406,
+        "peak_rss_kib": 4302964,
+        "peak_rss_gib": 4.103626251220703
+      },
+      "cached": {
+        "elapsed_seconds": 42.31973390397616,
+        "peak_rss_kib": 4300904,
+        "peak_rss_gib": 4.101661682128906
+      },
+      "speedup": 4.129691781295292
+    },
+    "curve": {
+      "tokens": 17,
+      "max_absolute_error_metres": {
+        "route": 1.9073486328125e-06,
+        "speed_waypoints": 3.814697265625e-06
+      },
+      "baseline": {
+        "elapsed_seconds": 116.26762996381149,
+        "peak_rss_kib": 4306648,
+        "peak_rss_gib": 4.107139587402344
+      },
+      "cached": {
+        "elapsed_seconds": 40.00620410311967,
+        "peak_rss_kib": 4321528,
+        "peak_rss_gib": 4.121330261230469
+      },
+      "speedup": 2.90623998378154
+    },
+    "close_follow": {
+      "tokens": 24,
+      "max_absolute_error_metres": {
+        "route": 1.9073486328125e-06,
+        "speed_waypoints": 5.7220458984375e-06
+      },
+      "baseline": {
+        "elapsed_seconds": 147.20793609507382,
+        "peak_rss_kib": 4303244,
+        "peak_rss_gib": 4.103893280029297
+      },
+      "cached": {
+        "elapsed_seconds": 40.97587936511263,
+        "peak_rss_kib": 4302500,
+        "peak_rss_gib": 4.103183746337891
+      },
+      "speedup": 3.5925509928264887
+    },
+    "brake": {
+      "tokens": 21,
+      "max_absolute_error_metres": {
+        "route": 3.814697265625e-06,
+        "speed_waypoints": 9.5367431640625e-06
+      },
+      "baseline": {
+        "elapsed_seconds": 131.32084394688718,
+        "peak_rss_kib": 4306648,
+        "peak_rss_gib": 4.107139587402344
+      },
+      "cached": {
+        "elapsed_seconds": 39.71771447407082,
+        "peak_rss_kib": 4321528,
+        "peak_rss_gib": 4.121330261230469
+      },
+      "speedup": 3.306354499139628
+    }
+  },
+  "date": "2026-11-16",
+  "environment": {
+    "cpu": "13th Gen Intel Core i9-13900KF",
+    "blas_threads": 4,
+    "ocaml": "5.5.2",
+    "memory_limit_gib": 16,
+    "swap_enabled": false,
+    "measurements": "One sequential end-to-end replay per scene and mode; includes loading, checksum verification, vision, text and driving heads."
+  },
+  "cache_tests": {
+    "passed": true,
+    "decoded_steps": 31,
+    "absolute_tolerance": 0.001,
+    "max_absolute_errors": {
+      "prefill": 0.000133514404296875,
+      "single_token": 0.0001430511474609375,
+      "chunk_mask_and_positions": 0.00010013580322265625,
+      "reset": 0.0,
+      "retry_append": 0.0001430511474609375,
+      "separate_request": 0.0,
+      "original_request": 0.00010013580322265625,
+      "limit_1_route": 7.301568984985352e-07,
+      "limit_1_speed": 2.6702880859375e-05,
+      "limit_3_route": 1.9073486328125e-06,
+      "limit_3_speed": 6.67572021484375e-06,
+      "logits_00": 0.0,
+      "logits_01": 3.910064697265625e-05,
+      "logits_02": 4.7206878662109375e-05,
+      "logits_03": 4.601478576660156e-05,
+      "logits_04": 1.7642974853515625e-05,
+      "logits_05": 3.886222839355469e-05,
+      "logits_06": 2.956390380859375e-05,
+      "logits_07": 3.8623809814453125e-05,
+      "logits_08": 3.933906555175781e-05,
+      "logits_09": 4.1484832763671875e-05,
+      "logits_10": 7.176399230957031e-05,
+      "logits_11": 4.291534423828125e-05,
+      "logits_12": 1.800060272216797e-05,
+      "logits_13": 2.3365020751953125e-05,
+      "logits_14": 4.1484832763671875e-05,
+      "logits_15": 3.3855438232421875e-05,
+      "logits_16": 4.029273986816406e-05,
+      "logits_17": 3.910064697265625e-05,
+      "logits_18": 4.9591064453125e-05,
+      "logits_19": 3.5762786865234375e-05,
+      "logits_20": 6.365776062011719e-05,
+      "logits_21": 2.002716064453125e-05,
+      "logits_22": 1.71661376953125e-05,
+      "logits_23": 5.14984130859375e-05,
+      "logits_24": 2.2649765014648438e-05,
+      "logits_25": 2.9206275939941406e-05,
+      "logits_26": 4.00543212890625e-05,
+      "logits_27": 2.288818359375e-05,
+      "logits_28": 3.6716461181640625e-05,
+      "logits_29": 7.2479248046875e-05,
+      "logits_30": 4.0531158447265625e-05,
+      "eos_route": 4.76837158203125e-07,
+      "eos_speed": 1.9073486328125e-06
+    },
+    "sources": {
+      "lib/qwen2_cached.ml": "b88240a9ca52b76f9e847bdcd7a89898afdda8723ede76f042117266cd03db18",
+      "lib/qwen2_cached.mli": "74d33d09a81dd3fa4b756f6ae85fd741c14bc8955a4b030038e69d5abe71bfe7",
+      "lib/simlingo_cached.ml": "7c93c068bd813c235f0f0f1f6f5864056d27fecc829f0377431bdb7ee7f88877",
+      "lib/simlingo_cached.mli": "2f33081a6d211c451dca4dffbee0f1c07d7202bf236a9822334b8fe8a8474ce6",
+      "test/cache.ml": "0f07136d1792b3db62c415294438173444612a01292ca85430b39ece80188b65",
+      "test/dune": "d626c1ccd186658b7589d0048e7387729de52d0ea9ce38c649116a9891213559",
+      "bin/main.ml": "ef38a67a9858fb9287837325f8f45374926248f197561c6ad00f1cb9ab856b37",
+      "tools/run_frame.py": "ee7a04c90b65492b5206c923611a0aad78b1458908703715211d7569f8ae4448",
+      "tools/book_run.py": "0e1e4af3902bb1a153169d2534c4ab5382c349ea3fd32aa37020f7e69a56f207",
+      "tools/compare_cache.py": "d4256a67dd134ba304e0b446e1138fb8a4e62b6aa0072e9c022b1ae5e8a966eb"
+    },
+    "log_sha256": "3a02c5e4b28080959aa6098eb05c0cd77e7fd1f7ad8547c957787c247e61682b"
+  },
+  "existing_regressions": "258 tokenizer cases, 17 UTF-8 cases; activation, RoPE, GQA, shuffle, PPM and weight-integrity checks passed in the reference container.",
+  "records": [
+    "artifacts/kv-cache-check",
+    "artifacts/kv-baseline",
+    "artifacts/kv-cached"
+  ],
+  "book_baseline_reproduced_exactly": true
+}

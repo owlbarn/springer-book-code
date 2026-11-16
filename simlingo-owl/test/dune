@@ -1,3 +1,3 @@
-(executable
- (name check)
+(executables
+ (names check cache)
  (libraries simlingo_owl))

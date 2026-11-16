@@ -11,6 +11,7 @@ p.add_argument('--weights',type=Path,required=True)
 p.add_argument('--exe',type=Path,default=Path('_build/default/bin/main.exe'))
 p.add_argument('--max-new-tokens',type=int,default=100)
 p.add_argument('--threads',type=int,default=4,help='BLAS/OpenMP threads (default 4)')
+p.add_argument('--kv-cache',action='store_true',help='reuse per-layer keys and values')
 p.add_argument('--out',type=Path,help='new output directory (default: FRAME/owl)')
 a=p.parse_args()
 if a.threads < 1: p.error('threads must be positive')
@@ -29,6 +30,8 @@ cmd=[str(a.exe.resolve()),'--weights',str(a.weights),'--image',str(image),
      '--targets',str(a.frame/'targets.json'),'--speed',str(metadata['speed']),
      '--crop-bottom',str(metadata['crop_bottom']),'--question',metadata['question'],
      '--max-new-tokens',str(a.max_new_tokens),'--dump',str(out),'--output',str(out/'output.json')]
+if a.kv_cache:
+    cmd.append('--kv-cache')
 with (out/'run.log').open('w') as log:
     with subprocess.Popen(cmd,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,
                           text=True,bufsize=1) as process:

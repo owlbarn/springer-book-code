@@ -8,6 +8,7 @@ let () =
   let output = ref "output.json" and max_tokens = ref 100 and crop = ref 0. in
   let dump = ref "" and text = ref "" and tokenize_only = ref false in
   let input_embeddings = ref "" and forward_only = ref false in
+  let kv_cache = ref false in
   Arg.parse
     [
       ("--weights", Arg.Set_string weights, "DIR converted weights");
@@ -28,6 +29,7 @@ let () =
         "TEXT only encode/decode text" );
       ("--input-embeddings", Arg.Set_string input_embeddings, "FILE replay merged input npy (debug)");
       ("--forward-only", Arg.Set forward_only, " only one Qwen2 forward (debug)");
+      ("--kv-cache", Arg.Set kv_cache, " reuse per-layer keys and values during generation");
     ]
     (fun s -> raise (Arg.Bad ("unexpected argument: " ^ s)))
     "SimLingo inference with Owl";
@@ -91,7 +93,10 @@ let () =
       tap "first_logits" logits;
       write (`Assoc [ ("argmax", `Int (Nn.argmax logits)) ]))
     else
-      let ids, route, speed = Simlingo.generate ~tap ~max_new_tokens:!max_tokens w input in
+      let ids, route, speed =
+        if !kv_cache then Simlingo_cached.generate ~tap ~max_new_tokens:!max_tokens w input
+        else Simlingo.generate ~tap ~max_new_tokens:!max_tokens w input
+      in
       let points array =
         let shape = A.shape array in
         `List
