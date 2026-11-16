@@ -1,0 +1,199 @@
+{
+  "passed": true,
+  "comparison": "cgraph_vs_kv",
+  "absolute_tolerance_metres": 0.001,
+  "image_id": "sha256:50e0f7aa5aaf41239292a70c0a01f2480a8e267d42d060981b53dfca2f89d01d",
+  "weights_manifest_sha256": "8dc7b0c816ade49bf2a4a6917cfe86414c730baf08e5a10bac0fbea4bb9fb965",
+  "sources": {
+    "Dockerfile.book": "62ca52207936e2154e1f6aed9e4ed5e064ddf1948fe4ebfaa8e0a70dcdd6fdc1",
+    "bin/dune": "1fad77f37f58f38b984e5b7cd1f3313973dd607e7066e2ced56b20eb3c547400",
+    "bin/main.ml": "fd40233ac027a1b8c72477d06ac2dc142f1517f52abc240ea8bf48c54970a89f",
+    "dune-project": "edb1e527dae9abd4c65f39b18f7c8c0583e57b26a1b1fa193cbc235042dfe1d4",
+    "lib/cgraph_block.ml": "4276a6e2d1d04bbccc4a964c086e07a91e66d2dc831caca8c8b8d05cf45351d2",
+    "lib/dune": "15f5077f88e89640ff459460a4b60cff66de9a34b4845ddebce0c518a720a2d0",
+    "lib/nn.ml": "28f41e83ec5997529200eb4abeb9ab4e761bdb183adc9cc1b94d98934fdfc31b",
+    "lib/preprocess.ml": "55201372c863f55482774562f7820874472581fef1d167e11a93ffd1858c8a51",
+    "lib/qwen2.ml": "a7aad396a6cc0031b0f7e007d6e5b99901cb6fcbaf826c555030daea03fd0231",
+    "lib/qwen2_cached.ml": "b88240a9ca52b76f9e847bdcd7a89898afdda8723ede76f042117266cd03db18",
+    "lib/qwen2_cached.mli": "74d33d09a81dd3fa4b756f6ae85fd741c14bc8955a4b030038e69d5abe71bfe7",
+    "lib/qwen2_cgraph.ml": "372a73f704501481c8f127260e6065c5e030c7465ca83cdd47a588e2b43498cd",
+    "lib/qwen2_cgraph.mli": "73956bcb5bdc242f722444a111dab8579f32e8549673fc329416f103927139cc",
+    "lib/simlingo.ml": "375fe9ee5514ef06e5b9a33e49d2cb003fd43a8245d81bcbbecc5f4a93ddb860",
+    "lib/simlingo_cached.ml": "12b18e23fecaf6525cdbd028d5debcb41dd1d5e8b824b164530868f061fca4b7",
+    "lib/simlingo_cached.mli": "dcaa55f3204de03a72f298bd09b16c7c77e3fd99d79f6b1c4a57aab6df8a7fb8",
+    "lib/tokenizer.ml": "5f20d51eab1f9a60308580813ef7090f11484f7590c577420004bd63aa58c985",
+    "lib/vit.ml": "e20eba9d4857d5722eaa20f109ee2d5676d821f9da506c5da07a016eee1aa4e8",
+    "lib/weights.ml": "02ce77a9845713882f820b079be54f127f2fa82220e9946567b1e718a3e87e7c",
+    "simlingo-owl.opam": "76fa4fb8d7afc2d8fd3eaf8b6ff5f63b88187501dda425d4c93ced73de091462",
+    "tools/book_run.py": "89fcd04fd5c05974f63ba116d7b0bb832820de0d942603f7ad54d72343217a9f",
+    "tools/measure_memory.py": "8b2e607c7b24cb03df2b7b96422fc6e73e05b9dda26c07ccde809ee938e22c31",
+    "demo/straight/frame.png": "2434a0073ae7ff9f0d323aa7f8d8592a7219d522d381d0fcd370ecaba2b76f20",
+    "demo/straight/input.json": "8b90135cd0ec79d0b424a04f6826b01dfa265678a35b6e083630c6064dcb40ce",
+    "demo/straight/targets.json": "8657a96df496019c6d3b49bf5b60ca5ba86d11d55734561b607e783d6c87b3fb",
+    "demo/curve/frame.png": "c1281a9c7393cbf80edad1ca8b561997b3b8c6d297315b52e71c82d9a36fc41b",
+    "demo/curve/input.json": "e7c41f1ada67ba6c84b3f2336b4d6012519b1bea26168ff859cd23ada8df083f",
+    "demo/curve/targets.json": "c8f20d60ce73b0ebc35aa72b98fea7372e6b9ce9698cd26549313e5fd9e60f1e",
+    "demo/close_follow/frame.png": "d65d2196a1e6361d6e9f2076631b85e575956a3de03826da4469e0142e7fa0b3",
+    "demo/close_follow/input.json": "1f16504ff641b866a218ec403042345f86fcf606554f00b857e228be10e843d8",
+    "demo/close_follow/targets.json": "edaeeb759cf6b9ac8fa502f98f753cf5e756434128d43661e1f3123b4e48d221",
+    "demo/brake/frame.png": "90c828f0aed93d55f3a9a1980d9be2f878e7ebc602d1af4d83213d4e82bfe0c3",
+    "demo/brake/input.json": "cde22507015096535ad4cdaf688593d88684204f99c29108ee553ad35901820b",
+    "demo/brake/targets.json": "b1041ad15281549cc274b9ee4331f8cbb3c8e2ec949892029f881160ddfcc58e"
+  },
+  "execution_sha256": {
+    "baseline": "cc2d3766ad4908192a61f25db47e116a0864dff8ef8768725fc8d26b40912914",
+    "cached": "11531211d3e4f663d1063de3bbe5ffad19bc59bc6643ef7e79ff3a53966a62c0"
+  },
+  "scenes": {
+    "straight": {
+      "tokens": 31,
+      "max_absolute_error_metres": {
+        "route": 1.9073486328125e-06,
+        "speed_waypoints": 1.9073486328125e-06
+      },
+      "baseline": {
+        "elapsed_seconds": 42.072154568042606,
+        "peak_rss_kib": 4350216,
+        "peak_rss_gib": 4.148689270019531
+      },
+      "cached": {
+        "elapsed_seconds": 35.13322538882494,
+        "peak_rss_kib": 4353708,
+        "peak_rss_gib": 4.152019500732422
+      },
+      "speedup": 1.1975033348752768
+    },
+    "curve": {
+      "tokens": 17,
+      "max_absolute_error_metres": {
+        "route": 2.384185791015625e-07,
+        "speed_waypoints": 7.62939453125e-06
+      },
+      "baseline": {
+        "elapsed_seconds": 39.11347850202583,
+        "peak_rss_kib": 4321368,
+        "peak_rss_gib": 4.121177673339844
+      },
+      "cached": {
+        "elapsed_seconds": 34.002673665992916,
+        "peak_rss_kib": 4351664,
+        "peak_rss_gib": 4.1500701904296875
+      },
+      "speedup": 1.1503059696492155
+    },
+    "close_follow": {
+      "tokens": 24,
+      "max_absolute_error_metres": {
+        "route": 4.76837158203125e-07,
+        "speed_waypoints": 9.5367431640625e-07
+      },
+      "baseline": {
+        "elapsed_seconds": 40.95002630003728,
+        "peak_rss_kib": 4302668,
+        "peak_rss_gib": 4.103343963623047
+      },
+      "cached": {
+        "elapsed_seconds": 34.6636555660516,
+        "peak_rss_kib": 4352904,
+        "peak_rss_gib": 4.151252746582031
+      },
+      "speedup": 1.1813533694392675
+    },
+    "brake": {
+      "tokens": 21,
+      "max_absolute_error_metres": {
+        "route": 9.5367431640625e-07,
+        "speed_waypoints": 1.9073486328125e-06
+      },
+      "baseline": {
+        "elapsed_seconds": 39.241729082074016,
+        "peak_rss_kib": 4351768,
+        "peak_rss_gib": 4.150169372558594
+      },
+      "cached": {
+        "elapsed_seconds": 34.269067055080086,
+        "peak_rss_kib": 4355104,
+        "peak_rss_gib": 4.153350830078125
+      },
+      "speedup": 1.1451064313773542
+    }
+  },
+  "date": "2026-11-16",
+  "scope": "Qwen2 Transformer blocks on Owl CPU CGraph with KV cache; vision, final norm, logits and driving heads on ndarray",
+  "environment": {
+    "cpu": "Intel Core i9-13900KF",
+    "ocaml": "5.5.2",
+    "blas_threads": 4,
+    "memory_limit_gib": 16,
+    "swap_enabled": false,
+    "measurement": "One sequential end-to-end replay per scene and mode, including graph construction and optimisation, weight loading and checksum checks."
+  },
+  "numerical_tests": {
+    "passed": true,
+    "cgraph": true,
+    "decoded_steps": 31,
+    "absolute_tolerance": 0.001,
+    "max_absolute_errors": {
+      "prefill": 9.5367431640625e-05,
+      "single_token": 0.0001430511474609375,
+      "chunk_mask_and_positions": 0.00012969970703125,
+      "reset": 0.0,
+      "retry_append": 0.0001430511474609375,
+      "separate_request": 9.918212890625e-05,
+      "original_request": 0.00012969970703125,
+      "limit_1_route": 6.556510925292969e-07,
+      "limit_1_speed": 9.5367431640625e-06,
+      "limit_3_route": 1.3709068298339844e-06,
+      "limit_3_speed": 7.62939453125e-06,
+      "retained_output": 0.0,
+      "logits_00": 2.6464462280273438e-05,
+      "logits_01": 4.57763671875e-05,
+      "logits_02": 5.340576171875e-05,
+      "logits_03": 4.9591064453125e-05,
+      "logits_04": 1.621246337890625e-05,
+      "logits_05": 3.0934810638427734e-05,
+      "logits_06": 2.9087066650390625e-05,
+      "logits_07": 2.9087066650390625e-05,
+      "logits_08": 4.1961669921875e-05,
+      "logits_09": 3.8623809814453125e-05,
+      "logits_10": 6.222724914550781e-05,
+      "logits_11": 4.6253204345703125e-05,
+      "logits_12": 2.1219253540039062e-05,
+      "logits_13": 2.5272369384765625e-05,
+      "logits_14": 5.245208740234375e-05,
+      "logits_15": 4.291534423828125e-05,
+      "logits_16": 3.7670135498046875e-05,
+      "logits_17": 4.1961669921875e-05,
+      "logits_18": 5.340576171875e-05,
+      "logits_19": 3.0279159545898438e-05,
+      "logits_20": 4.76837158203125e-05,
+      "logits_21": 2.3126602172851562e-05,
+      "logits_22": 2.288818359375e-05,
+      "logits_23": 3.24249267578125e-05,
+      "logits_24": 2.002716064453125e-05,
+      "logits_25": 4.291534423828125e-05,
+      "logits_26": 5.14984130859375e-05,
+      "logits_27": 2.193450927734375e-05,
+      "logits_28": 3.3855438232421875e-05,
+      "logits_29": 6.008148193359375e-05,
+      "logits_30": 5.054473876953125e-05,
+      "eos_route": 2.384185791015625e-07,
+      "eos_speed": 1.9073486328125e-06
+    },
+    "source_hashes": {
+      "lib/cgraph_block.ml": "4276a6e2d1d04bbccc4a964c086e07a91e66d2dc831caca8c8b8d05cf45351d2",
+      "lib/qwen2_cgraph.ml": "372a73f704501481c8f127260e6065c5e030c7465ca83cdd47a588e2b43498cd",
+      "lib/simlingo_cached.ml": "12b18e23fecaf6525cdbd028d5debcb41dd1d5e8b824b164530868f061fca4b7",
+      "test/cache.ml": "bfb8f6ad4dda38520d6b8e50a285cd246748d46f2378def93d67b3d305dcb04e"
+    },
+    "log_sha256": "80217bbd7a60a132ae10954a02a4f68eba92d904f47e8d6cdc857321315c76da",
+    "ownership_checks": "The merged input, the retained prefill output and three saved weight matrices were unchanged after repeated evaluation, cache reset and generation.",
+    "existing_regressions": "258 tokenizer cases, 17 UTF-8 cases, activation, RoPE, GQA, shuffle, PPM and weight integrity passed."
+  },
+  "records": [
+    "artifacts/cgraph-check",
+    "artifacts/cgraph-kv",
+    "artifacts/cgraph-graph"
+  ],
+  "existing_kv_outputs_preserved_exactly": true
+}

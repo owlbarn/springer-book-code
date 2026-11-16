@@ -21,6 +21,7 @@ def main():
     parser.add_argument('--weights', type=Path, default=Path('artifacts/weights'))
     parser.add_argument('--out', type=Path, default=Path('artifacts/book'))
     parser.add_argument('--kv-cache', action='store_true')
+    parser.add_argument('--cgraph', action='store_true', help='CGraph Qwen2 blocks with KV cache')
     parser.add_argument('--measure-memory', action='store_true',
                         help='record each inference process wall time and peak RSS')
     args = parser.parse_args()
@@ -64,6 +65,8 @@ def main():
             '--question', inp['question'], '--output', '/results/'+name+'/output.json']
         if args.kv_cache:
             inference.append('--kv-cache')
+        if args.cgraph:
+            inference.append('--cgraph')
         if args.measure_memory:
             inference = ['python3', '/source/tools/measure_memory.py', '--report',
                          '/results/'+name+'/measurement.json', '--'] + inference
@@ -85,7 +88,7 @@ def main():
             log.write(line)
         status = process.wait()
     evidence = {'schema': 'simlingo-book-run-v1', 'image_id': image_id,
-                'kv_cache': args.kv_cache,
+                'kv_cache': args.kv_cache or args.cgraph, 'cgraph': args.cgraph,
                 'sources': recorded, 'command': command, 'exit_code': status,
                 'elapsed_seconds': time.time()-start,
                 'weights_manifest_sha256': sha(args.weights/'manifest.json')}

@@ -221,6 +221,63 @@ to 4 and explicitly sets both BLAS and OpenMP thread counts.
 See [demo/README.md](demo/README.md) for measured results and the retained
 braking-frame counterexample.
 
+## CGraph with KV cache
+
+Add `--cgraph` to evaluate Qwen2's 24 Transformer blocks with Owl's CPU
+computation graph. This option includes KV caching:
+
+```sh
+python tools/run_frame.py --frame demo/straight --weights artifacts/weights \
+  --cgraph --out artifacts/replay-straight-cgraph
+```
+
+Each block uses two optimised graphs: RMSNorm, Q/K/V projections and RoPE;
+then attention, the output projection, residuals and the gated MLP. The graphs
+share scratch buffers across layers and are reused while the chunk shape stays
+the same. A shape change, such as moving from prompt processing to one-token
+decoding, replaces the graphs. Weights bind to non-reusable input nodes without
+copying their arrays. Returned hidden states own their storage.
+
+The KV buffers and their append positions remain OCaml state. Attention uses
+the allocated cache capacity, with unused positions filled with zeros and
+masked before softmax. This keeps the decoding graph's shape fixed as the
+prefix grows. Vision, embedding lookup, the final RMSNorm, language projection
+and trajectory heads use the ndarray implementation. Vision retains its exact
+GELU; the current CGraph operator set does not expose `erf`.
+
+Run the same numerical regression against the full-sequence implementation:
+
+```sh
+_build/default/test/cache.exe artifacts/weights \
+  artifacts/frame/owl/input_embeddings.npy artifacts/frame/owl/output.json \
+  artifacts/frame/cgraph-checks.json --cgraph
+```
+
+To compare complete frames against the ndarray KV path in the reference image:
+
+```sh
+python tools/book_run.py --kv-cache --measure-memory --out artifacts/cgraph-kv
+python tools/book_run.py --cgraph --measure-memory --out artifacts/cgraph-graph
+python tools/compare_cache.py artifacts/cgraph-kv artifacts/cgraph-graph \
+  --cgraph --out artifacts/cgraph-comparison.json
+```
+
+Measured on 2026-11-16 in the same four-thread reference environment, including
+graph construction and optimisation:
+
+| Frame | Ndarray KV cache | CGraph + KV cache | Speedup |
+| --- | ---: | ---: | ---: |
+| straight | 42.07 s | 35.13 s | 1.20× |
+| curve | 39.11 s | 34.00 s | 1.15× |
+| close_follow | 40.95 s | 34.66 s | 1.18× |
+| brake | 39.24 s | 34.27 s | 1.15× |
+
+CGraph peak RSS was 4.150–4.153 GiB, compared with 4.103–4.150 GiB for the
+ndarray KV path. All four answers and token sequences matched exactly; the
+largest trajectory difference was 0.00000763 m. The 45 numerical comparisons,
+input/weight ownership checks and measurements are recorded in
+[cgraph-verification.json](demo/cgraph-verification.json).
+
 ## Code map
 
 | Module | Responsibility |
@@ -230,6 +287,8 @@ braking-frame counterexample.
 | `Vit` | InternViT, pixel-shuffle v2 and image projection |
 | `Qwen2` | RoPE, GQA, causal attention and SwiGLU |
 | `Qwen2_cached` | Per-layer KV buffers, absolute positions and causal chunk append |
+| `Cgraph_block` | Reusable CPU graphs and read-only weight bindings for a Qwen2 layer |
+| `Qwen2_cgraph` | CGraph layer execution with fixed-capacity KV attention |
 | `Tokenizer` | ASCII pretokenization, byte BPE and UTF-8 byte decoding |
 | `Preprocess` | P6 PPM parsing, optional crop, bilinear resize and normalization |
 | `Simlingo` | Prompt, placeholder replacement, greedy decode and driving heads |

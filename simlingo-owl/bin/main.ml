@@ -9,6 +9,7 @@ let () =
   let dump = ref "" and text = ref "" and tokenize_only = ref false in
   let input_embeddings = ref "" and forward_only = ref false in
   let kv_cache = ref false in
+  let cgraph = ref false in
   Arg.parse
     [
       ("--weights", Arg.Set_string weights, "DIR converted weights");
@@ -30,6 +31,7 @@ let () =
       ("--input-embeddings", Arg.Set_string input_embeddings, "FILE replay merged input npy (debug)");
       ("--forward-only", Arg.Set forward_only, " only one Qwen2 forward (debug)");
       ("--kv-cache", Arg.Set kv_cache, " reuse per-layer keys and values during generation");
+      ("--cgraph", Arg.Set cgraph, " use CGraph Qwen2 blocks with KV cache");
     ]
     (fun s -> raise (Arg.Bad ("unexpected argument: " ^ s)))
     "SimLingo inference with Owl";
@@ -89,12 +91,18 @@ let () =
       failwith "input shape must be [sequence,896]";
     tap "input_embeddings" input;
     if !forward_only then (
-      let logits = Qwen2.forward ~tap w input |> Qwen2.logits w in
+      let hidden =
+        if !cgraph then
+          Qwen2_cgraph.create ~capacity:(A.shape input).(0) w |> fun cache ->
+          Qwen2_cgraph.forward ~tap cache input
+        else Qwen2.forward ~tap w input
+      in
+      let logits = Qwen2.logits w hidden in
       tap "first_logits" logits;
       write (`Assoc [ ("argmax", `Int (Nn.argmax logits)) ]))
     else
       let ids, route, speed =
-        if !kv_cache then Simlingo_cached.generate ~tap ~max_new_tokens:!max_tokens w input
+        if !kv_cache || !cgraph then Simlingo_cached.generate ~cgraph:!cgraph ~tap ~max_new_tokens:!max_tokens w input
         else Simlingo.generate ~tap ~max_new_tokens:!max_tokens w input
       in
       let points array =

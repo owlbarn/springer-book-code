@@ -11,10 +11,13 @@ def read(path):
     return json.loads(path.read_text())
 
 
-def verify(baseline, cached):
+def verify(baseline, cached, cgraph=False):
     before, after = [read(p/'execution.json') for p in (baseline, cached)]
-    if before.get('kv_cache', False) or not after.get('kv_cache'):
-        raise ValueError('expected an uncached run followed by a cached run')
+    if cgraph:
+        if not before.get('kv_cache') or before.get('cgraph') or not after.get('kv_cache') or not after.get('cgraph'):
+            raise ValueError('expected ndarray KV cache followed by CGraph KV cache')
+    elif before.get('kv_cache', False) or not after.get('kv_cache') or before.get('cgraph') or after.get('cgraph'):
+        raise ValueError('expected an uncached run followed by an ndarray cached run')
     for run in (before, after):
         if run['exit_code'] != 0 or not run.get('validation'):
             raise ValueError('both runs must have completed validation')
@@ -57,7 +60,8 @@ def verify(baseline, cached):
         if 'baseline' in result and 'cached' in result:
             result['speedup'] = result['baseline']['elapsed_seconds'] / result['cached']['elapsed_seconds']
         scenes[name] = result
-    return {'passed': True, 'absolute_tolerance_metres': 1e-3,
+    return {'passed': True, 'comparison': 'cgraph_vs_kv' if cgraph else 'kv_vs_full',
+            'absolute_tolerance_metres': 1e-3,
             'image_id': before['image_id'],
             'weights_manifest_sha256': before['weights_manifest_sha256'],
             'sources': before['sources'],
@@ -72,8 +76,9 @@ if __name__ == '__main__':
     parser.add_argument('baseline', type=Path)
     parser.add_argument('cached', type=Path)
     parser.add_argument('--out', required=True, type=Path)
+    parser.add_argument('--cgraph', action='store_true', help='compare CGraph with ndarray KV cache')
     args = parser.parse_args()
-    result = verify(args.baseline, args.cached)
+    result = verify(args.baseline, args.cached, cgraph=args.cgraph)
     args.out.write_text(json.dumps(result, indent=2)+'\n')
     print('PASS: all four answers, token sequences and EOS match; trajectories within 0.001 m')
     for name, scene in result['scenes'].items():
