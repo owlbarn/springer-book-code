@@ -1,0 +1,60 @@
+{
+  "first_logits": {
+    "shape": [
+      1,
+      151655
+    ],
+    "max_abs": 7.176399230957031e-05,
+    "mean_abs": 1.1730489859473892e-05,
+    "owl_argmax": 12480,
+    "reference_argmax": 12480
+  },
+  "image_features": {
+    "shape": [
+      512,
+      896
+    ],
+    "max_abs": 4.9233436584472656e-05,
+    "mean_abs": 1.6126194850585307e-06
+  },
+  "input_embeddings": {
+    "shape": [
+      546,
+      896
+    ],
+    "max_abs": 4.9233436584472656e-05,
+    "mean_abs": 1.5128849781831377e-06
+  },
+  "qwen_layer1": {
+    "shape": [
+      546,
+      896
+    ],
+    "max_abs": 6.008148193359375e-05,
+    "mean_abs": 1.5631401311111404e-06
+  },
+  "vit_layer1_tile0": {
+    "shape": [
+      1025,
+      1024
+    ],
+    "max_abs": 6.4373016357421875e-06,
+    "mean_abs": 2.8977979127375875e-07
+  },
+  "vit_layer1_tile1": {
+    "shape": [
+      1025,
+      1024
+    ],
+    "max_abs": 5.245208740234375e-06,
+    "mean_abs": 2.676062820228253e-07
+  },
+  "prompt_ids_equal": true,
+  "generated_tokens_equal": true,
+  "answers": {
+    "owl": "Follow the route. Maintain the reduced speed to stay behind the black car that is to the front in 24.7 meters. Waypoints:",
+    "reference": "Follow the route. Maintain the reduced speed to stay behind the black car that is to the front in 24.7 meters. Waypoints:"
+  },
+  "route_max_abs": 1.9073486328125e-06,
+  "speed_waypoints_max_abs": 3.814697265625e-06
+}

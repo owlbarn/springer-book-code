@@ -1,0 +1,97 @@
+{
+  "date": "2026-11-14",
+  "checkpoint_sha256": "ec8943723d266ee9f5f56f45d153a163b22616960bfccb741965ea5daa700d28",
+  "parameters": 939599104,
+  "converted_tensors": 653,
+  "lora_merges": 168,
+  "scenes": {
+    "straight": {
+      "tokens": 31,
+      "elapsed_seconds": 319.0433340072632,
+      "prompt_ids_equal": true,
+      "generated_tokens_equal": true,
+      "first_logits_max_abs": 7.176399230957031e-05,
+      "route_max_abs": 1.9073486328125e-06,
+      "speed_waypoints_max_abs": 3.814697265625e-06
+    },
+    "curve": {
+      "tokens": 17,
+      "elapsed_seconds": 243.40164613723755,
+      "prompt_ids_equal": true,
+      "generated_tokens_equal": true,
+      "first_logits_max_abs": 6.4849853515625e-05,
+      "route_max_abs": 1.9073486328125e-06,
+      "speed_waypoints_max_abs": 7.62939453125e-06
+    },
+    "brake": {
+      "tokens": 21,
+      "elapsed_seconds": 263.3754379749298,
+      "prompt_ids_equal": true,
+      "generated_tokens_equal": true,
+      "first_logits_max_abs": 5.3882598876953125e-05,
+      "route_max_abs": 1.9073486328125e-06,
+      "speed_waypoints_max_abs": 1.52587890625e-05
+    },
+    "close_follow": {
+      "tokens": 24,
+      "elapsed_seconds": 199.14323687553406,
+      "prompt_ids_equal": true,
+      "generated_tokens_equal": true,
+      "first_logits_max_abs": 6.29425048828125e-05,
+      "route_max_abs": 2.644956111907959e-06,
+      "speed_waypoints_max_abs": 7.62939453125e-06
+    }
+  },
+  "environment": {
+    "ocaml": "5.3.0",
+    "dune": "3.17.2",
+    "torch": "2.2.0+cu121",
+    "transformers": "4.46.3",
+    "numpy": "1.23.0",
+    "owl_commit": "fa64d1ee0c30bb0930520ec52b6eb93df3dd2e5a",
+    "simlingo_commit": "743b243afd6cf5ff51b9fa1f8cac86f22d569684",
+    "base_snapshot": "0d75ccd166b1d0b79446ae6c5d1a4a667f1e6187",
+    "threads": 4
+  },
+  "checks": {
+    "build": true,
+    "tokenizer_cases": 258,
+    "utf8_decode_cases": 17,
+    "operator_fixtures": [
+      "gelu",
+      "silu",
+      "rope",
+      "causal_gqa",
+      "pixel_shuffle"
+    ],
+    "ppm_whitespace": true,
+    "weight_shape_and_checksum": true
+  },
+  "notes": [
+    "CPU wall-clock timings include weight loading; some runs overlapped.",
+    "close_follow initial wrapper run was terminated with exit 143 before producing output; retained output is the complete explicit-4-thread rerun.",
+    "brake is a model-behavior counterexample, reproduced by both implementations."
+  ],
+  "source_sha256": {
+    "lib/tokenizer.ml": "5f20d51eab1f9a60308580813ef7090f11484f7590c577420004bd63aa58c985",
+    "lib/dune": "15f5077f88e89640ff459460a4b60cff66de9a34b4845ddebce0c518a720a2d0",
+    "lib/simlingo.ml": "375fe9ee5514ef06e5b9a33e49d2cb003fd43a8245d81bcbbecc5f4a93ddb860",
+    "lib/preprocess.ml": "55201372c863f55482774562f7820874472581fef1d167e11a93ffd1858c8a51",
+    "lib/nn.ml": "28f41e83ec5997529200eb4abeb9ab4e761bdb183adc9cc1b94d98934fdfc31b",
+    "lib/qwen2.ml": "a7aad396a6cc0031b0f7e007d6e5b99901cb6fcbaf826c555030daea03fd0231",
+    "lib/vit.ml": "e20eba9d4857d5722eaa20f109ee2d5676d821f9da506c5da07a016eee1aa4e8",
+    "lib/weights.ml": "02ce77a9845713882f820b079be54f127f2fa82220e9946567b1e718a3e87e7c",
+    "bin/dune": "1fad77f37f58f38b984e5b7cd1f3313973dd607e7066e2ced56b20eb3c547400",
+    "bin/main.ml": "28b6a6a2701711afb08fb45618cec8b1dfe8ba7101cb37b4928cc3e8c27dabf0",
+    "test/dune": "1183357fbf677e2be0d6a282b4b1941fe4bd051a88493945b63bdda3b7e43097",
+    "test/check.ml": "780f3527820997a82dee5720591a5c0a519f79d7a6a2c724ca72bf8058ca2bf5",
+    "tools/convert.py": "0ec46e96582432e2c5e816ef1603f132d580388601ea53e7fa75f472411a223f",
+    "tools/assets.py": "558f2df19031303cb4a489c8bf94a37bc531a8fe0bf2195ce2deda2489495075",
+    "tools/compare.py": "01c51711a1be59ec8c214d7516edd58ddbe5cce5834bb9da38c38039437a1281",
+    "tools/test_fixtures.py": "7ca27da3bcac70dbc9d97c5ffcdfae751b8185c7ed91c21e85bfca9c70790860",
+    "tools/plot_demo.py": "ebae26f2069f1d56c8746ac76a7f68aef23fbd2b58e5c5dff360e051ba377d05",
+    "tools/reference.py": "b7dedaf27d95949d51de46757c60209516a9ffedd8849161fa10aebe75c876d8",
+    "tools/run_frame.py": "a668546d4136c540b8c1270e865c6b5bba91a3d528ae05af217cb3f706fd55ad",
+    "tools/prepare_frame.py": "d5132cdb36c55b02f2702f0f634465c6f74455d0ba201bf37e09d09fd74b11cf"
+  }
+}

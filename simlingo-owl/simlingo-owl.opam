@@ -1,0 +1,13 @@
+opam-version: "2.0"
+synopsis: "Offline SimLingo VLA inference using Owl dense arrays"
+maintainer: "springer-book-code contributors"
+authors: "springer-book-code contributors"
+license: "MIT"
+build: [["dune" "build" "-p" name "-j" jobs]]
+depends: [
+  "ocaml" {>= "4.14"}
+  "dune" {>= "3.0"}
+  "owl"
+  "yojson"
+  "sha"
+]

@@ -1,0 +1,60 @@
+{
+  "first_logits": {
+    "shape": [
+      1,
+      151655
+    ],
+    "max_abs": 6.4849853515625e-05,
+    "mean_abs": 9.590929039404728e-06,
+    "owl_argmax": 12480,
+    "reference_argmax": 12480
+  },
+  "image_features": {
+    "shape": [
+      512,
+      896
+    ],
+    "max_abs": 7.653236389160156e-05,
+    "mean_abs": 1.2221127008160693e-06
+  },
+  "input_embeddings": {
+    "shape": [
+      547,
+      896
+    ],
+    "max_abs": 7.653236389160156e-05,
+    "mean_abs": 1.1447199312897283e-06
+  },
+  "qwen_layer1": {
+    "shape": [
+      547,
+      896
+    ],
+    "max_abs": 7.772445678710938e-05,
+    "mean_abs": 1.191336764350126e-06
+  },
+  "vit_layer1_tile0": {
+    "shape": [
+      1025,
+      1024
+    ],
+    "max_abs": 5.0067901611328125e-06,
+    "mean_abs": 3.149469591789966e-07
+  },
+  "vit_layer1_tile1": {
+    "shape": [
+      1025,
+      1024
+    ],
+    "max_abs": 5.4836273193359375e-06,
+    "mean_abs": 2.841402704234497e-07
+  },
+  "prompt_ids_equal": true,
+  "generated_tokens_equal": true,
+  "answers": {
+    "owl": "Follow the route. Accelerate to drive with the target speed. Waypoints:",
+    "reference": "Follow the route. Accelerate to drive with the target speed. Waypoints:"
+  },
+  "route_max_abs": 1.9073486328125e-06,
+  "speed_waypoints_max_abs": 7.62939453125e-06
+}

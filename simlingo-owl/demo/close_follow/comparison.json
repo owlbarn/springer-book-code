@@ -1,0 +1,60 @@
+{
+  "first_logits": {
+    "shape": [
+      1,
+      151655
+    ],
+    "max_abs": 6.29425048828125e-05,
+    "mean_abs": 9.220398169418331e-06,
+    "owl_argmax": 12480,
+    "reference_argmax": 12480
+  },
+  "image_features": {
+    "shape": [
+      512,
+      896
+    ],
+    "max_abs": 3.254413604736328e-05,
+    "mean_abs": 1.2549080565804616e-06
+  },
+  "input_embeddings": {
+    "shape": [
+      546,
+      896
+    ],
+    "max_abs": 3.254413604736328e-05,
+    "mean_abs": 1.1774553740906413e-06
+  },
+  "qwen_layer1": {
+    "shape": [
+      546,
+      896
+    ],
+    "max_abs": 3.439188003540039e-05,
+    "mean_abs": 1.2383163721096935e-06
+  },
+  "vit_layer1_tile0": {
+    "shape": [
+      1025,
+      1024
+    ],
+    "max_abs": 5.4836273193359375e-06,
+    "mean_abs": 2.9667714329661976e-07
+  },
+  "vit_layer1_tile1": {
+    "shape": [
+      1025,
+      1024
+    ],
+    "max_abs": 4.76837158203125e-06,
+    "mean_abs": 3.1989003446142306e-07
+  },
+  "prompt_ids_equal": true,
+  "generated_tokens_equal": true,
+  "answers": {
+    "owl": "Follow the route. Decelerate to stay behind the maroon car that is to the front. Waypoints:",
+    "reference": "Follow the route. Decelerate to stay behind the maroon car that is to the front. Waypoints:"
+  },
+  "route_max_abs": 2.644956111907959e-06,
+  "speed_waypoints_max_abs": 7.62939453125e-06
+}

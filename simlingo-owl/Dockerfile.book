@@ -1,0 +1,4 @@
+# Local extension for the full model; the four chapter examples use the base image.
+ARG BOOK_IMAGE=matrixanger/springer-book-code:latest
+FROM ${BOOK_IMAGE}
+RUN opam install -y yojson sha

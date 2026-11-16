@@ -1,0 +1,4 @@
+(executable
+ (name main)
+ (public_name simlingo-owl)
+ (libraries simlingo_owl unix))

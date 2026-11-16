@@ -1,0 +1,19 @@
+{
+  "name": "straight",
+  "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/pilot/town01_route_00_normal/000680.png",
+  "frame_id": 680,
+  "speed": 9.5,
+  "targets": [
+    [
+      19.83816729794695,
+      -0.00012436087506766287
+    ],
+    [
+      39.83816928881814,
+      -0.00033793874863893153
+    ]
+  ],
+  "crop_bottom": 0.3,
+  "question": "What should the ego do next?",
+  "source_sha256": "2434a0073ae7ff9f0d323aa7f8d8592a7219d522d381d0fcd370ecaba2b76f20"
+}

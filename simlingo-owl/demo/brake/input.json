@@ -1,0 +1,19 @@
+{
+  "name": "brake",
+  "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/event_probe_v2/capture/town04_v2_05_brake/004586.png",
+  "frame_id": 4586,
+  "speed": 9.6,
+  "targets": [
+    [
+      19.921305473614098,
+      -0.0006832909083185623
+    ],
+    [
+      39.921305817351765,
+      -0.001984908308510114
+    ]
+  ],
+  "crop_bottom": 0.3,
+  "question": "What should the ego do next?",
+  "source_sha256": "90c828f0aed93d55f3a9a1980d9be2f878e7ebc602d1af4d83213d4e82bfe0c3"
+}

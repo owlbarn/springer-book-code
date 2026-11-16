@@ -1,0 +1,60 @@
+{
+  "first_logits": {
+    "shape": [
+      1,
+      151655
+    ],
+    "max_abs": 5.3882598876953125e-05,
+    "mean_abs": 7.792787982907612e-06,
+    "owl_argmax": 12480,
+    "reference_argmax": 12480
+  },
+  "image_features": {
+    "shape": [
+      512,
+      896
+    ],
+    "max_abs": 5.3763389587402344e-05,
+    "mean_abs": 1.3049163953837706e-06
+  },
+  "input_embeddings": {
+    "shape": [
+      546,
+      896
+    ],
+    "max_abs": 5.3763389587402344e-05,
+    "mean_abs": 1.2243996252436773e-06
+  },
+  "qwen_layer1": {
+    "shape": [
+      546,
+      896
+    ],
+    "max_abs": 5.5670738220214844e-05,
+    "mean_abs": 1.278084369005228e-06
+  },
+  "vit_layer1_tile0": {
+    "shape": [
+      1025,
+      1024
+    ],
+    "max_abs": 4.589557647705078e-06,
+    "mean_abs": 2.975861832510418e-07
+  },
+  "vit_layer1_tile1": {
+    "shape": [
+      1025,
+      1024
+    ],
+    "max_abs": 4.5299530029296875e-06,
+    "mean_abs": 3.205365715075459e-07
+  },
+  "prompt_ids_equal": true,
+  "generated_tokens_equal": true,
+  "answers": {
+    "owl": "Follow the route. Accelerate to follow the black car that is to the front. Waypoints:",
+    "reference": "Follow the route. Accelerate to follow the black car that is to the front. Waypoints:"
+  },
+  "route_max_abs": 1.9073486328125e-06,
+  "speed_waypoints_max_abs": 1.52587890625e-05
+}

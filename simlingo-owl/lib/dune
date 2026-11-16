@@ -1,0 +1,4 @@
+(library
+ (name simlingo_owl)
+ (public_name simlingo-owl)
+ (libraries owl yojson sha))

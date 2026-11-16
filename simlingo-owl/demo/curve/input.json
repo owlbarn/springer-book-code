@@ -1,0 +1,19 @@
+{
+  "name": "curve",
+  "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/motion_qualification_followup_20261004/capture/curve_normal_gap26/000299.png",
+  "frame_id": 299,
+  "speed": 11.4,
+  "targets": [
+    [
+      21.70950220286987,
+      -1.118882436517468
+    ],
+    [
+      43.14881918530308,
+      -4.729133741355191
+    ]
+  ],
+  "crop_bottom": 0.3,
+  "question": "What should the ego do next?",
+  "source_sha256": "c1281a9c7393cbf80edad1ca8b561997b3b8c6d297315b52e71c82d9a36fc41b"
+}
