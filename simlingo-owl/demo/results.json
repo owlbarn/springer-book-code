@@ -3,7 +3,7 @@
     "name": "straight",
     "input": {
       "name": "straight",
-      "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/pilot/town01_route_00_normal/000680.png",
+      "source": "CARLA 0.9.15 simulation: Town01, route 00, frame 680",
       "frame_id": 680,
       "speed": 9.5,
       "targets": [
@@ -198,7 +198,7 @@
     "name": "curve",
     "input": {
       "name": "curve",
-      "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/motion_qualification_followup_20261004/capture/curve_normal_gap26/000299.png",
+      "source": "CARLA 0.9.15 simulation: curve scenario, frame 299",
       "frame_id": 299,
       "speed": 11.4,
       "targets": [
@@ -379,7 +379,7 @@
     "name": "brake",
     "input": {
       "name": "brake",
-      "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/event_probe_v2/capture/town04_v2_05_brake/004586.png",
+      "source": "CARLA 0.9.15 simulation: Town04, braking lead vehicle, frame 4586",
       "frame_id": 4586,
       "speed": 9.6,
       "targets": [
@@ -563,7 +563,7 @@
   {
     "name": "close_follow",
     "input": {
-      "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/event_probe_v2/capture/town04_v2_05_brake/004603.png",
+      "source": "CARLA 0.9.15 simulation: Town04, braking lead vehicle, frame 4603",
       "source_sha256": "d65d2196a1e6361d6e9f2076631b85e575956a3de03826da4469e0142e7fa0b3",
       "frame_id": 4603,
       "speed": 9.4,

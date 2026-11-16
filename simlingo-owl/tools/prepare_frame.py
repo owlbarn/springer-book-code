@@ -18,7 +18,8 @@ source=a.frames.parent/row['image']
 a.out.mkdir(parents=True,exist_ok=False)
 Image.open(source).convert('RGB').save(a.out/'frame.ppm')
 (a.out/'targets.json').write_text(json.dumps(row['target_points'])+'\n')
-metadata=dict(source=str(source.resolve()),source_sha256=digest(source),frame_id=row['frame_id'],
+# Recorded relative to the recording, so no local absolute path is published.
+metadata=dict(source=f'{a.frames.parent.name}/{row["image"]}',source_sha256=digest(source),frame_id=row['frame_id'],
               speed=round(row['speed_mps'],1),targets=row['target_points'],
               crop_bottom=a.crop_bottom,question=a.question)
 (a.out/'input.json').write_text(json.dumps(metadata,indent=2)+'\n')

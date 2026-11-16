@@ -1,6 +1,6 @@
 {
   "name": "curve",
-  "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/motion_qualification_followup_20261004/capture/curve_normal_gap26/000299.png",
+  "source": "CARLA 0.9.15 simulation: curve scenario, frame 299",
   "frame_id": 299,
   "speed": 11.4,
   "targets": [

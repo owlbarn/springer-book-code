@@ -30,6 +30,13 @@ The example uses:
 - InternVL2-1B snapshot `0d75ccd166b1d0b79446ae6c5d1a4a667f1e6187`.
 - Upstream SimLingo source commit `743b243afd6cf5ff51b9fa1f8cac86f22d569684`.
 
-The camera frames in `demo/` come from the local OverDrive recordings named in
-each `input.json`. They are separate from the SimLingo training dataset hosted
-on Hugging Face; the model licence listed here describes the model assets.
+## Camera frames
+
+The camera frames in `demo/` were rendered with the
+[CARLA simulator](https://github.com/carla-simulator/carla) 0.9.15; each
+`input.json` names the map and frame. CARLA's assets (maps, vehicles and
+buildings shown in the frames) are distributed under the CC-BY licence, and its
+code under MIT ([CARLA licences](https://github.com/carla-simulator/carla/blob/0.9.15/README.md#licenses)).
+Attribution: CARLA, Dosovitskiy et al., *CARLA: An Open Urban Driving
+Simulator*, CoRL 2017. The frames are separate from the SimLingo training
+dataset hosted on Hugging Face; the model licences above describe the model assets.

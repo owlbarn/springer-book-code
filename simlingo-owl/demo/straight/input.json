@@ -1,6 +1,6 @@
 {
   "name": "straight",
-  "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/pilot/town01_route_00_normal/000680.png",
+  "source": "CARLA 0.9.15 simulation: Town01, route 00, frame 680",
   "frame_id": 680,
   "speed": 9.5,
   "targets": [

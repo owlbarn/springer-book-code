@@ -1,6 +1,6 @@
 {
   "name": "brake",
-  "source": "/home/stark/Code/OverDrive/research/feature_urgency/artifacts/event_probe_v2/capture/town04_v2_05_brake/004586.png",
+  "source": "CARLA 0.9.15 simulation: Town04, braking lead vehicle, frame 4586",
   "frame_id": 4586,
   "speed": 9.6,
   "targets": [
