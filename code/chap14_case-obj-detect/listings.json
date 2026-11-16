@@ -2,10 +2,7 @@
   "scope": "Eight original native excerpts; first seven concatenate to one complete compiled constructor. Full 1024 real London inference, every parameter, geometry and masks; interpreter checks each architecture stage.",
   "seed": 85,
   "interactive_packages": [
-    "owl",
-    "camlimages.png",
-    "camlimages.jpeg",
-    "camlimages.freetype"
+    "owl camlimages.png camlimages.jpeg camlimages.freetype"
   ],
   "interactive_opens": [
     "Owl"
@@ -18,10 +15,7 @@
     "#directory \"/opt/book/code/_build/default/chap14_case-obj-detect\";;",
     "#load \"mrcnn.cma\";;",
     "#load \"book_mrcnn.cma\";;",
-    "open Mrcnn;;",
-    "open CGraph;;",
-    "open Graph;;",
-    "open AD;;"
+    "open Mrcnn;; open CGraph;; open Graph;; open AD;;"
   ],
   "support_scripts": [
     "scripts/prepare_mrcnn.py",
